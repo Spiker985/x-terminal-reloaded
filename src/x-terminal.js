@@ -24,16 +24,16 @@ import { CompositeDisposable } from 'atom'
 
 import { CONFIG_DATA } from './config'
 import { recalculateActive } from './utils'
-import { createXTerminalElement } from './element'
+import { XTerminalElementImpl } from './element'
 import { XTerminalModel, isXTerminalModel } from './model'
 import { X_TERMINAL_BASE_URI, XTerminalProfilesSingleton } from './profiles'
-import { createXTerminalProfileMenuElement } from './profile-menu-element'
+import { XTerminalProfileMenuElementImpl } from './profile-menu-element'
 import { XTerminalProfileMenuModel } from './profile-menu-model'
-import { createXTerminalDeleteProfileElement } from './delete-profile-element'
+import { XTerminalDeleteProfileElementImpl } from './delete-profile-element'
 import { XTerminalDeleteProfileModel } from './delete-profile-model'
-import { createXTerminalOverwriteProfileElement } from './overwrite-profile-element'
+import { XTerminalOverwriteProfileElementImpl } from './overwrite-profile-element'
 import { XTerminalOverwriteProfileModel } from './overwrite-profile-model'
-import { createXTerminalSaveProfileElement } from './save-profile-element'
+import { XTerminalSaveProfileElementImpl } from './save-profile-element'
 import { XTerminalSaveProfileModel } from './save-profile-model'
 
 import { URL } from 'whatwg-url'
@@ -82,29 +82,29 @@ class XTerminalSingleton {
 		this.disposables.add(
 			// Register view provider for terminal emulator item.
 			atom.views.addViewProvider(XTerminalModel, (atomXtermModel) => {
-				const atomXtermElement = createXTerminalElement()
+				const atomXtermElement = new XTerminalElementImpl()
 				atomXtermElement.initialize(atomXtermModel)
 				return atomXtermElement
 			}),
 			// Register view provider for terminal emulator profile menu item.
 			atom.views.addViewProvider(XTerminalProfileMenuModel, (atomXtermProfileMenuModel) => {
-				const atomXtermProfileMenuElement = createXTerminalProfileMenuElement()
+				const atomXtermProfileMenuElement = new XTerminalProfileMenuElementImpl()
 				atomXtermProfileMenuElement.initialize(atomXtermProfileMenuModel)
 				return atomXtermProfileMenuElement
 			}),
 			// Register view profile for modal items.
 			atom.views.addViewProvider(XTerminalDeleteProfileModel, (atomXtermDeleteProfileModel) => {
-				const atomXtermDeleteProfileElement = createXTerminalDeleteProfileElement()
+				const atomXtermDeleteProfileElement = new XTerminalDeleteProfileElementImpl()
 				atomXtermDeleteProfileElement.initialize(atomXtermDeleteProfileModel)
 				return atomXtermDeleteProfileElement
 			}),
 			atom.views.addViewProvider(XTerminalOverwriteProfileModel, (atomXtermOverwriteProfileModel) => {
-				const atomXtermOverwriteProfileElement = createXTerminalOverwriteProfileElement()
+				const atomXtermOverwriteProfileElement = new XTerminalOverwriteProfileElementImpl()
 				atomXtermOverwriteProfileElement.initialize(atomXtermOverwriteProfileModel)
 				return atomXtermOverwriteProfileElement
 			}),
 			atom.views.addViewProvider(XTerminalSaveProfileModel, (atomXtermSaveProfileModel) => {
-				const atomXtermSaveProfileElement = createXTerminalSaveProfileElement()
+				const atomXtermSaveProfileElement = new XTerminalSaveProfileElementImpl()
 				atomXtermSaveProfileElement.initialize(atomXtermSaveProfileModel)
 				return atomXtermSaveProfileElement
 			}),

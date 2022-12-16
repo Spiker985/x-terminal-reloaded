@@ -19,7 +19,7 @@
  * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { createXTerminalSaveProfileElement } from '../src/save-profile-element'
+import { XTerminalSaveProfileElementImpl } from '../src/save-profile-element'
 
 describe('XTerminalSaveProfileElement', () => {
 	let model
@@ -29,13 +29,13 @@ describe('XTerminalSaveProfileElement', () => {
 	})
 
 	it('initialize()', () => {
-		const element = createXTerminalSaveProfileElement()
+		const element = new XTerminalSaveProfileElementImpl()
 		element.initialize(model)
 		expect(element.messageDiv.textContent).toBe('Enter new profile name')
 	})
 
 	it('setNewTextbox()', () => {
-		const element = createXTerminalSaveProfileElement()
+		const element = new XTerminalSaveProfileElementImpl()
 		element.initialize(model)
 		const textbox = jasmine.createSpyObj('textbox', ['getElement'])
 		textbox.getElement.and.returnValue(document.createElement('div'))

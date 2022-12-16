@@ -19,7 +19,7 @@
  * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { createXTerminalOverwriteProfileElement } from '../src/overwrite-profile-element'
+import { XTerminalOverwriteProfileElementImpl } from '../src/overwrite-profile-element'
 
 describe('XTerminalOverwriteProfileElement', () => {
 	let model
@@ -29,13 +29,13 @@ describe('XTerminalOverwriteProfileElement', () => {
 	})
 
 	it('initialize()', () => {
-		const element = createXTerminalOverwriteProfileElement()
+		const element = new XTerminalOverwriteProfileElementImpl()
 		element.initialize(model)
 		expect(element.promptButtonsDiv.childElementCount).toBe(0)
 	})
 
 	it('setNewPrompt()', () => {
-		const element = createXTerminalOverwriteProfileElement()
+		const element = new XTerminalOverwriteProfileElementImpl()
 		element.initialize(model)
 		const profileName = 'foo'
 		const confirmHandler = () => {}

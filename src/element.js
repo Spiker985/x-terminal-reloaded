@@ -29,7 +29,7 @@ import { LigaturesAddon } from 'xterm-addon-ligatures'
 import { shell } from 'electron'
 
 import { configDefaults, COLORS, CONFIG_DATA } from './config'
-import { createXTerminalProfileMenuElement } from './profile-menu-element'
+import { XTerminalProfileMenuElementImpl } from './profile-menu-element'
 import { XTerminalProfileMenuModel } from './profile-menu-model'
 import { XTerminalProfilesSingleton } from './profiles'
 
@@ -70,7 +70,7 @@ class XTerminalElementImpl extends HTMLElement {
 		this.terminalDiv = document.createElement('div')
 		this.terminalDiv.classList.add('x-terminal-term-container')
 		this.mainDiv.appendChild(this.terminalDiv)
-		this.atomXtermProfileMenuElement = createXTerminalProfileMenuElement()
+		this.atomXtermProfileMenuElement = new XTerminalProfileMenuElementImpl()
 		this.hoveredLink = null
 		this.pendingTerminalProfileOptions = {}
 		this.mainDivContentRect = null
@@ -743,12 +743,8 @@ class XTerminalElementImpl extends HTMLElement {
 	}
 }
 
-window.customElements.define('x-terminal', XTerminalElementImpl)
-
-function createXTerminalElement () {
-	return document.createElement('x-terminal')
-}
+customElements.define('x-terminal', XTerminalElementImpl)
 
 export {
-	createXTerminalElement,
+	XTerminalElementImpl,
 }

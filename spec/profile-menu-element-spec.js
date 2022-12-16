@@ -19,7 +19,7 @@
  * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { createXTerminalProfileMenuElement } from '../src/profile-menu-element'
+import { XTerminalProfileMenuElementImpl } from '../src/profile-menu-element'
 
 describe('XTerminalProfileMenuElement', () => {
 	let element
@@ -53,7 +53,7 @@ describe('XTerminalProfileMenuElement', () => {
 		)
 		model.getXTerminalModel.and.returnValue(model.atomXtermModel)
 		model.getXTerminalModelElement.and.returnValue(mock)
-		element = createXTerminalProfileMenuElement()
+		element = new XTerminalProfileMenuElementImpl()
 		element.initialize(model)
 		await element.initializedPromise
 	})
