@@ -1,13 +1,13 @@
 {
-  "name": "x-terminal",
-  "title": "X-Terminal",
+  "name": "x-terminal2",
+  "title": "X-Terminal2",
   "main": "./src/x-terminal",
   "module": "./src/x-terminal",
   "bugs": {
-    "url": "https://github.com/bus-stop/x-terminal/issues/new/choose"
+    "url": "https://github.com/Spiker985/x-terminal/issues/new/choose"
   },
   "version": "14.0.1",
-  "description": "An xterm based Atom plugin for providing terminals inside your Atom workspace. A fork of atom-xterm",
+  "description": "An xterm based plugin for providing terminals inside your workspace. Originally for Atom, updated for Pulsar. A fork of atom-xterm and x-terminal",
   "keywords": [
     "terminal",
     "xterm",
@@ -28,7 +28,7 @@
     "core:loaded-shell-environment"
   ],
   "atomTestRunner": "./spec/custom-runner",
-  "repository": "https://github.com/bus-stop/x-terminal",
+  "repository": "https://github.com/Spiker985/x-terminal",
   "license": "MIT",
   "engines": {
     "atom": ">=1.41.0 <2.0.0"
