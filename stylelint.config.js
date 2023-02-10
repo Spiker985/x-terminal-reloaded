@@ -12,8 +12,8 @@ module.exports = {
 		'selector-type-no-unknown': [
 			true, {
 				ignoreTypes: [
-					'x-terminal',
-					'x-terminal-profile',
+					'x-terminal-reloaded',
+					'x-terminal-reloaded-profile',
 				],
 			},
 		],
