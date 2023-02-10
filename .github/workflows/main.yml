@@ -5,9 +5,6 @@ on:
     branches:
       - master
 
-env:
-  CI: true
-
 jobs:
   Test:
     strategy:
@@ -20,7 +17,7 @@ jobs:
     - uses: actions/checkout@v3
     
     - name: Install Pulsar
-      uses: pulsar-edit/action-pulsar-dependency@v2
+      uses: pulsar-edit/action-pulsar-dependency@v2.1
     
     - name: Install dependencies
       run: pulsar --package install
@@ -61,6 +58,8 @@ jobs:
       
       - name: Release 🎉
         env:
+          #Used to allow the CI to push a new release automatically. Intrinsic to GitHub CI.
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          ATOM_ACCESS_TOKEN: ${{ secrets.ATOM_ACCESS_TOKEN }}
+          #Used by ppm to auth for publishing of packages
+          ATOM_ACCESS_TOKEN: ${{ secrets.PULSAR_ACCESS_TOKEN }}
         run: npx semantic-release
