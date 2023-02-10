@@ -16,7 +16,7 @@ jobs:
     - uses: actions/checkout@v3
     
     - name: Install Pulsar
-      uses: pulsar-edit/action-pulsar-dependency@v2.1
+      uses: pulsar-edit/action-pulsar-dependency@v3.1
     
     - name: Install dependencies
       run: pulsar --package install
