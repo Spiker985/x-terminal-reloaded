@@ -31,10 +31,10 @@ import temp from 'temp'
 temp.track()
 
 async function createNewModel (params, options = {}) {
-	let uri = 'x-terminal://somesessionid/'
+	let uri = 'x-terminal-reloaded://somesessionid/'
 	if (params) {
 		const searchParams = new URLSearchParams(params)
-		const url = new URL('x-terminal://?' + searchParams.toString())
+		const url = new URL('x-terminal-reloaded://?' + searchParams.toString())
 		uri = url.href
 	}
 	const model = new XTerminalModel({
@@ -51,7 +51,7 @@ describe('XTerminalModel', () => {
 	let model, pane, element, tmpdir
 
 	beforeEach(async () => {
-		const uri = 'x-terminal://somesessionid/'
+		const uri = 'x-terminal-reloaded://somesessionid/'
 		spyOn(XTerminalProfilesSingleton.instance, 'generateNewUri').and.returnValue(uri)
 		model = await createNewModel()
 		pane = jasmine.createSpyObj('pane',
@@ -82,7 +82,7 @@ describe('XTerminalModel', () => {
 	})
 
 	it('use projectCwd with valid cwd passed in uri', async () => {
-		atom.config.set('x-terminal.spawnPtySettings.cwd', tmpdir)
+		atom.config.set('x-terminal-reloaded.spawnPtySettings.cwd', tmpdir)
 		const expected = await temp.mkdir('projectCwd')
 		spyOn(atom.project, 'getPaths').and.returnValue([expected])
 		spyOn(atom.workspace, 'getActivePaneItem').and.returnValue({})
@@ -205,7 +205,7 @@ describe('XTerminalModel', () => {
 	})
 
 	it('getURI()', async () => {
-		const uri = 'x-terminal://somesessionid/'
+		const uri = 'x-terminal-reloaded://somesessionid/'
 		const model = await createNewModel()
 		expect(model.getURI()).toBe(uri)
 	})
@@ -516,7 +516,7 @@ describe('XTerminalModel', () => {
 	})
 
 	it('isActiveTerminal() allowHiddenToStayActive', () => {
-		atom.config.set('x-terminal.terminalSettings.allowHiddenToStayActive', true)
+		atom.config.set('x-terminal-reloaded.terminalSettings.allowHiddenToStayActive', true)
 		model.activeIndex = 0
 		spyOn(model, 'isVisible').and.returnValue(false)
 		expect(model.isActiveTerminal()).toBe(true)

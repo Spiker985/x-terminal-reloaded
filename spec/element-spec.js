@@ -34,10 +34,10 @@ import { URL, URLSearchParams } from 'whatwg-url'
 temp.track()
 
 async function createNewElement (params, options = {}) {
-	let uri = 'x-terminal://somesessionid/'
+	let uri = 'x-terminal-reloaded://somesessionid/'
 	if (params) {
 		const searchParams = new URLSearchParams(params)
-		const url = new URL('x-terminal://?' + searchParams.toString())
+		const url = new URL('x-terminal-reloaded://?' + searchParams.toString())
 		uri = url.href
 	}
 	const model = new XTerminalModel({
@@ -179,7 +179,7 @@ describe('XTerminalElement', () => {
 	})
 
 	it('getCwd() ignore cwd base profile if projectCwd is set', async () => {
-		atom.config.set('x-terminal.spawnPtySettings.cwd', tmpdir)
+		atom.config.set('x-terminal-reloaded.spawnPtySettings.cwd', tmpdir)
 		const expected = await temp.mkdir('projectCwd')
 		spyOn(atom.project, 'getPaths').and.returnValue([expected])
 		const element = await createNewElement({ projectCwd: true })
@@ -257,8 +257,8 @@ describe('XTerminalElement', () => {
 	})
 
 	it('getEnv() deleteEnv set in config', () => {
-		atom.config.set('x-terminal.spawnPtySettings.env', JSON.stringify({ var1: 'value1' }))
-		atom.config.set('x-terminal.spawnPtySettings.deleteEnv', JSON.stringify(['var1']))
+		atom.config.set('x-terminal-reloaded.spawnPtySettings.env', JSON.stringify({ var1: 'value1' }))
+		atom.config.set('x-terminal-reloaded.spawnPtySettings.deleteEnv', JSON.stringify(['var1']))
 		expect(element.getEnv().var1).toBe(undefined)
 	})
 
@@ -268,9 +268,9 @@ describe('XTerminalElement', () => {
 	})
 
 	it('getEnv() deleteEnv has precendence over senEnv', () => {
-		atom.config.set('x-terminal.spawnPtySettings.env', JSON.stringify({ var1: 'value1' }))
-		atom.config.set('x-terminal.spawnPtySettings.setEnv', JSON.stringify({ var2: 'value2' }))
-		atom.config.set('x-terminal.spawnPtySettings.deleteEnv', JSON.stringify(['var2']))
+		atom.config.set('x-terminal-reloaded.spawnPtySettings.env', JSON.stringify({ var1: 'value1' }))
+		atom.config.set('x-terminal-reloaded.spawnPtySettings.setEnv', JSON.stringify({ var2: 'value2' }))
+		atom.config.set('x-terminal-reloaded.spawnPtySettings.deleteEnv', JSON.stringify(['var2']))
 		expect(element.getEnv().var2).toBe(undefined)
 	})
 
@@ -1428,8 +1428,8 @@ describe('XTerminalElement', () => {
 		spyOn(element.model, 'exit')
 		spyOn(element, 'leaveOpenAfterExit').and.returnValue(true)
 		exitHandler(0)
-		const successDiv = element.topDiv.querySelector('.x-terminal-notice-success')
-		const errorDiv = element.topDiv.querySelector('.x-terminal-notice-error')
+		const successDiv = element.topDiv.querySelector('.x-terminal-reloaded-notice-success')
+		const errorDiv = element.topDiv.querySelector('.x-terminal-reloaded-notice-error')
 		expect(successDiv).not.toBeNull()
 		expect(errorDiv).toBeNull()
 	})
@@ -1445,8 +1445,8 @@ describe('XTerminalElement', () => {
 		spyOn(element.model, 'exit')
 		spyOn(element, 'leaveOpenAfterExit').and.returnValue(true)
 		exitHandler(1)
-		const successDiv = element.topDiv.querySelector('.x-terminal-notice-success')
-		const errorDiv = element.topDiv.querySelector('.x-terminal-notice-error')
+		const successDiv = element.topDiv.querySelector('.x-terminal-reloaded-notice-success')
+		const errorDiv = element.topDiv.querySelector('.x-terminal-reloaded-notice-error')
 		expect(successDiv).toBeNull()
 		expect(errorDiv).not.toBeNull()
 	})
@@ -1462,7 +1462,7 @@ describe('XTerminalElement', () => {
 		spyOn(element.model, 'exit')
 		spyOn(element, 'leaveOpenAfterExit').and.returnValue(true)
 		exitHandler(0)
-		const messageDiv = element.topDiv.querySelector('.x-terminal-notice-success')
+		const messageDiv = element.topDiv.querySelector('.x-terminal-reloaded-notice-success')
 		const restartButton = messageDiv.querySelector('.btn-success')
 		expect(restartButton).not.toBeNull()
 	})
@@ -1478,7 +1478,7 @@ describe('XTerminalElement', () => {
 		spyOn(element.model, 'exit')
 		spyOn(element, 'leaveOpenAfterExit').and.returnValue(true)
 		exitHandler(1)
-		const messageDiv = element.topDiv.querySelector('.x-terminal-notice-error')
+		const messageDiv = element.topDiv.querySelector('.x-terminal-reloaded-notice-error')
 		const restartButton = messageDiv.querySelector('.btn-error')
 		expect(restartButton).not.toBeNull()
 	})
@@ -1494,7 +1494,7 @@ describe('XTerminalElement', () => {
 		spyOn(element.model, 'exit')
 		spyOn(element, 'leaveOpenAfterExit').and.returnValue(true)
 		exitHandler(0)
-		const messageDiv = element.topDiv.querySelector('.x-terminal-notice-success')
+		const messageDiv = element.topDiv.querySelector('.x-terminal-reloaded-notice-success')
 		const restartButton = messageDiv.querySelector('.btn-success')
 		spyOn(element, 'restartPtyProcess')
 		const mouseEvent = new MouseEvent('click')
@@ -1908,8 +1908,8 @@ describe('XTerminalElement', () => {
 		const onExitCallback = args[1]
 		element.model.profile.leaveOpenAfterExit = true
 		onExitCallback(0)
-		expect(element.querySelector('.x-terminal-notice-success')).toBeTruthy()
-		expect(element.querySelector('.x-terminal-notice-error')).toBe(null)
+		expect(element.querySelector('.x-terminal-reloaded-notice-success')).toBeTruthy()
+		expect(element.querySelector('.x-terminal-reloaded-notice-error')).toBe(null)
 	})
 
 	it('on \'exit\' handler leave open after exit failure', async () => {
@@ -1923,8 +1923,8 @@ describe('XTerminalElement', () => {
 		const onExitCallback = args[1]
 		element.model.profile.leaveOpenAfterExit = true
 		onExitCallback(1)
-		expect(element.querySelector('.x-terminal-notice-success')).toBe(null)
-		expect(element.querySelector('.x-terminal-notice-error')).toBeTruthy()
+		expect(element.querySelector('.x-terminal-reloaded-notice-success')).toBe(null)
+		expect(element.querySelector('.x-terminal-reloaded-notice-error')).toBeTruthy()
 	})
 
 	it('on \'exit\' handler do not leave open', async () => {
@@ -1947,7 +1947,7 @@ describe('XTerminalElement', () => {
 			'foo',
 			'success',
 		)
-		const messageDiv = element.topDiv.querySelector('.x-terminal-notice-success')
+		const messageDiv = element.topDiv.querySelector('.x-terminal-reloaded-notice-success')
 		expect(messageDiv.textContent).toBe('fooRestart')
 	})
 
@@ -1956,7 +1956,7 @@ describe('XTerminalElement', () => {
 			'foo',
 			'error',
 		)
-		const messageDiv = element.topDiv.querySelector('.x-terminal-notice-error')
+		const messageDiv = element.topDiv.querySelector('.x-terminal-reloaded-notice-error')
 		expect(messageDiv.textContent).toBe('fooRestart')
 	})
 
@@ -2012,13 +2012,13 @@ describe('XTerminalElement', () => {
 			'info',
 			'Some text',
 		)
-		const restartButton = element.topDiv.querySelector('.x-terminal-restart-btn')
+		const restartButton = element.topDiv.querySelector('.x-terminal-reloaded-restart-btn')
 		expect(restartButton.firstChild.nodeValue).toBe('Some text')
 	})
 
 	it('promptToStartup()', async () => {
 		await element.promptToStartup()
-		const restartButton = element.topDiv.querySelector('.x-terminal-restart-btn')
+		const restartButton = element.topDiv.querySelector('.x-terminal-reloaded-restart-btn')
 		expect(restartButton.firstChild.nodeValue).toBe('Start')
 	})
 
@@ -2028,7 +2028,7 @@ describe('XTerminalElement', () => {
 		spyOn(element, 'getArgs').and.returnValue(command.slice(1))
 		const expected = `New command ${JSON.stringify(command)} ready to start.`
 		await element.promptToStartup()
-		const messageDiv = element.topDiv.querySelector('.x-terminal-notice-info')
+		const messageDiv = element.topDiv.querySelector('.x-terminal-reloaded-notice-info')
 		expect(messageDiv.firstChild.nodeValue).toBe(expected)
 	})
 
@@ -2036,7 +2036,7 @@ describe('XTerminalElement', () => {
 		element.model.profile.title = 'My Profile'
 		const expected = 'New command for profile My Profile ready to start.'
 		await element.promptToStartup()
-		const messageDiv = element.topDiv.querySelector('.x-terminal-notice-info')
+		const messageDiv = element.topDiv.querySelector('.x-terminal-reloaded-notice-info')
 		expect(messageDiv.firstChild.nodeValue).toBe(expected)
 	})
 
@@ -2258,7 +2258,7 @@ describe('XTerminalElement', () => {
 		expect(element.pendingTerminalProfileOptions).toEqual({})
 	})
 
-	it('applyPendingTerminalProfileOptions() terminal not visible x-terminal options removed', () => {
+	it('applyPendingTerminalProfileOptions() terminal not visible x-terminal-reloaded options removed', () => {
 		spyOn(element, 'refitTerminal')
 		element.terminalDivInitiallyVisible = false
 		element.pendingTerminalProfileOptions.leaveOpenAfterExit = true
@@ -2268,7 +2268,7 @@ describe('XTerminalElement', () => {
 		expect(element.pendingTerminalProfileOptions).toEqual({})
 	})
 
-	it('applyPendingTerminalProfileOptions() terminal visible x-terminal options removed', () => {
+	it('applyPendingTerminalProfileOptions() terminal visible x-terminal-reloaded options removed', () => {
 		spyOn(element, 'refitTerminal')
 		element.terminalDivInitiallyVisible = true
 		element.pendingTerminalProfileOptions.leaveOpenAfterExit = true

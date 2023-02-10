@@ -30,7 +30,7 @@ import { v4 as uuidv4 } from 'uuid'
 import { URL } from 'whatwg-url'
 import { detailedDiff } from 'deep-object-diff'
 
-const X_TERMINAL_BASE_URI = 'x-terminal://'
+const X_TERMINAL_BASE_URI = 'x-terminal-reloaded://'
 
 const XTerminalProfilesSingletonSymbol = Symbol('XTerminalProfilesSingleton sentinel')
 

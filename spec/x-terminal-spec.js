@@ -4,7 +4,7 @@ import * as xTerminal from '../src/x-terminal'
 
 const xTerminalInstance = xTerminal.getInstance()
 
-describe('x-terminal', () => {
+describe('x-terminal-reloaded', () => {
 	beforeEach(async () => {
 		await xTerminalInstance.activate()
 	})
@@ -191,7 +191,7 @@ describe('x-terminal', () => {
 		})
 
 		it('runs commands in active terminal', async () => {
-			atom.config.set('x-terminal.terminalSettings.runInActive', true)
+			atom.config.set('x-terminal-reloaded.terminalSettings.runInActive', true)
 			await xTerminalInstance.runCommands(commands)
 
 			expect(xTerminalInstance.open).not.toHaveBeenCalled()
@@ -201,7 +201,7 @@ describe('x-terminal', () => {
 
 		it('runs commands in new terminal if none active', async () => {
 			xTerminalInstance.getActiveTerminal.and.returnValue()
-			atom.config.set('x-terminal.terminalSettings.runInActive', true)
+			atom.config.set('x-terminal-reloaded.terminalSettings.runInActive', true)
 			await xTerminalInstance.runCommands(commands)
 
 			expect(xTerminalInstance.getActiveTerminal).toHaveBeenCalled()
@@ -335,11 +335,11 @@ describe('x-terminal', () => {
 	})
 })
 
-describe('x-terminal services', () => {
+describe('x-terminal-reloaded services', () => {
 	beforeEach(async () => {
 		atom.packages.triggerDeferredActivationHooks()
 		atom.packages.triggerActivationHook('core:loaded-shell-environment')
-		await atom.packages.activatePackage('x-terminal')
+		await atom.packages.activatePackage('x-terminal-reloaded')
 	})
 
 	it('terminal.run', async () => {

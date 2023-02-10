@@ -1,79 +1,79 @@
 {
   "context-menu": {
-    "x-terminal": [
+    "x-terminal-reloaded": [
       {
         "label": "Open New Terminal",
-        "command": "x-terminal:open"
+        "command": "x-terminal-reloaded:open"
       },
       {
         "label": "Focus On Terminal",
-        "command": "x-terminal:focus"
+        "command": "x-terminal-reloaded:focus"
       },
       {
         "label": "Close",
-        "command": "x-terminal:close"
+        "command": "x-terminal-reloaded:close"
       },
       {
         "label": "Restart",
-        "command": "x-terminal:restart"
+        "command": "x-terminal-reloaded:restart"
       },
       {
         "label": "Clear",
-        "command": "x-terminal:clear"
+        "command": "x-terminal-reloaded:clear"
       },
       {
         "type": "separator"
       },
       {
         "label": "Copy",
-        "command": "x-terminal:copy"
+        "command": "x-terminal-reloaded:copy"
       },
       {
         "label": "Paste",
-        "command": "x-terminal:paste"
+        "command": "x-terminal-reloaded:paste"
       },
       {
         "type": "separator"
       },
       {
         "label": "Toggle Profile Menu",
-        "command": "x-terminal:toggle-profile-menu"
+        "command": "x-terminal-reloaded:toggle-profile-menu"
       },
       {
         "label": "Reorganize Terminal Tabs (Current Pane)",
-        "command": "x-terminal:reorganize"
+        "command": "x-terminal-reloaded:reorganize"
       },
       {
         "label": "Reorganize Terminal Tabs (Topmost Pane)",
-        "command": "x-terminal:reorganize-top"
+        "command": "x-terminal-reloaded:reorganize-top"
       },
       {
         "label": "Reorganize Terminal Tabs (Bottommost Pane)",
-        "command": "x-terminal:reorganize-bottom"
+        "command": "x-terminal-reloaded:reorganize-bottom"
       },
       {
         "label": "Reorganize Terminal Tabs (Leftmost Pane)",
-        "command": "x-terminal:reorganize-left"
+        "command": "x-terminal-reloaded:reorganize-left"
       },
       {
         "label": "Reorganize Terminal Tabs (Rightmost Pane)",
-        "command": "x-terminal:reorganize-right"
+        "command": "x-terminal-reloaded:reorganize-right"
       },
       {
         "label": "Reorganize Terminal Tabs (Bottom Dock)",
-        "command": "x-terminal:reorganize-bottom-dock"
+        "command": "x-terminal-reloaded:reorganize-bottom-dock"
       },
       {
         "label": "Reorganize Terminal Tabs (Left Dock)",
-        "command": "x-terminal:reorganize-left-dock"
+        "command": "x-terminal-reloaded:reorganize-left-dock"
       },
       {
         "label": "Reorganize Terminal Tabs (Right Dock)",
-        "command": "x-terminal:reorganize-right-dock"
+        "command": "x-terminal-reloaded:reorganize-right-dock"
       },
       {
         "label": "Close All Terminals",
-        "command": "x-terminal:close-all"
+        "command": "x-terminal-reloaded:close-all"
       }
     ],
     "atom-text-editor, .tree-view, .tab-bar": [{
@@ -81,75 +81,75 @@
       "submenu": [
         {
           "label": "Open New Terminal",
-          "command": "x-terminal:open-context-menu"
+          "command": "x-terminal-reloaded:open-context-menu"
         },
         {
           "label": "Focus On Terminal",
-          "command": "x-terminal:focus"
+          "command": "x-terminal-reloaded:focus"
         },
         {
           "label": "Open New Terminal (Split Up)",
-          "command": "x-terminal:open-split-up-context-menu"
+          "command": "x-terminal-reloaded:open-split-up-context-menu"
         },
         {
           "label": "Open New Terminal (Split Down)",
-          "command": "x-terminal:open-split-down-context-menu"
+          "command": "x-terminal-reloaded:open-split-down-context-menu"
         },
         {
           "label": "Open New Terminal (Split Left)",
-          "command": "x-terminal:open-split-left-context-menu"
+          "command": "x-terminal-reloaded:open-split-left-context-menu"
         },
         {
           "label": "Open New Terminal (Split Right)",
-          "command": "x-terminal:open-split-right-context-menu"
+          "command": "x-terminal-reloaded:open-split-right-context-menu"
         },
         {
           "label": "Open New Terminal (Bottom Dock)",
-          "command": "x-terminal:open-split-bottom-dock-context-menu"
+          "command": "x-terminal-reloaded:open-split-bottom-dock-context-menu"
         },
         {
           "label": "Open New Terminal (Left Dock)",
-          "command": "x-terminal:open-split-left-dock-context-menu"
+          "command": "x-terminal-reloaded:open-split-left-dock-context-menu"
         },
         {
           "label": "Open New Terminal (Right Dock)",
-          "command": "x-terminal:open-split-right-dock-context-menu"
+          "command": "x-terminal-reloaded:open-split-right-dock-context-menu"
         },
         {
           "label": "Reorganize Terminal Tabs (Current Pane)",
-          "command": "x-terminal:reorganize"
+          "command": "x-terminal-reloaded:reorganize"
         },
         {
           "label": "Reorganize Terminal Tabs (Topmost Pane)",
-          "command": "x-terminal:reorganize-top"
+          "command": "x-terminal-reloaded:reorganize-top"
         },
         {
           "label": "Reorganize Terminal Tabs (Bottommost Pane)",
-          "command": "x-terminal:reorganize-bottom"
+          "command": "x-terminal-reloaded:reorganize-bottom"
         },
         {
           "label": "Reorganize Terminal Tabs (Leftmost Pane)",
-          "command": "x-terminal:reorganize-left"
+          "command": "x-terminal-reloaded:reorganize-left"
         },
         {
           "label": "Reorganize Terminal Tabs (Rightmost Pane)",
-          "command": "x-terminal:reorganize-right"
+          "command": "x-terminal-reloaded:reorganize-right"
         },
         {
           "label": "Reorganize Terminal Tabs (Bottom Dock)",
-          "command": "x-terminal:reorganize-bottom-dock"
+          "command": "x-terminal-reloaded:reorganize-bottom-dock"
         },
         {
           "label": "Reorganize Terminal Tabs (Left Dock)",
-          "command": "x-terminal:reorganize-left-dock"
+          "command": "x-terminal-reloaded:reorganize-left-dock"
         },
         {
           "label": "Reorganize Terminal Tabs (Right Dock)",
-          "command": "x-terminal:reorganize-right-dock"
+          "command": "x-terminal-reloaded:reorganize-right-dock"
         },
         {
           "label": "Close All Terminals",
-          "command": "x-terminal:close-all"
+          "command": "x-terminal-reloaded:close-all"
         }
       ]
       }]
@@ -162,75 +162,75 @@
             "label": "X Terminal",
             "submenu": [{
               "label": "Open New Terminal",
-              "command": "x-terminal:open"
+              "command": "x-terminal-reloaded:open"
             },
             {
               "label": "Focus On Terminal",
-              "command": "x-terminal:focus"
+              "command": "x-terminal-reloaded:focus"
             },
             {
               "label": "Open New Terminal (Split Up)",
-              "command": "x-terminal:open-split-up"
+              "command": "x-terminal-reloaded:open-split-up"
             },
             {
               "label": "Open New Terminal (Split Down)",
-              "command": "x-terminal:open-split-down"
+              "command": "x-terminal-reloaded:open-split-down"
             },
             {
               "label": "Open New Terminal (Split Left)",
-              "command": "x-terminal:open-split-left"
+              "command": "x-terminal-reloaded:open-split-left"
             },
             {
               "label": "Open New Terminal (Split Right)",
-              "command": "x-terminal:open-split-right"
+              "command": "x-terminal-reloaded:open-split-right"
             },
             {
               "label": "Open New Terminal (Bottom Dock)",
-              "command": "x-terminal:open-split-bottom-dock"
+              "command": "x-terminal-reloaded:open-split-bottom-dock"
             },
             {
               "label": "Open New Terminal (Left Dock)",
-              "command": "x-terminal:open-split-left-dock"
+              "command": "x-terminal-reloaded:open-split-left-dock"
             },
             {
               "label": "Open New Terminal (Right Dock)",
-              "command": "x-terminal:open-split-right-dock"
+              "command": "x-terminal-reloaded:open-split-right-dock"
             },
             {
               "label": "Reorganize Terminal Tabs (Current Pane)",
-              "command": "x-terminal:reorganize"
+              "command": "x-terminal-reloaded:reorganize"
             },
             {
               "label": "Reorganize Terminal Tabs (Topmost Pane)",
-              "command": "x-terminal:reorganize-top"
+              "command": "x-terminal-reloaded:reorganize-top"
             },
             {
               "label": "Reorganize Terminal Tabs (Bottommost Pane)",
-              "command": "x-terminal:reorganize-bottom"
+              "command": "x-terminal-reloaded:reorganize-bottom"
             },
             {
               "label": "Reorganize Terminal Tabs (Leftmost Pane)",
-              "command": "x-terminal:reorganize-left"
+              "command": "x-terminal-reloaded:reorganize-left"
             },
             {
               "label": "Reorganize Terminal Tabs (Rightmost Pane)",
-              "command": "x-terminal:reorganize-right"
+              "command": "x-terminal-reloaded:reorganize-right"
             },
             {
               "label": "Reorganize Terminal Tabs (Bottom Dock)",
-              "command": "x-terminal:reorganize-bottom-dock"
+              "command": "x-terminal-reloaded:reorganize-bottom-dock"
             },
             {
               "label": "Reorganize Terminal Tabs (Left Dock)",
-              "command": "x-terminal:reorganize-left-dock"
+              "command": "x-terminal-reloaded:reorganize-left-dock"
             },
             {
               "label": "Reorganize Terminal Tabs (Right Dock)",
-              "command": "x-terminal:reorganize-right-dock"
+              "command": "x-terminal-reloaded:reorganize-right-dock"
             },
             {
               "label": "Close All Terminals",
-              "command": "x-terminal:close-all"
+              "command": "x-terminal-reloaded:close-all"
             }
           ]
         }

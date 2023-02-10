@@ -34,19 +34,19 @@ class XTerminalProfileMenuElementImpl extends HTMLElement {
 		this.model.setElement(this)
 		this.profilesSingleton = XTerminalProfilesSingleton.instance
 		const topDiv = document.createElement('div')
-		topDiv.classList.add('x-terminal-profile-menu-element-top-div')
+		topDiv.classList.add('x-terminal-reloaded-profile-menu-element-top-div')
 		this.appendChild(topDiv)
 		const leftDiv = document.createElement('div')
-		leftDiv.classList.add('x-terminal-profile-menu-element-left-div')
+		leftDiv.classList.add('x-terminal-reloaded-profile-menu-element-left-div')
 		this.appendChild(leftDiv)
 		this.mainDiv = document.createElement('div')
-		this.mainDiv.classList.add('x-terminal-profile-menu-element-main-div')
+		this.mainDiv.classList.add('x-terminal-reloaded-profile-menu-element-main-div')
 		this.appendChild(this.mainDiv)
 		const rightDiv = document.createElement('div')
-		rightDiv.classList.add('x-terminal-profile-menu-element-right-div')
+		rightDiv.classList.add('x-terminal-reloaded-profile-menu-element-right-div')
 		this.appendChild(rightDiv)
 		const bottomDiv = document.createElement('div')
-		bottomDiv.classList.add('x-terminal-profile-menu-element-bottom-div')
+		bottomDiv.classList.add('x-terminal-reloaded-profile-menu-element-bottom-div')
 		this.appendChild(bottomDiv)
 		this.disposables = new CompositeDisposable()
 		let resolveInit
@@ -175,16 +175,16 @@ class XTerminalProfileMenuElementImpl extends HTMLElement {
 
 	createMenuItemContainer (id, labelTitle, labelDescription) {
 		const menuItemContainer = document.createElement('div')
-		menuItemContainer.classList.add('x-terminal-profile-menu-item')
+		menuItemContainer.classList.add('x-terminal-reloaded-profile-menu-item')
 		menuItemContainer.setAttribute('id', id)
 		const menuItemLabel = document.createElement('label')
-		menuItemLabel.classList.add('x-terminal-profile-menu-item-label')
+		menuItemLabel.classList.add('x-terminal-reloaded-profile-menu-item-label')
 		const titleDiv = document.createElement('div')
-		titleDiv.classList.add('x-terminal-profile-menu-item-title')
+		titleDiv.classList.add('x-terminal-reloaded-profile-menu-item-title')
 		titleDiv.appendChild(document.createTextNode(labelTitle))
 		menuItemLabel.appendChild(titleDiv)
 		const descriptionDiv = document.createElement('div')
-		descriptionDiv.classList.add('x-terminal-profile-menu-item-description')
+		descriptionDiv.classList.add('x-terminal-reloaded-profile-menu-item-description')
 		descriptionDiv.innerHTML = marked(labelDescription)
 		menuItemLabel.appendChild(descriptionDiv)
 		menuItemContainer.appendChild(menuItemLabel)
@@ -195,7 +195,7 @@ class XTerminalProfileMenuElementImpl extends HTMLElement {
 		const profiles = await this.profilesSingleton.getProfiles()
 		const select = document.createElement('select')
 		select.setAttribute('id', 'profiles-dropdown')
-		select.classList.add('x-terminal-profile-menu-item-select')
+		select.classList.add('x-terminal-reloaded-profile-menu-item-select')
 		let option = document.createElement('option')
 		let text = document.createTextNode('')
 		option.setAttribute('value', text)
@@ -233,7 +233,7 @@ class XTerminalProfileMenuElementImpl extends HTMLElement {
 
 	createProfileMenuButtons () {
 		const buttonsContainer = document.createElement('div')
-		buttonsContainer.classList.add('x-terminal-profile-menu-buttons-div')
+		buttonsContainer.classList.add('x-terminal-reloaded-profile-menu-buttons-div')
 		let button = this.createButton()
 		button.appendChild(document.createTextNode('Load Settings'))
 		button.classList.add('btn-load')
@@ -274,7 +274,7 @@ class XTerminalProfileMenuElementImpl extends HTMLElement {
 
 	createButton () {
 		const button = document.createElement('button')
-		button.classList.add('x-terminal-profile-menu-button')
+		button.classList.add('x-terminal-reloaded-profile-menu-button')
 		button.classList.add('btn')
 		button.classList.add('inline-block-tight')
 		return button
@@ -310,27 +310,27 @@ class XTerminalProfileMenuElementImpl extends HTMLElement {
 
 	createColor (id, labelTitle, labelDescription, defaultValue, initialValue) {
 		const menuItemContainer = document.createElement('div')
-		menuItemContainer.classList.add('x-terminal-profile-menu-item')
+		menuItemContainer.classList.add('x-terminal-reloaded-profile-menu-item')
 		menuItemContainer.setAttribute('id', id)
 		const menuItemLabel = document.createElement('label')
-		menuItemLabel.classList.add('x-terminal-profile-menu-item-label')
-		menuItemLabel.classList.add('x-terminal-profile-menu-item-label-color')
+		menuItemLabel.classList.add('x-terminal-reloaded-profile-menu-item-label')
+		menuItemLabel.classList.add('x-terminal-reloaded-profile-menu-item-label-color')
 		const color = document.createElement('input')
 		color.setAttribute('type', 'color')
-		color.classList.add('x-terminal-profile-menu-item-color')
+		color.classList.add('x-terminal-reloaded-profile-menu-item-color')
 		color.value = this.toHex(defaultValue)
 		if (initialValue !== undefined) {
 			color.value = this.toHex(initialValue)
 		}
 		menuItemLabel.appendChild(color)
 		const titleDiv = document.createElement('div')
-		titleDiv.classList.add('x-terminal-profile-menu-item-title')
+		titleDiv.classList.add('x-terminal-reloaded-profile-menu-item-title')
 		titleDiv.appendChild(document.createTextNode(labelTitle))
 		menuItemLabel.appendChild(titleDiv)
 		menuItemContainer.appendChild(menuItemLabel)
 		const descriptionDiv = document.createElement('div')
-		descriptionDiv.classList.add('x-terminal-profile-menu-item-description')
-		descriptionDiv.classList.add('x-terminal-profile-menu-item-description-color')
+		descriptionDiv.classList.add('x-terminal-reloaded-profile-menu-item-description')
+		descriptionDiv.classList.add('x-terminal-reloaded-profile-menu-item-description-color')
 		descriptionDiv.innerHTML = marked(labelDescription)
 		menuItemContainer.appendChild(descriptionDiv)
 		return menuItemContainer
@@ -344,7 +344,7 @@ class XTerminalProfileMenuElementImpl extends HTMLElement {
 		)
 		const select = document.createElement('select')
 		select.setAttribute('type', 'select')
-		select.classList.add('x-terminal-profile-menu-item-select')
+		select.classList.add('x-terminal-reloaded-profile-menu-item-select')
 		select.classList.add('settings-view')
 		for (let optionValue of possibleValues) {
 			if (typeof optionValue !== 'object') {
@@ -368,14 +368,14 @@ class XTerminalProfileMenuElementImpl extends HTMLElement {
 
 	createCheckbox (id, labelTitle, labelDescription, defaultValue, initialValue) {
 		const menuItemContainer = document.createElement('div')
-		menuItemContainer.classList.add('x-terminal-profile-menu-item')
+		menuItemContainer.classList.add('x-terminal-reloaded-profile-menu-item')
 		menuItemContainer.setAttribute('id', id)
 		const menuItemLabel = document.createElement('label')
-		menuItemLabel.classList.add('x-terminal-profile-menu-item-label')
-		menuItemLabel.classList.add('x-terminal-profile-menu-item-label-checkbox')
+		menuItemLabel.classList.add('x-terminal-reloaded-profile-menu-item-label')
+		menuItemLabel.classList.add('x-terminal-reloaded-profile-menu-item-label-checkbox')
 		const checkbox = document.createElement('input')
 		checkbox.setAttribute('type', 'checkbox')
-		checkbox.classList.add('x-terminal-profile-menu-item-checkbox')
+		checkbox.classList.add('x-terminal-reloaded-profile-menu-item-checkbox')
 		checkbox.classList.add('input-checkbox')
 		checkbox.checked = defaultValue
 		if (initialValue !== undefined) {
@@ -383,13 +383,13 @@ class XTerminalProfileMenuElementImpl extends HTMLElement {
 		}
 		menuItemLabel.appendChild(checkbox)
 		const titleDiv = document.createElement('div')
-		titleDiv.classList.add('x-terminal-profile-menu-item-title')
+		titleDiv.classList.add('x-terminal-reloaded-profile-menu-item-title')
 		titleDiv.appendChild(document.createTextNode(labelTitle))
 		menuItemLabel.appendChild(titleDiv)
 		menuItemContainer.appendChild(menuItemLabel)
 		const descriptionDiv = document.createElement('div')
-		descriptionDiv.classList.add('x-terminal-profile-menu-item-description')
-		descriptionDiv.classList.add('x-terminal-profile-menu-item-description-checkbox')
+		descriptionDiv.classList.add('x-terminal-reloaded-profile-menu-item-description')
+		descriptionDiv.classList.add('x-terminal-reloaded-profile-menu-item-description-checkbox')
 		descriptionDiv.innerHTML = marked(labelDescription)
 		menuItemContainer.appendChild(descriptionDiv)
 		return menuItemContainer
@@ -493,7 +493,7 @@ class XTerminalProfileMenuElementImpl extends HTMLElement {
 	}
 }
 
-customElements.define('x-terminal-profile', XTerminalProfileMenuElementImpl)
+customElements.define('x-terminal-reloaded-profile', XTerminalProfileMenuElementImpl)
 
 export {
 	XTerminalProfileMenuElementImpl,

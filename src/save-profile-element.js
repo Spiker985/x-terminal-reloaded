@@ -26,10 +26,10 @@ class XTerminalSaveProfileElementImpl extends HTMLElement {
 		this.model = model
 		this.model.setElement(this)
 		this.textboxDiv = document.createElement('div')
-		this.textboxDiv.classList.add('x-terminal-save-profile-textbox')
+		this.textboxDiv.classList.add('x-terminal-reloaded-save-profile-textbox')
 		this.appendChild(this.textboxDiv)
 		this.messageDiv = document.createElement('div')
-		this.messageDiv.classList.add('x-terminal-modal-message')
+		this.messageDiv.classList.add('x-terminal-reloaded-modal-message')
 		this.messageDiv.appendChild(document.createTextNode('Enter new profile name'))
 		this.appendChild(this.messageDiv)
 	}
@@ -40,7 +40,7 @@ class XTerminalSaveProfileElementImpl extends HTMLElement {
 	}
 }
 
-customElements.define('x-terminal-save-profile', XTerminalSaveProfileElementImpl)
+customElements.define('x-terminal-reloaded-save-profile', XTerminalSaveProfileElementImpl)
 
 export {
 	XTerminalSaveProfileElementImpl,

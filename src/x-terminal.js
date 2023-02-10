@@ -174,104 +174,104 @@ class XTerminalSingleton {
 
 			// Add commands.
 			atom.commands.add('atom-workspace', {
-				'x-terminal:open': () => this.open(
+				'x-terminal-reloaded:open': () => this.open(
 					this.profilesSingleton.generateNewUri(),
 					this.addDefaultPosition(),
 				),
-				'x-terminal:open-center': () => this.openInCenterOrDock(atom.workspace),
-				'x-terminal:open-split-up': () => this.open(
+				'x-terminal-reloaded:open-center': () => this.openInCenterOrDock(atom.workspace),
+				'x-terminal-reloaded:open-split-up': () => this.open(
 					this.profilesSingleton.generateNewUri(),
 					{ split: 'up' },
 				),
-				'x-terminal:open-split-down': () => this.open(
+				'x-terminal-reloaded:open-split-down': () => this.open(
 					this.profilesSingleton.generateNewUri(),
 					{ split: 'down' },
 				),
-				'x-terminal:open-split-left': () => this.open(
+				'x-terminal-reloaded:open-split-left': () => this.open(
 					this.profilesSingleton.generateNewUri(),
 					{ split: 'left' },
 				),
-				'x-terminal:open-split-right': () => this.open(
+				'x-terminal-reloaded:open-split-right': () => this.open(
 					this.profilesSingleton.generateNewUri(),
 					{ split: 'right' },
 				),
-				'x-terminal:open-split-bottom-dock': () => this.openInCenterOrDock(atom.workspace.getBottomDock()),
-				'x-terminal:open-split-left-dock': () => this.openInCenterOrDock(atom.workspace.getLeftDock()),
-				'x-terminal:open-split-right-dock': () => this.openInCenterOrDock(atom.workspace.getRightDock()),
-				'x-terminal:toggle-profile-menu': () => this.toggleProfileMenu(),
-				'x-terminal:reorganize': () => this.reorganize('current'),
-				'x-terminal:reorganize-top': () => this.reorganize('top'),
-				'x-terminal:reorganize-bottom': () => this.reorganize('bottom'),
-				'x-terminal:reorganize-left': () => this.reorganize('left'),
-				'x-terminal:reorganize-right': () => this.reorganize('right'),
-				'x-terminal:reorganize-bottom-dock': () => this.reorganize('bottom-dock'),
-				'x-terminal:reorganize-left-dock': () => this.reorganize('left-dock'),
-				'x-terminal:reorganize-right-dock': () => this.reorganize('right-dock'),
-				'x-terminal:close-all': () => this.exitAllTerminals(),
-				'x-terminal:insert-selected-text': () => this.insertSelection(),
-				'x-terminal:run-selected-text': () => this.runSelection(),
-				'x-terminal:focus': () => this.focus(),
-				'x-terminal:focus-next': () => this.focusNext(),
-				'x-terminal:focus-previous': () => this.focusPrev(),
+				'x-terminal-reloaded:open-split-bottom-dock': () => this.openInCenterOrDock(atom.workspace.getBottomDock()),
+				'x-terminal-reloaded:open-split-left-dock': () => this.openInCenterOrDock(atom.workspace.getLeftDock()),
+				'x-terminal-reloaded:open-split-right-dock': () => this.openInCenterOrDock(atom.workspace.getRightDock()),
+				'x-terminal-reloaded:toggle-profile-menu': () => this.toggleProfileMenu(),
+				'x-terminal-reloaded:reorganize': () => this.reorganize('current'),
+				'x-terminal-reloaded:reorganize-top': () => this.reorganize('top'),
+				'x-terminal-reloaded:reorganize-bottom': () => this.reorganize('bottom'),
+				'x-terminal-reloaded:reorganize-left': () => this.reorganize('left'),
+				'x-terminal-reloaded:reorganize-right': () => this.reorganize('right'),
+				'x-terminal-reloaded:reorganize-bottom-dock': () => this.reorganize('bottom-dock'),
+				'x-terminal-reloaded:reorganize-left-dock': () => this.reorganize('left-dock'),
+				'x-terminal-reloaded:reorganize-right-dock': () => this.reorganize('right-dock'),
+				'x-terminal-reloaded:close-all': () => this.exitAllTerminals(),
+				'x-terminal-reloaded:insert-selected-text': () => this.insertSelection(),
+				'x-terminal-reloaded:run-selected-text': () => this.runSelection(),
+				'x-terminal-reloaded:focus': () => this.focus(),
+				'x-terminal-reloaded:focus-next': () => this.focusNext(),
+				'x-terminal-reloaded:focus-previous': () => this.focusPrev(),
 			}),
 			atom.commands.add('atom-text-editor, .tree-view, .tab-bar', {
-				'x-terminal:open-context-menu': {
+				'x-terminal-reloaded:open-context-menu': {
 					hiddenInCommandPalette: true,
 					didDispatch: ({ target }) => this.open(
 						this.profilesSingleton.generateNewUri(),
 						this.addDefaultPosition({ target }),
 					),
 				},
-				'x-terminal:open-center-context-menu': {
+				'x-terminal-reloaded:open-center-context-menu': {
 					hiddenInCommandPalette: true,
 					didDispatch: ({ target }) => this.openInCenterOrDock(
 						atom.workspace,
 						{ target },
 					),
 				},
-				'x-terminal:open-split-up-context-menu': {
+				'x-terminal-reloaded:open-split-up-context-menu': {
 					hiddenInCommandPalette: true,
 					didDispatch: ({ target }) => this.open(
 						this.profilesSingleton.generateNewUri(),
 						{ split: 'up', target },
 					),
 				},
-				'x-terminal:open-split-down-context-menu': {
+				'x-terminal-reloaded:open-split-down-context-menu': {
 					hiddenInCommandPalette: true,
 					didDispatch: ({ target }) => this.open(
 						this.profilesSingleton.generateNewUri(),
 						{ split: 'down', target },
 					),
 				},
-				'x-terminal:open-split-left-context-menu': {
+				'x-terminal-reloaded:open-split-left-context-menu': {
 					hiddenInCommandPalette: true,
 					didDispatch: ({ target }) => this.open(
 						this.profilesSingleton.generateNewUri(),
 						{ split: 'left', target },
 					),
 				},
-				'x-terminal:open-split-right-context-menu': {
+				'x-terminal-reloaded:open-split-right-context-menu': {
 					hiddenInCommandPalette: true,
 					didDispatch: ({ target }) => this.open(
 						this.profilesSingleton.generateNewUri(),
 						{ split: 'right', target },
 					),
 				},
-				'x-terminal:open-split-bottom-dock-context-menu': {
+				'x-terminal-reloaded:open-split-bottom-dock-context-menu': {
 					hiddenInCommandPalette: true,
 					didDispatch: ({ target }) => this.openInCenterOrDock(
 						atom.workspace.getBottomDock(),
 						{ target },
 					),
 				},
-				'x-terminal:open-split-left-dock-context-menu': {
+				'x-terminal-reloaded:open-split-left-dock-context-menu': {
 					hiddenInCommandPalette: true,
 					didDispatch: ({ target }) => this.openInCenterOrDock(
 						atom.workspace.getLeftDock(),
 						{ target },
 					),
 				},
-				'x-terminal:open-split-right-dock-context-menu': {
+				'x-terminal-reloaded:open-split-right-dock-context-menu': {
 					hiddenInCommandPalette: true,
 					didDispatch: ({ target }) => this.openInCenterOrDock(
 						atom.workspace.getRightDock(),
@@ -279,13 +279,13 @@ class XTerminalSingleton {
 					),
 				},
 			}),
-			atom.commands.add('x-terminal', {
-				'x-terminal:close': () => this.close(),
-				'x-terminal:restart': () => this.restart(),
-				'x-terminal:copy': () => this.copy(),
-				'x-terminal:paste': () => this.paste(),
-				'x-terminal:unfocus': () => this.unfocus(),
-				'x-terminal:clear': () => this.clear(),
+			atom.commands.add('x-terminal-reloaded', {
+				'x-terminal-reloaded:close': () => this.close(),
+				'x-terminal-reloaded:restart': () => this.restart(),
+				'x-terminal-reloaded:copy': () => this.copy(),
+				'x-terminal-reloaded:paste': () => this.paste(),
+				'x-terminal-reloaded:unfocus': () => this.unfocus(),
+				'x-terminal-reloaded:clear': () => this.clear(),
 			}),
 		)
 	}
@@ -296,10 +296,10 @@ class XTerminalSingleton {
 	}
 
 	deserializeXTerminalModel (serializedModel, atomEnvironment) {
-		const pack = atom.packages.enablePackage('x-terminal')
+		const pack = atom.packages.enablePackage('x-terminal-reloaded')
 		pack.preload()
 		pack.activateNow()
-		const allowRelaunchingTerminalsOnStartup = atom.config.get('x-terminal.terminalSettings.allowRelaunchingTerminalsOnStartup')
+		const allowRelaunchingTerminalsOnStartup = atom.config.get('x-terminal-reloaded.terminalSettings.allowRelaunchingTerminalsOnStartup')
 		if (!allowRelaunchingTerminalsOnStartup) {
 			return
 		}
@@ -483,7 +483,7 @@ class XTerminalSingleton {
 	 */
 	async runCommands (commands) {
 		let terminal
-		if (atom.config.get('x-terminal.terminalSettings.runInActive')) {
+		if (atom.config.get('x-terminal-reloaded.terminalSettings.runInActive')) {
 			terminal = this.getActiveTerminal()
 		}
 
@@ -502,7 +502,7 @@ class XTerminalSingleton {
 	}
 
 	addDefaultPosition (options = {}) {
-		const position = atom.config.get('x-terminal.terminalSettings.defaultOpenPosition')
+		const position = atom.config.get('x-terminal-reloaded.terminalSettings.defaultOpenPosition')
 		switch (position) {
 			case 'Center': {
 				const pane = atom.workspace.getActivePane()

@@ -27,13 +27,13 @@ export function clearDiv (div) {
 
 export function createHorizontalLine () {
 	const hLine = document.createElement('div')
-	hLine.classList.add('x-terminal-profile-menu-element-hline')
+	hLine.classList.add('x-terminal-reloaded-profile-menu-element-hline')
 	hLine.appendChild(document.createTextNode('.'))
 	return hLine
 }
 
 export function recalculateActive (terminalsSet, active) {
-	const allowHidden = atom.config.get('x-terminal.terminalSettings.allowHiddenToStayActive')
+	const allowHidden = atom.config.get('x-terminal-reloaded.terminalSettings.allowHiddenToStayActive')
 	const terminals = [...terminalsSet]
 	terminals.sort((a, b) => {
 		// active before other

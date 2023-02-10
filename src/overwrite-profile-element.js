@@ -26,11 +26,11 @@ class XTerminalOverwriteProfileElementImpl extends HTMLElement {
 		this.model = model
 		this.model.setElement(this)
 		this.messageDiv = document.createElement('div')
-		this.messageDiv.classList.add('x-terminal-modal-message')
+		this.messageDiv.classList.add('x-terminal-reloaded-modal-message')
 		this.appendChild(this.messageDiv)
 		this.appendChild(createHorizontalLine())
 		this.promptButtonsDiv = document.createElement('div')
-		this.promptButtonsDiv.classList.add('x-terminal-modal-buttons-div')
+		this.promptButtonsDiv.classList.add('x-terminal-reloaded-modal-buttons-div')
 		this.appendChild(this.promptButtonsDiv)
 	}
 
@@ -40,14 +40,14 @@ class XTerminalOverwriteProfileElementImpl extends HTMLElement {
 		const text = 'Overwrite existing profile \'' + profileName + '\'?'
 		this.messageDiv.appendChild(document.createTextNode(text))
 		const confirmButton = document.createElement('button')
-		confirmButton.classList.add('x-terminal-modal-button')
+		confirmButton.classList.add('x-terminal-reloaded-modal-button')
 		confirmButton.classList.add('btn-primary')
 		confirmButton.classList.add('btn-error')
 		confirmButton.appendChild(document.createTextNode('Confirm'))
 		confirmButton.addEventListener('click', confirmHandler, { passive: true })
 		this.promptButtonsDiv.appendChild(confirmButton)
 		const cancelButton = document.createElement('button')
-		cancelButton.classList.add('x-terminal-modal-button')
+		cancelButton.classList.add('x-terminal-reloaded-modal-button')
 		cancelButton.classList.add('btn-primary')
 		cancelButton.appendChild(document.createTextNode('Cancel'))
 		cancelButton.addEventListener('click', cancelHandler, { passive: true })
@@ -55,7 +55,7 @@ class XTerminalOverwriteProfileElementImpl extends HTMLElement {
 	}
 }
 
-customElements.define('x-terminal-overwrite-profile', XTerminalOverwriteProfileElementImpl)
+customElements.define('x-terminal-reloaded-overwrite-profile', XTerminalOverwriteProfileElementImpl)
 
 export {
 	XTerminalOverwriteProfileElementImpl,

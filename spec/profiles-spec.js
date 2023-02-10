@@ -82,7 +82,7 @@ describe('XTerminalProfilesSingleton', () => {
 	}
 
 	const getDefaultExpectedUrl = () => {
-		const url = new URL('x-terminal://somesessionid')
+		const url = new URL('x-terminal-reloaded://somesessionid')
 		const defaultProfile = getDefaultExpectedProfile()
 		url.searchParams.set('command', defaultProfile.command)
 		url.searchParams.set('args', JSON.stringify(defaultProfile.args))
@@ -106,132 +106,132 @@ describe('XTerminalProfilesSingleton', () => {
 	}
 
 	const fakeAtomConfigGet = (key) => {
-		if (key === 'x-terminal.spawnPtySettings.command') {
+		if (key === 'x-terminal-reloaded.spawnPtySettings.command') {
 			return 'somecommand'
 		}
-		if (key === 'x-terminal.spawnPtySettings.args') {
+		if (key === 'x-terminal-reloaded.spawnPtySettings.args') {
 			return JSON.stringify(['foo', 'bar'])
 		}
-		if (key === 'x-terminal.spawnPtySettings.name') {
+		if (key === 'x-terminal-reloaded.spawnPtySettings.name') {
 			return 'sometermtype'
 		}
-		if (key === 'x-terminal.spawnPtySettings.cwd') {
+		if (key === 'x-terminal-reloaded.spawnPtySettings.cwd') {
 			return '/some/path'
 		}
-		if (key === 'x-terminal.spawnPtySettings.projectCwd') {
+		if (key === 'x-terminal-reloaded.spawnPtySettings.projectCwd') {
 			return true
 		}
-		if (key === 'x-terminal.spawnPtySettings.env') {
+		if (key === 'x-terminal-reloaded.spawnPtySettings.env') {
 			return JSON.stringify({ PATH: '/usr/bin:/bin' })
 		}
-		if (key === 'x-terminal.spawnPtySettings.setEnv') {
+		if (key === 'x-terminal-reloaded.spawnPtySettings.setEnv') {
 			return JSON.stringify({ FOO: 'BAR' })
 		}
-		if (key === 'x-terminal.spawnPtySettings.deleteEnv') {
+		if (key === 'x-terminal-reloaded.spawnPtySettings.deleteEnv') {
 			return JSON.stringify(['FOO'])
 		}
-		if (key === 'x-terminal.spawnPtySettings.encoding') {
+		if (key === 'x-terminal-reloaded.spawnPtySettings.encoding') {
 			return 'someencoding'
 		}
-		if (key === 'x-terminal.terminalSettings.fontSize') {
+		if (key === 'x-terminal-reloaded.terminalSettings.fontSize') {
 			return 20
 		}
-		if (key === 'x-terminal.terminalSettings.useEditorFont') {
+		if (key === 'x-terminal-reloaded.terminalSettings.useEditorFont') {
 			return false
 		}
-		if (key === 'x-terminal.terminalSettings.fontFamily') {
+		if (key === 'x-terminal-reloaded.terminalSettings.fontFamily') {
 			return 'test'
 		}
-		if (key === 'x-terminal.terminalSettings.colors.theme') {
+		if (key === 'x-terminal-reloaded.terminalSettings.colors.theme') {
 			return 'Homebrew'
 		}
-		if (key === 'x-terminal.terminalSettings.colors.foreground') {
+		if (key === 'x-terminal-reloaded.terminalSettings.colors.foreground') {
 			return '#123456'
 		}
-		if (key === 'x-terminal.terminalSettings.colors.background') {
+		if (key === 'x-terminal-reloaded.terminalSettings.colors.background') {
 			return '#123457'
 		}
-		if (key === 'x-terminal.terminalSettings.colors.cursor') {
+		if (key === 'x-terminal-reloaded.terminalSettings.colors.cursor') {
 			return '#123458'
 		}
-		if (key === 'x-terminal.terminalSettings.colors.cursorAccent') {
+		if (key === 'x-terminal-reloaded.terminalSettings.colors.cursorAccent') {
 			return '#123459'
 		}
-		if (key === 'x-terminal.terminalSettings.colors.selectionBackground') {
+		if (key === 'x-terminal-reloaded.terminalSettings.colors.selectionBackground') {
 			return '#123460'
 		}
-		if (key === 'x-terminal.terminalSettings.colors.black') {
+		if (key === 'x-terminal-reloaded.terminalSettings.colors.black') {
 			return '#123461'
 		}
-		if (key === 'x-terminal.terminalSettings.colors.red') {
+		if (key === 'x-terminal-reloaded.terminalSettings.colors.red') {
 			return '#123462'
 		}
-		if (key === 'x-terminal.terminalSettings.colors.green') {
+		if (key === 'x-terminal-reloaded.terminalSettings.colors.green') {
 			return '#123463'
 		}
-		if (key === 'x-terminal.terminalSettings.colors.yellow') {
+		if (key === 'x-terminal-reloaded.terminalSettings.colors.yellow') {
 			return '#123464'
 		}
-		if (key === 'x-terminal.terminalSettings.colors.blue') {
+		if (key === 'x-terminal-reloaded.terminalSettings.colors.blue') {
 			return '#123465'
 		}
-		if (key === 'x-terminal.terminalSettings.colors.magenta') {
+		if (key === 'x-terminal-reloaded.terminalSettings.colors.magenta') {
 			return '#123466'
 		}
-		if (key === 'x-terminal.terminalSettings.colors.cyan') {
+		if (key === 'x-terminal-reloaded.terminalSettings.colors.cyan') {
 			return '#123467'
 		}
-		if (key === 'x-terminal.terminalSettings.colors.white') {
+		if (key === 'x-terminal-reloaded.terminalSettings.colors.white') {
 			return '#123468'
 		}
-		if (key === 'x-terminal.terminalSettings.colors.brightBlack') {
+		if (key === 'x-terminal-reloaded.terminalSettings.colors.brightBlack') {
 			return '#123469'
 		}
-		if (key === 'x-terminal.terminalSettings.colors.brightRed') {
+		if (key === 'x-terminal-reloaded.terminalSettings.colors.brightRed') {
 			return '#123470'
 		}
-		if (key === 'x-terminal.terminalSettings.colors.brightGreen') {
+		if (key === 'x-terminal-reloaded.terminalSettings.colors.brightGreen') {
 			return '#123471'
 		}
-		if (key === 'x-terminal.terminalSettings.colors.brightYellow') {
+		if (key === 'x-terminal-reloaded.terminalSettings.colors.brightYellow') {
 			return '#123472'
 		}
-		if (key === 'x-terminal.terminalSettings.colors.brightBlue') {
+		if (key === 'x-terminal-reloaded.terminalSettings.colors.brightBlue') {
 			return '#123473'
 		}
-		if (key === 'x-terminal.terminalSettings.colors.brightMagenta') {
+		if (key === 'x-terminal-reloaded.terminalSettings.colors.brightMagenta') {
 			return '#123474'
 		}
-		if (key === 'x-terminal.terminalSettings.colors.brightCyan') {
+		if (key === 'x-terminal-reloaded.terminalSettings.colors.brightCyan') {
 			return '#123475'
 		}
-		if (key === 'x-terminal.terminalSettings.colors.brightWhite') {
+		if (key === 'x-terminal-reloaded.terminalSettings.colors.brightWhite') {
 			return '#123476'
 		}
-		if (key === 'x-terminal.terminalSettings.leaveOpenAfterExit') {
+		if (key === 'x-terminal-reloaded.terminalSettings.leaveOpenAfterExit') {
 			return false
 		}
-		if (key === 'x-terminal.terminalSettings.relaunchTerminalOnStartup') {
+		if (key === 'x-terminal-reloaded.terminalSettings.relaunchTerminalOnStartup') {
 			return false
 		}
-		if (key === 'x-terminal.terminalSettings.title') {
+		if (key === 'x-terminal-reloaded.terminalSettings.title') {
 			return 'foo'
 		}
-		if (key === 'x-terminal.terminalSettings.xtermOptions') {
+		if (key === 'x-terminal-reloaded.terminalSettings.xtermOptions') {
 			return JSON.stringify({
 				cursorBlink: true,
 			})
 		}
-		if (key === 'x-terminal.terminalSettings.promptToStartup') {
+		if (key === 'x-terminal-reloaded.terminalSettings.promptToStartup') {
 			return true
 		}
-		if (key === 'x-terminal.terminalSettings.copyOnSelect') {
+		if (key === 'x-terminal-reloaded.terminalSettings.copyOnSelect') {
 			return true
 		}
-		if (key === 'x-terminal.xtermAddons.webgl') {
+		if (key === 'x-terminal-reloaded.xtermAddons.webgl') {
 			return true
 		}
-		if (key === 'x-terminal.xtermAddons.webLinks') {
+		if (key === 'x-terminal-reloaded.xtermAddons.webLinks') {
 			return false
 		}
 		throw new Error('Unknown key: ' + key)
@@ -325,52 +325,52 @@ describe('XTerminalProfilesSingleton', () => {
 	})
 
 	it('getBaseProfile()', () => {
-		const env = atom.config.get('x-terminal.spawnPtySettings.env') || configDefaults.env
-		const encoding = atom.config.get('x-terminal.spawnPtySettings.encoding') || configDefaults.encoding
-		const title = atom.config.get('x-terminal.terminalSettings.title') || configDefaults.title
+		const env = atom.config.get('x-terminal-reloaded.spawnPtySettings.env') || configDefaults.env
+		const encoding = atom.config.get('x-terminal-reloaded.spawnPtySettings.encoding') || configDefaults.encoding
+		const title = atom.config.get('x-terminal-reloaded.terminalSettings.title') || configDefaults.title
 		const expected = {
-			command: atom.config.get('x-terminal.spawnPtySettings.command') || configDefaults.command,
-			args: JSON.parse(atom.config.get('x-terminal.spawnPtySettings.args') || configDefaults.args),
-			name: atom.config.get('x-terminal.spawnPtySettings.name') || configDefaults.termType,
-			cwd: atom.config.get('x-terminal.spawnPtySettings.cwd') || configDefaults.cwd,
-			projectCwd: atom.config.get('x-terminal.spawnPtySettings.projectCwd') || configDefaults.projectCwd,
+			command: atom.config.get('x-terminal-reloaded.spawnPtySettings.command') || configDefaults.command,
+			args: JSON.parse(atom.config.get('x-terminal-reloaded.spawnPtySettings.args') || configDefaults.args),
+			name: atom.config.get('x-terminal-reloaded.spawnPtySettings.name') || configDefaults.termType,
+			cwd: atom.config.get('x-terminal-reloaded.spawnPtySettings.cwd') || configDefaults.cwd,
+			projectCwd: atom.config.get('x-terminal-reloaded.spawnPtySettings.projectCwd') || configDefaults.projectCwd,
 			env: JSON.parse(env || 'null'),
-			setEnv: JSON.parse(atom.config.get('x-terminal.spawnPtySettings.setEnv') || configDefaults.setEnv),
-			deleteEnv: JSON.parse(atom.config.get('x-terminal.spawnPtySettings.deleteEnv') || configDefaults.deleteEnv),
+			setEnv: JSON.parse(atom.config.get('x-terminal-reloaded.spawnPtySettings.setEnv') || configDefaults.setEnv),
+			deleteEnv: JSON.parse(atom.config.get('x-terminal-reloaded.spawnPtySettings.deleteEnv') || configDefaults.deleteEnv),
 			encoding: encoding || null,
-			fontSize: atom.config.get('x-terminal.terminalSettings.fontSize') || configDefaults.fontSize,
+			fontSize: atom.config.get('x-terminal-reloaded.terminalSettings.fontSize') || configDefaults.fontSize,
 			useEditorFont: true,
-			fontFamily: atom.config.get('x-terminal.terminalSettings.fontFamily') || configDefaults.fontFamily,
-			theme: atom.config.get('x-terminal.terminalSettings.colors.theme') || configDefaults.theme,
-			colorForeground: atom.config.get('x-terminal.terminalSettings.colors.foreground') || configDefaults.colorForeground,
-			colorBackground: atom.config.get('x-terminal.terminalSettings.colors.background') || configDefaults.colorBackground,
-			colorCursor: atom.config.get('x-terminal.terminalSettings.colors.cursor') || configDefaults.colorCursor,
-			colorCursorAccent: atom.config.get('x-terminal.terminalSettings.colors.cursorAccent') || configDefaults.colorCursorAccent,
-			colorSelectionBackground: atom.config.get('x-terminal.terminalSettings.colors.selection') || configDefaults.colorSelectionBackground,
-			colorBlack: atom.config.get('x-terminal.terminalSettings.colors.black') || configDefaults.colorBlack,
-			colorRed: atom.config.get('x-terminal.terminalSettings.colors.red') || configDefaults.colorRed,
-			colorGreen: atom.config.get('x-terminal.terminalSettings.colors.green') || configDefaults.colorGreen,
-			colorYellow: atom.config.get('x-terminal.terminalSettings.colors.yellow') || configDefaults.colorYellow,
-			colorBlue: atom.config.get('x-terminal.terminalSettings.colors.blue') || configDefaults.colorBlue,
-			colorMagenta: atom.config.get('x-terminal.terminalSettings.colors.magenta') || configDefaults.colorMagenta,
-			colorCyan: atom.config.get('x-terminal.terminalSettings.colors.cyan') || configDefaults.colorCyan,
-			colorWhite: atom.config.get('x-terminal.terminalSettings.colors.white') || configDefaults.colorWhite,
-			colorBrightBlack: atom.config.get('x-terminal.terminalSettings.colors.brightBlack') || configDefaults.colorBrightBlack,
-			colorBrightRed: atom.config.get('x-terminal.terminalSettings.colors.brightRed') || configDefaults.colorBrightRed,
-			colorBrightGreen: atom.config.get('x-terminal.terminalSettings.colors.brightGreen') || configDefaults.colorBrightGreen,
-			colorBrightYellow: atom.config.get('x-terminal.terminalSettings.colors.brightYellow') || configDefaults.colorBrightYellow,
-			colorBrightBlue: atom.config.get('x-terminal.terminalSettings.colors.brightBlue') || configDefaults.colorBrightBlue,
-			colorBrightMagenta: atom.config.get('x-terminal.terminalSettings.colors.brightMagenta') || configDefaults.colorBrightMagenta,
-			colorBrightCyan: atom.config.get('x-terminal.terminalSettings.colors.brightCyan') || configDefaults.colorBrightCyan,
-			colorBrightWhite: atom.config.get('x-terminal.terminalSettings.colors.brightWhite') || configDefaults.colorBrightWhite,
-			leaveOpenAfterExit: atom.config.get('x-terminal.terminalSettings.leaveOpenAfterExit') || configDefaults.leaveOpenAfterExit,
-			relaunchTerminalOnStartup: atom.config.get('x-terminal.terminalSettings.relaunchTerminalOnStartup') || configDefaults.relaunchTerminalOnStartup,
+			fontFamily: atom.config.get('x-terminal-reloaded.terminalSettings.fontFamily') || configDefaults.fontFamily,
+			theme: atom.config.get('x-terminal-reloaded.terminalSettings.colors.theme') || configDefaults.theme,
+			colorForeground: atom.config.get('x-terminal-reloaded.terminalSettings.colors.foreground') || configDefaults.colorForeground,
+			colorBackground: atom.config.get('x-terminal-reloaded.terminalSettings.colors.background') || configDefaults.colorBackground,
+			colorCursor: atom.config.get('x-terminal-reloaded.terminalSettings.colors.cursor') || configDefaults.colorCursor,
+			colorCursorAccent: atom.config.get('x-terminal-reloaded.terminalSettings.colors.cursorAccent') || configDefaults.colorCursorAccent,
+			colorSelectionBackground: atom.config.get('x-terminal-reloaded.terminalSettings.colors.selection') || configDefaults.colorSelectionBackground,
+			colorBlack: atom.config.get('x-terminal-reloaded.terminalSettings.colors.black') || configDefaults.colorBlack,
+			colorRed: atom.config.get('x-terminal-reloaded.terminalSettings.colors.red') || configDefaults.colorRed,
+			colorGreen: atom.config.get('x-terminal-reloaded.terminalSettings.colors.green') || configDefaults.colorGreen,
+			colorYellow: atom.config.get('x-terminal-reloaded.terminalSettings.colors.yellow') || configDefaults.colorYellow,
+			colorBlue: atom.config.get('x-terminal-reloaded.terminalSettings.colors.blue') || configDefaults.colorBlue,
+			colorMagenta: atom.config.get('x-terminal-reloaded.terminalSettings.colors.magenta') || configDefaults.colorMagenta,
+			colorCyan: atom.config.get('x-terminal-reloaded.terminalSettings.colors.cyan') || configDefaults.colorCyan,
+			colorWhite: atom.config.get('x-terminal-reloaded.terminalSettings.colors.white') || configDefaults.colorWhite,
+			colorBrightBlack: atom.config.get('x-terminal-reloaded.terminalSettings.colors.brightBlack') || configDefaults.colorBrightBlack,
+			colorBrightRed: atom.config.get('x-terminal-reloaded.terminalSettings.colors.brightRed') || configDefaults.colorBrightRed,
+			colorBrightGreen: atom.config.get('x-terminal-reloaded.terminalSettings.colors.brightGreen') || configDefaults.colorBrightGreen,
+			colorBrightYellow: atom.config.get('x-terminal-reloaded.terminalSettings.colors.brightYellow') || configDefaults.colorBrightYellow,
+			colorBrightBlue: atom.config.get('x-terminal-reloaded.terminalSettings.colors.brightBlue') || configDefaults.colorBrightBlue,
+			colorBrightMagenta: atom.config.get('x-terminal-reloaded.terminalSettings.colors.brightMagenta') || configDefaults.colorBrightMagenta,
+			colorBrightCyan: atom.config.get('x-terminal-reloaded.terminalSettings.colors.brightCyan') || configDefaults.colorBrightCyan,
+			colorBrightWhite: atom.config.get('x-terminal-reloaded.terminalSettings.colors.brightWhite') || configDefaults.colorBrightWhite,
+			leaveOpenAfterExit: atom.config.get('x-terminal-reloaded.terminalSettings.leaveOpenAfterExit') || configDefaults.leaveOpenAfterExit,
+			relaunchTerminalOnStartup: atom.config.get('x-terminal-reloaded.terminalSettings.relaunchTerminalOnStartup') || configDefaults.relaunchTerminalOnStartup,
 			title: title || null,
-			xtermOptions: JSON.parse(atom.config.get('x-terminal.terminalSettings.xtermOptions') || configDefaults.xtermOptions),
-			promptToStartup: atom.config.get('x-terminal.terminalSettings.promptToStartup') || configDefaults.promptToStartup,
-			copyOnSelect: atom.config.get('x-terminal.terminalSettings.copyOnSelect') || configDefaults.copyOnSelect,
-			webgl: atom.config.get('x-terminal.xtermAddons.webgl') || configDefaults.webgl,
-			webLinks: atom.config.get('x-terminal.xtermAddons.webLinks') || configDefaults.webLinks,
+			xtermOptions: JSON.parse(atom.config.get('x-terminal-reloaded.terminalSettings.xtermOptions') || configDefaults.xtermOptions),
+			promptToStartup: atom.config.get('x-terminal-reloaded.terminalSettings.promptToStartup') || configDefaults.promptToStartup,
+			copyOnSelect: atom.config.get('x-terminal-reloaded.terminalSettings.copyOnSelect') || configDefaults.copyOnSelect,
+			webgl: atom.config.get('x-terminal-reloaded.xtermAddons.webgl') || configDefaults.webgl,
+			webLinks: atom.config.get('x-terminal-reloaded.xtermAddons.webLinks') || configDefaults.webLinks,
 		}
 		expect(XTerminalProfilesSingleton.instance.getBaseProfile()).toEqual(expected)
 	})
@@ -428,9 +428,9 @@ describe('XTerminalProfilesSingleton', () => {
 	})
 
 	it('getBaseProfile() useEditorFont true', () => {
-		atom.config.set('x-terminal.terminalSettings.useEditorFont', true)
+		atom.config.set('x-terminal-reloaded.terminalSettings.useEditorFont', true)
 		atom.config.set('editor.fontFamily', 'test')
-		atom.config.set('x-terminal.terminalSettings.fontFamily', 'monospace')
+		atom.config.set('x-terminal-reloaded.terminalSettings.fontFamily', 'monospace')
 		XTerminalProfilesSingleton.instance.resetBaseProfile()
 		const baseProfile = XTerminalProfilesSingleton.instance.getBaseProfile()
 
@@ -438,9 +438,9 @@ describe('XTerminalProfilesSingleton', () => {
 	})
 
 	it('getBaseProfile() useEditorFont false', () => {
-		atom.config.set('x-terminal.terminalSettings.useEditorFont', false)
+		atom.config.set('x-terminal-reloaded.terminalSettings.useEditorFont', false)
 		atom.config.set('editor.fontFamily', 'test')
-		atom.config.set('x-terminal.terminalSettings.fontFamily', 'monospace')
+		atom.config.set('x-terminal-reloaded.terminalSettings.fontFamily', 'monospace')
 		XTerminalProfilesSingleton.instance.resetBaseProfile()
 		const baseProfile = XTerminalProfilesSingleton.instance.getBaseProfile()
 
@@ -532,9 +532,9 @@ describe('XTerminalProfilesSingleton', () => {
 		expect(exists).toBe(false)
 	})
 
-	it('generateNewUri() starts with x-terminal://', () => {
+	it('generateNewUri() starts with x-terminal-reloaded://', () => {
 		spyOn(XTerminalProfilesSingleton.instance, 'generateNewUri').and.callThrough()
-		expect(XTerminalProfilesSingleton.instance.generateNewUri().startsWith('x-terminal://')).toBe(true)
+		expect(XTerminalProfilesSingleton.instance.generateNewUri().startsWith('x-terminal-reloaded://')).toBe(true)
 	})
 
 	it('generateNewUri() ends with /', () => {
@@ -610,7 +610,7 @@ describe('XTerminalProfilesSingleton', () => {
 	})
 
 	it('createProfileDataFromUri() base URI', () => {
-		const url = new URL('x-terminal://somesessionid/')
+		const url = new URL('x-terminal-reloaded://somesessionid/')
 		const expected = {
 			command: configDefaults.command,
 			args: JSON.parse(configDefaults.args),

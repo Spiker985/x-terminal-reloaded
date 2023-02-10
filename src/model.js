@@ -260,7 +260,7 @@ class XTerminalModel {
 	}
 
 	isActiveTerminal () {
-		return this.activeIndex === 0 && (atom.config.get('x-terminal.terminalSettings.allowHiddenToStayActive') || this.isVisible())
+		return this.activeIndex === 0 && (atom.config.get('x-terminal-reloaded.terminalSettings.allowHiddenToStayActive') || this.isVisible())
 	}
 
 	setNewPane (pane) {

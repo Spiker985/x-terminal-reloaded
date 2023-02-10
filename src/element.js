@@ -59,16 +59,16 @@ class XTerminalElementImpl extends HTMLElement {
 		this.model.element = this
 		this.disposables = new CompositeDisposable()
 		this.topDiv = document.createElement('div')
-		this.topDiv.classList.add('x-terminal-top-div')
+		this.topDiv.classList.add('x-terminal-reloaded-top-div')
 		this.appendChild(this.topDiv)
 		this.mainDiv = document.createElement('div')
-		this.mainDiv.classList.add('x-terminal-main-div')
+		this.mainDiv.classList.add('x-terminal-reloaded-main-div')
 		this.appendChild(this.mainDiv)
 		this.menuDiv = document.createElement('div')
-		this.menuDiv.classList.add('x-terminal-menu-div')
+		this.menuDiv.classList.add('x-terminal-reloaded-menu-div')
 		this.mainDiv.appendChild(this.menuDiv)
 		this.terminalDiv = document.createElement('div')
-		this.terminalDiv.classList.add('x-terminal-term-container')
+		this.terminalDiv.classList.add('x-terminal-reloaded-term-container')
 		this.mainDiv.appendChild(this.terminalDiv)
 		this.atomXtermProfileMenuElement = new XTerminalProfileMenuElementImpl()
 		this.hoveredLink = null
@@ -511,8 +511,8 @@ class XTerminalElementImpl extends HTMLElement {
 			this.restartPtyProcess()
 		}, { passive: true })
 		restartButton.classList.add('btn-' + infoType)
-		restartButton.classList.add('x-terminal-restart-btn')
-		messageDiv.classList.add('x-terminal-notice-' + infoType)
+		restartButton.classList.add('x-terminal-reloaded-restart-btn')
+		messageDiv.classList.add('x-terminal-reloaded-notice-' + infoType)
 		messageDiv.appendChild(document.createTextNode(message))
 		messageDiv.appendChild(restartButton)
 		this.topDiv.innerHTML = ''
@@ -681,7 +681,7 @@ class XTerminalElementImpl extends HTMLElement {
 			this.refitTerminal()
 		}
 
-		// x-terminal specific options can be removed since at this point they
+		// x-terminal-reloaded specific options can be removed since at this point they
 		// should already be applied in the terminal's profile.
 		for (const key of X_TERMINAL_OPTIONS) {
 			delete this.pendingTerminalProfileOptions[key]
@@ -743,7 +743,7 @@ class XTerminalElementImpl extends HTMLElement {
 	}
 }
 
-customElements.define('x-terminal', XTerminalElementImpl)
+customElements.define('x-terminal-reloaded', XTerminalElementImpl)
 
 export {
 	XTerminalElementImpl,

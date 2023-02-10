@@ -78,7 +78,7 @@ export function resetConfigDefaults () {
 			} else {
 				appDataPath = process.env.XDG_CONFIG_HOME || path.join(os.homedir(), '.config')
 			}
-			return path.join(appDataPath, 'x-terminal')
+			return path.join(appDataPath, 'x-terminal-reloaded')
 		})(),
 		title: '',
 		xtermOptions: '{}',
@@ -117,7 +117,7 @@ export const config = configOrder({
 					toUrlParam: (val) => val,
 					fromUrlParam: (val) => val,
 					checkUrlParam: (val) => true,
-					toBaseProfile: (previousValue) => (atom.config.get('x-terminal.spawnPtySettings.command') || configDefaults.command),
+					toBaseProfile: (previousValue) => (atom.config.get('x-terminal-reloaded.spawnPtySettings.command') || configDefaults.command),
 					fromMenuSetting: (element, baseValue) => (element.getModel().getText() || baseValue),
 					toMenuSetting: (val) => val,
 				},
@@ -132,7 +132,7 @@ export const config = configOrder({
 					toUrlParam: (val) => JSON.stringify(val),
 					fromUrlParam: (val) => JSON.parse(val),
 					checkUrlParam: (val) => !!val,
-					toBaseProfile: (previousValue) => validateJsonConfigSetting('x-terminal.spawnPtySettings.args', configDefaults.args, previousValue),
+					toBaseProfile: (previousValue) => validateJsonConfigSetting('x-terminal-reloaded.spawnPtySettings.args', configDefaults.args, previousValue),
 					fromMenuSetting: (element, baseValue) => parseJson(element.getModel().getText(), baseValue, Array),
 					toMenuSetting: (val) => JSON.stringify(val),
 				},
@@ -147,7 +147,7 @@ export const config = configOrder({
 					toUrlParam: (val) => val,
 					fromUrlParam: (val) => val,
 					checkUrlParam: (val) => true,
-					toBaseProfile: (previousValue) => (atom.config.get('x-terminal.spawnPtySettings.name') || configDefaults.termType),
+					toBaseProfile: (previousValue) => (atom.config.get('x-terminal-reloaded.spawnPtySettings.name') || configDefaults.termType),
 					fromMenuSetting: (element, baseValue) => (element.getModel().getText() || baseValue),
 					toMenuSetting: (val) => val,
 				},
@@ -162,7 +162,7 @@ export const config = configOrder({
 					toUrlParam: (val) => val,
 					fromUrlParam: (val) => val,
 					checkUrlParam: (val) => true,
-					toBaseProfile: (previousValue) => (atom.config.get('x-terminal.spawnPtySettings.cwd') || configDefaults.cwd),
+					toBaseProfile: (previousValue) => (atom.config.get('x-terminal-reloaded.spawnPtySettings.cwd') || configDefaults.cwd),
 					fromMenuSetting: (element, baseValue) => (element.getModel().getText() || baseValue),
 					toMenuSetting: (val) => val,
 				},
@@ -177,7 +177,7 @@ export const config = configOrder({
 					toUrlParam: (val) => JSON.stringify(val),
 					fromUrlParam: (val) => JSON.parse(val),
 					checkUrlParam: (val) => (val !== null && val !== ''),
-					toBaseProfile: (previousValue) => validateBooleanConfigSetting('x-terminal.spawnPtySettings.projectCwd', configDefaults.projectCwd),
+					toBaseProfile: (previousValue) => validateBooleanConfigSetting('x-terminal-reloaded.spawnPtySettings.projectCwd', configDefaults.projectCwd),
 					fromMenuSetting: (element, baseValue) => element.checked,
 					toMenuSetting: (val) => val,
 				},
@@ -193,7 +193,7 @@ export const config = configOrder({
 					fromUrlParam: (val) => JSON.parse(val),
 					checkUrlParam: (val) => !!val,
 					toBaseProfile: (previousValue) => {
-						let env = validateJsonConfigSetting('x-terminal.spawnPtySettings.env', 'null')
+						let env = validateJsonConfigSetting('x-terminal-reloaded.spawnPtySettings.env', 'null')
 						if (!env || env.constructor !== Object) {
 							env = null
 						}
@@ -213,7 +213,7 @@ export const config = configOrder({
 					toUrlParam: (val) => JSON.stringify(val),
 					fromUrlParam: (val) => JSON.parse(val),
 					checkUrlParam: (val) => !!val,
-					toBaseProfile: (previousValue) => validateJsonConfigSetting('x-terminal.spawnPtySettings.setEnv', configDefaults.setEnv),
+					toBaseProfile: (previousValue) => validateJsonConfigSetting('x-terminal-reloaded.spawnPtySettings.setEnv', configDefaults.setEnv),
 					fromMenuSetting: (element, baseValue) => parseJson(element.getModel().getText(), baseValue, Object),
 					toMenuSetting: (val) => JSON.stringify(val),
 				},
@@ -228,7 +228,7 @@ export const config = configOrder({
 					toUrlParam: (val) => JSON.stringify(val),
 					fromUrlParam: (val) => JSON.parse(val),
 					checkUrlParam: (val) => !!val,
-					toBaseProfile: (previousValue) => validateJsonConfigSetting('x-terminal.spawnPtySettings.deleteEnv', configDefaults.deleteEnv),
+					toBaseProfile: (previousValue) => validateJsonConfigSetting('x-terminal-reloaded.spawnPtySettings.deleteEnv', configDefaults.deleteEnv),
 					fromMenuSetting: (element, baseValue) => parseJson(element.getModel().getText(), baseValue, Array),
 					toMenuSetting: (val) => JSON.stringify(val),
 				},
@@ -243,7 +243,7 @@ export const config = configOrder({
 					toUrlParam: (val) => val,
 					fromUrlParam: (val) => (val === 'null' ? null : val),
 					checkUrlParam: (val) => true,
-					toBaseProfile: (previousValue) => (atom.config.get('x-terminal.spawnPtySettings.encoding') || null),
+					toBaseProfile: (previousValue) => (atom.config.get('x-terminal-reloaded.spawnPtySettings.encoding') || null),
 					fromMenuSetting: (element, baseValue) => (element.getModel().getText() || baseValue),
 					toMenuSetting: (val) => convertNullToEmptyString(val),
 				},
@@ -265,7 +265,7 @@ export const config = configOrder({
 					toUrlParam: (val) => JSON.stringify(val),
 					fromUrlParam: (val) => JSON.parse(val),
 					checkUrlParam: (val) => (val !== null && val !== ''),
-					toBaseProfile: (previousValue) => validateBooleanConfigSetting('x-terminal.xtermAddons.webgl', configDefaults.webgl),
+					toBaseProfile: (previousValue) => validateBooleanConfigSetting('x-terminal-reloaded.xtermAddons.webgl', configDefaults.webgl),
 					fromMenuSetting: (element, baseValue) => element.checked,
 					toMenuSetting: (val) => val,
 				},
@@ -280,7 +280,7 @@ export const config = configOrder({
 					toUrlParam: (val) => JSON.stringify(val),
 					fromUrlParam: (val) => JSON.parse(val),
 					checkUrlParam: (val) => (val !== null && val !== ''),
-					toBaseProfile: (previousValue) => validateBooleanConfigSetting('x-terminal.xtermAddons.webLinks', configDefaults.webLinks),
+					toBaseProfile: (previousValue) => validateBooleanConfigSetting('x-terminal-reloaded.xtermAddons.webLinks', configDefaults.webLinks),
 					fromMenuSetting: (element, baseValue) => element.checked,
 					toMenuSetting: (val) => val,
 				},
@@ -302,7 +302,7 @@ export const config = configOrder({
 					toUrlParam: (val) => val,
 					fromUrlParam: (val) => (val === 'null' ? null : val),
 					checkUrlParam: (val) => true,
-					toBaseProfile: (previousValue) => (atom.config.get('x-terminal.terminalSettings.title') || configDefaults.title || null),
+					toBaseProfile: (previousValue) => (atom.config.get('x-terminal-reloaded.terminalSettings.title') || configDefaults.title || null),
 					fromMenuSetting: (element, baseValue) => (element.getModel().getText() || baseValue),
 					toMenuSetting: (val) => (val || ''),
 				},
@@ -318,7 +318,7 @@ export const config = configOrder({
 					toUrlParam: (val) => JSON.stringify(val),
 					fromUrlParam: (val) => JSON.parse(val),
 					checkUrlParam: (val) => !!val,
-					toBaseProfile: (previousValue) => validateJsonConfigSetting('x-terminal.terminalSettings.xtermOptions', configDefaults.xtermOptions, previousValue),
+					toBaseProfile: (previousValue) => validateJsonConfigSetting('x-terminal-reloaded.terminalSettings.xtermOptions', configDefaults.xtermOptions, previousValue),
 					fromMenuSetting: (element, baseValue) => parseJson(element.getModel().getText(), baseValue, Object),
 					toMenuSetting: (val) => JSON.stringify(val),
 				},
@@ -333,7 +333,7 @@ export const config = configOrder({
 					toUrlParam: (val) => JSON.stringify(val),
 					fromUrlParam: (val) => JSON.parse(val),
 					checkUrlParam: (val) => (val !== null && val !== ''),
-					toBaseProfile: (previousValue) => validateBooleanConfigSetting('x-terminal.terminalSettings.useEditorFont', configDefaults.useEditorFont),
+					toBaseProfile: (previousValue) => validateBooleanConfigSetting('x-terminal-reloaded.terminalSettings.useEditorFont', configDefaults.useEditorFont),
 					fromMenuSetting: (element, baseValue) => element.checked,
 					toMenuSetting: (val) => val,
 				},
@@ -367,14 +367,14 @@ export const config = configOrder({
 					toUrlParam: (val) => JSON.stringify(val),
 					fromUrlParam: (val) => JSON.parse(val),
 					checkUrlParam: (val) => !!val,
-					toBaseProfile: (previousValue) => (atom.config.get('x-terminal.terminalSettings.fontSize') || configDefaults.fontSize),
+					toBaseProfile: (previousValue) => (atom.config.get('x-terminal-reloaded.terminalSettings.fontSize') || configDefaults.fontSize),
 					fromMenuSetting: (element, baseValue) => parseJson(element.getModel().getText(), baseValue, Number),
 					toMenuSetting: (val) => val,
 				},
 			},
 			defaultOpenPosition: {
 				title: 'Default Open Position',
-				description: 'Position to open terminal through service API or x-terminal:open.',
+				description: 'Position to open terminal through service API or x-terminal-reloaded:open.',
 				type: 'string',
 				enum: [
 					'Center',
@@ -398,7 +398,7 @@ export const config = configOrder({
 					toUrlParam: (val) => JSON.stringify(val),
 					fromUrlParam: (val) => JSON.parse(val),
 					checkUrlParam: (val) => (val !== null && val !== ''),
-					toBaseProfile: (previousValue) => validateBooleanConfigSetting('x-terminal.terminalSettings.promptToStartup', configDefaults.promptToStartup),
+					toBaseProfile: (previousValue) => validateBooleanConfigSetting('x-terminal-reloaded.terminalSettings.promptToStartup', configDefaults.promptToStartup),
 					fromMenuSetting: (element, baseValue) => element.checked,
 					toMenuSetting: (val) => val,
 				},
@@ -425,7 +425,7 @@ export const config = configOrder({
 					toUrlParam: (val) => JSON.stringify(val),
 					fromUrlParam: (val) => JSON.parse(val),
 					checkUrlParam: (val) => (val !== null && val !== ''),
-					toBaseProfile: (previousValue) => validateBooleanConfigSetting('x-terminal.terminalSettings.leaveOpenAfterExit', configDefaults.leaveOpenAfterExit),
+					toBaseProfile: (previousValue) => validateBooleanConfigSetting('x-terminal-reloaded.terminalSettings.leaveOpenAfterExit', configDefaults.leaveOpenAfterExit),
 					fromMenuSetting: (element, baseValue) => element.checked,
 					toMenuSetting: (val) => val,
 				},
@@ -446,7 +446,7 @@ export const config = configOrder({
 					toUrlParam: (val) => JSON.stringify(val),
 					fromUrlParam: (val) => JSON.parse(val),
 					checkUrlParam: (val) => (val !== null && val !== ''),
-					toBaseProfile: (previousValue) => validateBooleanConfigSetting('x-terminal.terminalSettings.relaunchTerminalOnStartup', configDefaults.relaunchTerminalOnStartup),
+					toBaseProfile: (previousValue) => validateBooleanConfigSetting('x-terminal-reloaded.terminalSettings.relaunchTerminalOnStartup', configDefaults.relaunchTerminalOnStartup),
 					fromMenuSetting: (element, baseValue) => element.checked,
 					toMenuSetting: (val) => val,
 				},
@@ -461,7 +461,7 @@ export const config = configOrder({
 					toUrlParam: (val) => JSON.stringify(val),
 					fromUrlParam: (val) => JSON.parse(val),
 					checkUrlParam: (val) => (val !== null && val !== ''),
-					toBaseProfile: (previousValue) => validateBooleanConfigSetting('x-terminal.terminalSettings.copyOnSelect', configDefaults.copyOnSelect),
+					toBaseProfile: (previousValue) => validateBooleanConfigSetting('x-terminal-reloaded.terminalSettings.copyOnSelect', configDefaults.copyOnSelect),
 					fromMenuSetting: (element, baseValue) => element.checked,
 					toMenuSetting: (val) => val,
 				},
@@ -510,7 +510,7 @@ export const config = configOrder({
 							toUrlParam: (val) => val,
 							fromUrlParam: (val) => val,
 							checkUrlParam: (val) => true,
-							toBaseProfile: (previousValue) => (atom.config.get('x-terminal.terminalSettings.colors.theme') || configDefaults.theme),
+							toBaseProfile: (previousValue) => (atom.config.get('x-terminal-reloaded.terminalSettings.colors.theme') || configDefaults.theme),
 							fromMenuSetting: (element, baseValue) => (element.value || baseValue),
 							toMenuSetting: (val) => val,
 						},
@@ -526,7 +526,7 @@ export const config = configOrder({
 							toUrlParam: (val) => val,
 							fromUrlParam: (val) => val,
 							checkUrlParam: (val) => true,
-							toBaseProfile: (previousValue) => (atom.config.get('x-terminal.terminalSettings.colors.foreground') || configDefaults.colorForeground),
+							toBaseProfile: (previousValue) => (atom.config.get('x-terminal-reloaded.terminalSettings.colors.foreground') || configDefaults.colorForeground),
 							fromMenuSetting: (element, baseValue) => (element.value || baseValue),
 							toMenuSetting: (val) => val,
 						},
@@ -542,7 +542,7 @@ export const config = configOrder({
 							toUrlParam: (val) => val,
 							fromUrlParam: (val) => val,
 							checkUrlParam: (val) => true,
-							toBaseProfile: (previousValue) => (atom.config.get('x-terminal.terminalSettings.colors.background') || configDefaults.colorBackground),
+							toBaseProfile: (previousValue) => (atom.config.get('x-terminal-reloaded.terminalSettings.colors.background') || configDefaults.colorBackground),
 							fromMenuSetting: (element, baseValue) => (element.value || baseValue),
 							toMenuSetting: (val) => val,
 						},
@@ -558,7 +558,7 @@ export const config = configOrder({
 							toUrlParam: (val) => val,
 							fromUrlParam: (val) => val,
 							checkUrlParam: (val) => true,
-							toBaseProfile: (previousValue) => (atom.config.get('x-terminal.terminalSettings.colors.cursor') || configDefaults.colorCursor),
+							toBaseProfile: (previousValue) => (atom.config.get('x-terminal-reloaded.terminalSettings.colors.cursor') || configDefaults.colorCursor),
 							fromMenuSetting: (element, baseValue) => (element.value || baseValue),
 							toMenuSetting: (val) => val,
 						},
@@ -574,7 +574,7 @@ export const config = configOrder({
 							toUrlParam: (val) => val,
 							fromUrlParam: (val) => val,
 							checkUrlParam: (val) => true,
-							toBaseProfile: (previousValue) => (atom.config.get('x-terminal.terminalSettings.colors.cursorAccent') || configDefaults.colorCursorAccent),
+							toBaseProfile: (previousValue) => (atom.config.get('x-terminal-reloaded.terminalSettings.colors.cursorAccent') || configDefaults.colorCursorAccent),
 							fromMenuSetting: (element, baseValue) => (element.value || baseValue),
 							toMenuSetting: (val) => val,
 						},
@@ -590,7 +590,7 @@ export const config = configOrder({
 							toUrlParam: (val) => val,
 							fromUrlParam: (val) => val,
 							checkUrlParam: (val) => true,
-							toBaseProfile: (previousValue) => (atom.config.get('x-terminal.terminalSettings.colors.selectionBackground') || configDefaults.colorSelectionBackground),
+							toBaseProfile: (previousValue) => (atom.config.get('x-terminal-reloaded.terminalSettings.colors.selectionBackground') || configDefaults.colorSelectionBackground),
 							fromMenuSetting: (element, baseValue) => (element.value || baseValue),
 							toMenuSetting: (val) => val,
 						},
@@ -606,7 +606,7 @@ export const config = configOrder({
 							toUrlParam: (val) => val,
 							fromUrlParam: (val) => val,
 							checkUrlParam: (val) => true,
-							toBaseProfile: (previousValue) => (atom.config.get('x-terminal.terminalSettings.colors.black') || configDefaults.colorBlack),
+							toBaseProfile: (previousValue) => (atom.config.get('x-terminal-reloaded.terminalSettings.colors.black') || configDefaults.colorBlack),
 							fromMenuSetting: (element, baseValue) => (element.value || baseValue),
 							toMenuSetting: (val) => val,
 						},
@@ -622,7 +622,7 @@ export const config = configOrder({
 							toUrlParam: (val) => val,
 							fromUrlParam: (val) => val,
 							checkUrlParam: (val) => true,
-							toBaseProfile: (previousValue) => (atom.config.get('x-terminal.terminalSettings.colors.red') || configDefaults.colorRed),
+							toBaseProfile: (previousValue) => (atom.config.get('x-terminal-reloaded.terminalSettings.colors.red') || configDefaults.colorRed),
 							fromMenuSetting: (element, baseValue) => (element.value || baseValue),
 							toMenuSetting: (val) => val,
 						},
@@ -638,7 +638,7 @@ export const config = configOrder({
 							toUrlParam: (val) => val,
 							fromUrlParam: (val) => val,
 							checkUrlParam: (val) => true,
-							toBaseProfile: (previousValue) => (atom.config.get('x-terminal.terminalSettings.colors.green') || configDefaults.colorGreen),
+							toBaseProfile: (previousValue) => (atom.config.get('x-terminal-reloaded.terminalSettings.colors.green') || configDefaults.colorGreen),
 							fromMenuSetting: (element, baseValue) => (element.value || baseValue),
 							toMenuSetting: (val) => val,
 						},
@@ -654,7 +654,7 @@ export const config = configOrder({
 							toUrlParam: (val) => val,
 							fromUrlParam: (val) => val,
 							checkUrlParam: (val) => true,
-							toBaseProfile: (previousValue) => (atom.config.get('x-terminal.terminalSettings.colors.yellow') || configDefaults.colorYellow),
+							toBaseProfile: (previousValue) => (atom.config.get('x-terminal-reloaded.terminalSettings.colors.yellow') || configDefaults.colorYellow),
 							fromMenuSetting: (element, baseValue) => (element.value || baseValue),
 							toMenuSetting: (val) => val,
 						},
@@ -670,7 +670,7 @@ export const config = configOrder({
 							toUrlParam: (val) => val,
 							fromUrlParam: (val) => val,
 							checkUrlParam: (val) => true,
-							toBaseProfile: (previousValue) => (atom.config.get('x-terminal.terminalSettings.colors.blue') || configDefaults.colorBlue),
+							toBaseProfile: (previousValue) => (atom.config.get('x-terminal-reloaded.terminalSettings.colors.blue') || configDefaults.colorBlue),
 							fromMenuSetting: (element, baseValue) => (element.value || baseValue),
 							toMenuSetting: (val) => val,
 						},
@@ -686,7 +686,7 @@ export const config = configOrder({
 							toUrlParam: (val) => val,
 							fromUrlParam: (val) => val,
 							checkUrlParam: (val) => true,
-							toBaseProfile: (previousValue) => (atom.config.get('x-terminal.terminalSettings.colors.magenta') || configDefaults.colorMagenta),
+							toBaseProfile: (previousValue) => (atom.config.get('x-terminal-reloaded.terminalSettings.colors.magenta') || configDefaults.colorMagenta),
 							fromMenuSetting: (element, baseValue) => (element.value || baseValue),
 							toMenuSetting: (val) => val,
 						},
@@ -702,7 +702,7 @@ export const config = configOrder({
 							toUrlParam: (val) => val,
 							fromUrlParam: (val) => val,
 							checkUrlParam: (val) => true,
-							toBaseProfile: (previousValue) => (atom.config.get('x-terminal.terminalSettings.colors.cyan') || configDefaults.colorCyan),
+							toBaseProfile: (previousValue) => (atom.config.get('x-terminal-reloaded.terminalSettings.colors.cyan') || configDefaults.colorCyan),
 							fromMenuSetting: (element, baseValue) => (element.value || baseValue),
 							toMenuSetting: (val) => val,
 						},
@@ -718,7 +718,7 @@ export const config = configOrder({
 							toUrlParam: (val) => val,
 							fromUrlParam: (val) => val,
 							checkUrlParam: (val) => true,
-							toBaseProfile: (previousValue) => (atom.config.get('x-terminal.terminalSettings.colors.white') || configDefaults.colorWhite),
+							toBaseProfile: (previousValue) => (atom.config.get('x-terminal-reloaded.terminalSettings.colors.white') || configDefaults.colorWhite),
 							fromMenuSetting: (element, baseValue) => (element.value || baseValue),
 							toMenuSetting: (val) => val,
 						},
@@ -734,7 +734,7 @@ export const config = configOrder({
 							toUrlParam: (val) => val,
 							fromUrlParam: (val) => val,
 							checkUrlParam: (val) => true,
-							toBaseProfile: (previousValue) => (atom.config.get('x-terminal.terminalSettings.colors.brightBlack') || configDefaults.colorBrightBlack),
+							toBaseProfile: (previousValue) => (atom.config.get('x-terminal-reloaded.terminalSettings.colors.brightBlack') || configDefaults.colorBrightBlack),
 							fromMenuSetting: (element, baseValue) => (element.value || baseValue),
 							toMenuSetting: (val) => val,
 						},
@@ -750,7 +750,7 @@ export const config = configOrder({
 							toUrlParam: (val) => val,
 							fromUrlParam: (val) => val,
 							checkUrlParam: (val) => true,
-							toBaseProfile: (previousValue) => (atom.config.get('x-terminal.terminalSettings.colors.brightRed') || configDefaults.colorBrightRed),
+							toBaseProfile: (previousValue) => (atom.config.get('x-terminal-reloaded.terminalSettings.colors.brightRed') || configDefaults.colorBrightRed),
 							fromMenuSetting: (element, baseValue) => (element.value || baseValue),
 							toMenuSetting: (val) => val,
 						},
@@ -766,7 +766,7 @@ export const config = configOrder({
 							toUrlParam: (val) => val,
 							fromUrlParam: (val) => val,
 							checkUrlParam: (val) => true,
-							toBaseProfile: (previousValue) => (atom.config.get('x-terminal.terminalSettings.colors.brightGreen') || configDefaults.colorBrightGreen),
+							toBaseProfile: (previousValue) => (atom.config.get('x-terminal-reloaded.terminalSettings.colors.brightGreen') || configDefaults.colorBrightGreen),
 							fromMenuSetting: (element, baseValue) => (element.value || baseValue),
 							toMenuSetting: (val) => val,
 						},
@@ -782,7 +782,7 @@ export const config = configOrder({
 							toUrlParam: (val) => val,
 							fromUrlParam: (val) => val,
 							checkUrlParam: (val) => true,
-							toBaseProfile: (previousValue) => (atom.config.get('x-terminal.terminalSettings.colors.brightYellow') || configDefaults.colorBrightYellow),
+							toBaseProfile: (previousValue) => (atom.config.get('x-terminal-reloaded.terminalSettings.colors.brightYellow') || configDefaults.colorBrightYellow),
 							fromMenuSetting: (element, baseValue) => (element.value || baseValue),
 							toMenuSetting: (val) => val,
 						},
@@ -798,7 +798,7 @@ export const config = configOrder({
 							toUrlParam: (val) => val,
 							fromUrlParam: (val) => val,
 							checkUrlParam: (val) => true,
-							toBaseProfile: (previousValue) => (atom.config.get('x-terminal.terminalSettings.colors.brightBlue') || configDefaults.colorBrightBlue),
+							toBaseProfile: (previousValue) => (atom.config.get('x-terminal-reloaded.terminalSettings.colors.brightBlue') || configDefaults.colorBrightBlue),
 							fromMenuSetting: (element, baseValue) => (element.value || baseValue),
 							toMenuSetting: (val) => val,
 						},
@@ -814,7 +814,7 @@ export const config = configOrder({
 							toUrlParam: (val) => val,
 							fromUrlParam: (val) => val,
 							checkUrlParam: (val) => true,
-							toBaseProfile: (previousValue) => (atom.config.get('x-terminal.terminalSettings.colors.brightMagenta') || configDefaults.colorBrightMagenta),
+							toBaseProfile: (previousValue) => (atom.config.get('x-terminal-reloaded.terminalSettings.colors.brightMagenta') || configDefaults.colorBrightMagenta),
 							fromMenuSetting: (element, baseValue) => (element.value || baseValue),
 							toMenuSetting: (val) => val,
 						},
@@ -830,7 +830,7 @@ export const config = configOrder({
 							toUrlParam: (val) => val,
 							fromUrlParam: (val) => val,
 							checkUrlParam: (val) => true,
-							toBaseProfile: (previousValue) => (atom.config.get('x-terminal.terminalSettings.colors.brightCyan') || configDefaults.colorBrightCyan),
+							toBaseProfile: (previousValue) => (atom.config.get('x-terminal-reloaded.terminalSettings.colors.brightCyan') || configDefaults.colorBrightCyan),
 							fromMenuSetting: (element, baseValue) => (element.value || baseValue),
 							toMenuSetting: (val) => val,
 						},
@@ -846,7 +846,7 @@ export const config = configOrder({
 							toUrlParam: (val) => val,
 							fromUrlParam: (val) => val,
 							checkUrlParam: (val) => true,
-							toBaseProfile: (previousValue) => (atom.config.get('x-terminal.terminalSettings.colors.brightWhite') || configDefaults.colorBrightWhite),
+							toBaseProfile: (previousValue) => (atom.config.get('x-terminal-reloaded.terminalSettings.colors.brightWhite') || configDefaults.colorBrightWhite),
 							fromMenuSetting: (element, baseValue) => (element.value || baseValue),
 							toMenuSetting: (val) => val,
 						},
@@ -858,10 +858,10 @@ export const config = configOrder({
 })
 
 function getFontFamilyBaseProfile () {
-	if (atom.config.get('x-terminal.terminalSettings.useEditorFont') && atom.config.get('editor.fontFamily')) {
+	if (atom.config.get('x-terminal-reloaded.terminalSettings.useEditorFont') && atom.config.get('editor.fontFamily')) {
 		return atom.config.get('editor.fontFamily')
 	}
-	return atom.config.get('x-terminal.terminalSettings.fontFamily') || configDefaults.fontFamily
+	return atom.config.get('x-terminal-reloaded.terminalSettings.fontFamily') || configDefaults.fontFamily
 }
 
 function validateBooleanConfigSetting (name, defaultValue) {
@@ -950,7 +950,7 @@ function configToData (obj, prefix) {
 	return data
 }
 
-export const CONFIG_DATA = configToData(config, 'x-terminal')
+export const CONFIG_DATA = configToData(config, 'x-terminal-reloaded')
 
 export async function setInitialCommand (which) {
 	let command
@@ -966,13 +966,13 @@ export async function setInitialCommand (which) {
 		}
 	}
 
-	if (command && atom.config.get('x-terminal.spawnPtySettings.command') === configDefaults.command) {
-		atom.config.set('x-terminal.spawnPtySettings.command', command)
+	if (command && atom.config.get('x-terminal-reloaded.spawnPtySettings.command') === configDefaults.command) {
+		atom.config.set('x-terminal-reloaded.spawnPtySettings.command', command)
 	}
 }
 
 // set shell command automatically on first install
-if (localStorage.getItem('x-terminal.initialCommandSet') === null) {
-	localStorage.setItem('x-terminal.initialCommandSet', 'true')
+if (localStorage.getItem('x-terminal-reloaded.initialCommandSet') === null) {
+	localStorage.setItem('x-terminal-reloaded.initialCommandSet', 'true')
 	setInitialCommand(which)
 }

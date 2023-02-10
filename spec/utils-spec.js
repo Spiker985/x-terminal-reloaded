@@ -40,7 +40,7 @@ describe('Utilities', () => {
 	it('createHorizontalLine()', () => {
 		const hLine = utils.createHorizontalLine()
 		expect(hLine.tagName).toBe('DIV')
-		expect(hLine.classList.contains('x-terminal-profile-menu-element-hline')).toBe(true)
+		expect(hLine.classList.contains('x-terminal-reloaded-profile-menu-element-hline')).toBe(true)
 		expect(hLine.textContent).toBe('.')
 	})
 
@@ -77,7 +77,7 @@ describe('Utilities', () => {
 		})
 
 		it('allowHiddenToStayActive', () => {
-			atom.config.set('x-terminal.terminalSettings.allowHiddenToStayActive', true)
+			atom.config.set('x-terminal-reloaded.terminalSettings.allowHiddenToStayActive', true)
 			const terminals = createTerminals(2)
 			const terminalsSet = new Set(terminals)
 			spyOn(terminals[1], 'isVisible').and.returnValue(true)

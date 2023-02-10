@@ -123,13 +123,13 @@ describe('XTerminalProfileMenuElement', () => {
 
 	it('createMenuItemContainer() check title', () => {
 		const container = element.createMenuItemContainer('foo', 'bar', 'baz')
-		const titleDiv = container.querySelector('.x-terminal-profile-menu-item-title')
+		const titleDiv = container.querySelector('.x-terminal-reloaded-profile-menu-item-title')
 		expect(titleDiv.textContent).toBe('bar')
 	})
 
 	it('createMenuItemContainer() check description', () => {
 		const container = element.createMenuItemContainer('foo', 'bar', 'baz')
-		const descriptionDiv = container.querySelector('.x-terminal-profile-menu-item-description')
+		const descriptionDiv = container.querySelector('.x-terminal-reloaded-profile-menu-item-description')
 		expect(descriptionDiv.innerHTML).toBe('<p>baz</p>\n')
 	})
 
@@ -140,7 +140,7 @@ describe('XTerminalProfileMenuElement', () => {
 
 	it('createProfilesDropDownSelectItem() check classList', async () => {
 		const select = await element.createProfilesDropDownSelectItem()
-		expect(select.classList.contains('x-terminal-profile-menu-item-select')).toBe(true)
+		expect(select.classList.contains('x-terminal-reloaded-profile-menu-item-select')).toBe(true)
 	})
 
 	it('createProfilesDropDown()', async () => {
@@ -150,12 +150,12 @@ describe('XTerminalProfileMenuElement', () => {
 
 	it('createProfileMenuButtons()', () => {
 		const buttonsContainer = element.createProfileMenuButtons()
-		expect(buttonsContainer.classList.contains('x-terminal-profile-menu-buttons-div')).toBe(true)
+		expect(buttonsContainer.classList.contains('x-terminal-reloaded-profile-menu-buttons-div')).toBe(true)
 	})
 
 	it('createButton()', () => {
 		const button = element.createButton()
-		expect(button.classList.contains('x-terminal-profile-menu-button')).toBe(true)
+		expect(button.classList.contains('x-terminal-reloaded-profile-menu-button')).toBe(true)
 	})
 
 	it('createTextbox()', () => {

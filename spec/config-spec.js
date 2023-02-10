@@ -389,7 +389,7 @@ describe('config', () => {
 			if (process.env.APPDATA) {
 				delete process.env.APPDATA
 			}
-			const expected = path.join(os.homedir(), 'AppData', 'Roaming', 'x-terminal')
+			const expected = path.join(os.homedir(), 'AppData', 'Roaming', 'x-terminal-reloaded')
 			expect(resetConfigDefaults().userDataPath).toBe(expected)
 		})
 
@@ -398,7 +398,7 @@ describe('config', () => {
 				value: 'win32',
 			})
 			process.env.APPDATA = path.join('/some', 'dir')
-			const expected = path.join(process.env.APPDATA, 'x-terminal')
+			const expected = path.join(process.env.APPDATA, 'x-terminal-reloaded')
 			expect(resetConfigDefaults().userDataPath).toBe(expected)
 		})
 
@@ -406,7 +406,7 @@ describe('config', () => {
 			Object.defineProperty(process, 'platform', {
 				value: 'darwin',
 			})
-			const expected = path.join(os.homedir(), 'Library', 'Application Support', 'x-terminal')
+			const expected = path.join(os.homedir(), 'Library', 'Application Support', 'x-terminal-reloaded')
 			expect(resetConfigDefaults().userDataPath).toBe(expected)
 		})
 
@@ -417,7 +417,7 @@ describe('config', () => {
 			if (process.env.XDG_CONFIG_HOME) {
 				delete process.env.XDG_CONFIG_HOME
 			}
-			const expected = path.join(os.homedir(), '.config', 'x-terminal')
+			const expected = path.join(os.homedir(), '.config', 'x-terminal-reloaded')
 			expect(resetConfigDefaults().userDataPath).toBe(expected)
 		})
 
@@ -426,7 +426,7 @@ describe('config', () => {
 				value: 'linux',
 			})
 			process.env.XDG_CONFIG_HOME = path.join('/some', 'dir')
-			const expected = path.join(process.env.XDG_CONFIG_HOME, 'x-terminal')
+			const expected = path.join(process.env.XDG_CONFIG_HOME, 'x-terminal-reloaded')
 			expect(resetConfigDefaults().userDataPath).toBe(expected)
 		})
 	})
@@ -456,7 +456,7 @@ describe('config', () => {
 			Object.defineProperty(process, 'platform', {
 				value: 'win32',
 			})
-			atom.config.set('x-terminal.spawnPtySettings.command', configDefaults.command)
+			atom.config.set('x-terminal-reloaded.spawnPtySettings.command', configDefaults.command)
 		})
 
 		afterEach(() => {
@@ -465,7 +465,7 @@ describe('config', () => {
 			})
 		})
 
-		it('should set x-terminal.command to pwsh', async () => {
+		it('should set x-terminal-reloaded.command to pwsh', async () => {
 			const shell = 'path/to/pwsh.exe'
 			await setInitialCommand(async (file) => {
 				if (file === 'pwsh.exe') {
@@ -474,10 +474,10 @@ describe('config', () => {
 				throw new Error('ENOENT')
 			})
 
-			expect(atom.config.get('x-terminal.spawnPtySettings.command')).toBe(shell)
+			expect(atom.config.get('x-terminal-reloaded.spawnPtySettings.command')).toBe(shell)
 		})
 
-		it('should set x-terminal.command to powershell', async () => {
+		it('should set x-terminal-reloaded.command to powershell', async () => {
 			const shell = 'path/to/powershell.exe'
 			await setInitialCommand(async (file) => {
 				if (file === 'powershell.exe') {
@@ -486,16 +486,16 @@ describe('config', () => {
 				throw new Error('ENOENT')
 			})
 
-			expect(atom.config.get('x-terminal.spawnPtySettings.command')).toBe(shell)
+			expect(atom.config.get('x-terminal-reloaded.spawnPtySettings.command')).toBe(shell)
 		})
 
-		it('should set x-terminal.command to powershell', async () => {
+		it('should set x-terminal-reloaded.command to powershell', async () => {
 			const shell = configDefaults.command
 			await setInitialCommand(async () => {
 				throw new Error('ENOENT')
 			})
 
-			expect(atom.config.get('x-terminal.spawnPtySettings.command')).toBe(shell)
+			expect(atom.config.get('x-terminal-reloaded.spawnPtySettings.command')).toBe(shell)
 		})
 	})
 })
