@@ -18,10 +18,20 @@ jobs:
     - name: Install Pulsar
       uses: pulsar-edit/action-pulsar-dependency@s985-update-win-path-registration
     
-    - name: Install dependencies
+    - name: Install dependencies (Windows)
+      if: ${{ runner.os == 'Windows' }}
+      run: |
+        $env:Path = (@(
+          [System.Environment]::GetEnvironmentVariable("Path","Machine"),
+          [System.Environment]::GetEnvironmentVariable("Path","User")
+        ) -join ';')
+        pulsar --package install
+      
+    - name: Install dependencies (*nix)
+      if: ${{ runner.os != 'Windows' }}
       run: pulsar --package install
     
-    - name: Run the headless Pulsar Tests
+    - name: Run the headless Pulsar Tests (Windows)
       if: ${{ runner.os == 'Windows' }}
       uses: GabrielBB/xvfb-action@v1
       with:
@@ -32,7 +42,7 @@ jobs:
           ) -join ';')
           pulsar --test spec
         
-    - name: Run the headless Pulsar Tests
+    - name: Run the headless Pulsar Tests (*nix)
       if: ${{ runner.os != 'Windows' }}
       uses: GabrielBB/xvfb-action@v1
       with:
