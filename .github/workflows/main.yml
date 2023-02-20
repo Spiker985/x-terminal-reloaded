@@ -22,7 +22,7 @@ jobs:
       if: ${{ runner.os == 'Windows' }}
       #Forcibly update the node-gyp version included with ppm
       run: |
-        $env:localappdata\Programs\Pulsar\resources\app\ppm\bin\npm install node-gyp@9.3.1
+        & "$env:localappdata\Programs\Pulsar\resources\app\ppm\bin\npm" install node-gyp@9.3.1
     
     - name: Install dependencies (Windows)
       if: ${{ runner.os == 'Windows' }}
