@@ -17,14 +17,6 @@ jobs:
     
     - name: Install Pulsar
       uses: pulsar-edit/action-pulsar-dependency@s985-update-win-path-registration
-      
-    - name: Update node-gyp (Windows)
-      if: ${{ runner.os == 'Windows' }}
-      #Forcibly update the npm and node-gyp version included with ppm, this made not be necessary after https://github.com/pulsar-edit/ppm/pull/53/files
-      run: |
-        cd "$($env:localappdata)\Programs\Pulsar\resources\app\ppm\bin\"
-        Start-Process -FilePath npm -ArgumentList @('install', 'npm@latest') -NoNewWindow -Wait
-        Start-Process -FilePath npm -ArgumentList @('install', 'node-gyp@latest') -NoNewWindow -Wait
     
     - name: Install dependencies (Windows)
       if: ${{ runner.os == 'Windows' }}
@@ -37,7 +29,7 @@ jobs:
       run: pulsar --package install
             
     - name: Run the headless Pulsar Tests
-      uses: GabrielBB/xvfb-action@v1.6
+      uses: coactions/setup-xvfb@v1.0.1
       with:
         run: pulsar --test spec
 
