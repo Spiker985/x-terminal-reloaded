@@ -5,28 +5,31 @@ on:
     branches:
       - master
 
-env:
-  CI: true
-
 jobs:
   Test:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest, macos-latest, windows-latest]
-        version: [stable, beta]
+        os: [ubuntu-latest, macos-latest, windows-2019]
     runs-on: ${{ matrix.os }}
     steps:
     - uses: actions/checkout@v3
     
     - name: Install Pulsar
-      uses: pulsar-edit/action-pulsar-dependency@v2
+      uses: pulsar-edit/action-pulsar-dependency@v3.2
     
-    - name: Install dependencies
+    - name: Install dependencies (Windows)
+      if: ${{ runner.os == 'Windows' }}
+      # Currently the Pulsar process starts, but unlike *nix doesn't wait for ppm to finish, probably because pulsar.cmd needs updated
+      # So we'll fallback to ppm (still named apm) instead
+      run: apm install
+      
+    - name: Install dependencies (*nix)
+      if: ${{ runner.os != 'Windows' }}
       run: pulsar --package install
-    
+            
     - name: Run the headless Pulsar Tests
-      uses: GabrielBB/xvfb-action@v1
+      uses: coactions/setup-xvfb@v1.0.1
       with:
         run: pulsar --test spec
 
@@ -61,6 +64,8 @@ jobs:
       
       - name: Release 🎉
         env:
+          #Used to allow the CI to push a new release automatically. Intrinsic to GitHub CI.
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          ATOM_ACCESS_TOKEN: ${{ secrets.ATOM_ACCESS_TOKEN }}
+          #Used by ppm to auth for publishing of packages
+          ATOM_ACCESS_TOKEN: ${{ secrets.PULSAR_ACCESS_TOKEN }}
         run: npx semantic-release
