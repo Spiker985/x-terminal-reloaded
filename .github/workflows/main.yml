@@ -53,7 +53,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       
-      #- uses: UziTech/action-setup-atom@v3
+      - uses: pulsar-edit/action-pulsar-dependency@v3.2
       
       - uses: actions/setup-node@v3
         with:
@@ -68,4 +68,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           #Used by ppm to auth for publishing of packages
           ATOM_ACCESS_TOKEN: ${{ secrets.PULSAR_ACCESS_TOKEN }}
-        run: npx semantic-release
+        run: |
+          alias apm="pulsar --package"
+          npx semantic-release
