@@ -1,85 +1,66 @@
-                  ██╗  ██╗  ████████╗███████╗██████╗ ███╗   ███╗██╗███╗   ██╗ █████╗ ██╗     
-                  ╚██╗██╔╝  ╚══██╔══╝██╔════╝██╔══██╗████╗ ████║██║████╗  ██║██╔══██╗██║     
-                   ╚███╔╝█████╗██║   █████╗  ██████╔╝██╔████╔██║██║██╔██╗ ██║███████║██║     
-                   ██╔██╗╚════╝██║   ██╔══╝  ██╔══██╗██║╚██╔╝██║██║██║╚██╗██║██╔══██║██║     
-                  ██╔╝ ██╗     ██║   ███████╗██║  ██║██║ ╚═╝ ██║██║██║ ╚████║██║  ██║███████╗
-                  ╚═╝  ╚═╝     ╚═╝   ╚══════╝╚═╝  ╚═╝╚═╝     ╚═╝╚═╝╚═╝  ╚═══╝╚═╝  ╚═╝╚══════╝
+    ██╗  ██╗  ████████╗███████╗██████╗ ███╗   ███╗██╗███╗   ██╗ █████╗ ██╗      ██████╗ ███████╗██╗      ██████╗  █████╗ ██████╗ ███████╗██████╗ 
+    ╚██╗██╔╝  ╚══██╔══╝██╔════╝██╔══██╗████╗ ████║██║████╗  ██║██╔══██╗██║      ██╔══██╗██╔════╝██║     ██╔═══██╗██╔══██╗██╔══██╗██╔════╝██╔══██╗
+     ╚███╔╝█████╗██║   █████╗  ██████╔╝██╔████╔██║██║██╔██╗ ██║███████║██║█████╗██████╔╝█████╗  ██║     ██║   ██║███████║██║  ██║█████╗  ██║  ██║
+     ██╔██╗╚════╝██║   ██╔══╝  ██╔══██╗██║╚██╔╝██║██║██║╚██╗██║██╔══██║██║╚════╝██╔══██╗██╔══╝  ██║     ██║   ██║██╔══██║██║  ██║██╔══╝  ██║  ██║
+    ██╔╝ ██╗     ██║   ███████╗██║  ██║██║ ╚═╝ ██║██║██║ ╚████║██║  ██║███████╗ ██║  ██║███████╗███████╗╚██████╔╝██║  ██║██████╔╝███████╗██████╔╝
+    ╚═╝  ╚═╝     ╚═╝   ╚══════╝╚═╝  ╚═╝╚═╝     ╚═╝╚═╝╚═╝  ╚═══╝╚═╝  ╚═╝╚══════╝ ╚═╝  ╚═╝╚══════╝╚══════╝ ╚═════╝ ╚═╝  ╚═╝╚═════╝ ╚══════╝╚═════╝ 
 <br>
 <p align="center">
-  <a href="https://github.com/bus-stop/x-terminal/actions?query=workflow%3ACI">
-    <img src="https://img.shields.io/github/workflow/status/bus-stop/x-terminal/CI?style=flat-square&logo=github&label=CI%20status" alt="actions status">
+  <a href="https://github.com/Spiker985/x-terminal-reloaded/actions/workflows/main.yml">
+    <img src="https://img.shields.io/github/actions/workflow/status/Spiker985/x-terminal-reloaded/main.yml?style=flat-square&logo=github&label=CI%20status" alt="actions status">
   </a>
-  <a href="https://github.com/bus-stop/x-terminal/tags">
-    <img src="https://img.shields.io/github/tag/bus-stop/x-terminal.svg?label=current%20version&style=flat-square" alt="version">
+  <a href="https://github.com/Spiker985/x-terminal-reloaded/tags">
+    <img src="https://img.shields.io/github/tag/Spiker985/x-terminal-reloaded.svg?label=current%20version&style=flat-square" alt="version">
   </a>
-  <a href="https://github.com/bus-stop/x-terminal/stargazers">
-    <img src="https://img.shields.io/github/stars/bus-stop/x-terminal.svg?style=flat-square" alt="stars">
+  <a href="https://github.com/Spiker985/x-terminal-reloaded/stargazers">
+    <img src="https://img.shields.io/github/stars/Spiker985/x-terminal-reloaded.svg?style=flat-square" alt="stars">
   </a>
-  <a href="https://github.com/bus-stop/x-terminal/network">
-    <img src="https://img.shields.io/github/forks/bus-stop/x-terminal.svg?style=flat-square" alt="forks">
+  <a href="https://github.com/Spiker985/x-terminal-reloaded/network">
+    <img src="https://img.shields.io/github/forks/Spiker985/x-terminal-reloaded.svg?style=flat-square" alt="forks">
   </a>
-  <a href="https://david-dm.org/bus-stop/x-terminal">
-    <img src="https://img.shields.io/david/dev/bus-stop/term.js.svg?label=dependencies&style=flat-square" alt="dependencies">
+  <a href="https://pulsar-edit.dev/download.html">
+    <img src="https://img.shields.io/cirrus/github/pulsar-edit/pulsar/master?label=Pulsar%20%28rolling%29&style=flat-square" alt="Pulsar download page">
   </a>
-  <a href="https://david-dm.org/bus-stop/x-terminal?type=dev">
-    <img src="https://img.shields.io/david/dev/bus-stop/term.js.svg?label=devdependencies&style=flat-square" alt="dependencies">
+  <a href="https://web.pulsar-edit.dev/packages/x-terminal-reloaded">
+    <img src="https://img.shields.io/badge/Pulsar%20package-entry-informational?style=flat-square">
   </a>
 </p>
 <h3 align="center">
-  An xterm based Atom plugin for providing terminals inside your Atom workspace!&nbsp;❤️
+  An xterm based Pulsar plugin for providing terminals inside your workspace!&nbsp;❤️
 </h3>
 <h5 align="center">A fork of
-  <a href="https://atom.io/packages/atom-xterm">atom.io/packages/atom-xterm</a>
-</h5>
-<h5 align="center">
-  <a href="https://atom.io/packages/x-terminal">atom.io packages x-terminal</a>
+  <a href="https://web.pulsar-edit.dev/packages/atom-xterm">atom-xterm</a>
+  and 
+  <a href="https://web.pulsar-edit.dev/packages/x-terminal">x-terminal</a>
 </h5>
 <br>
 
-## Updates
+![X-Terminal demo](https://cdn.statically.io/gh/Spiker985/x-terminal-reloaded/master/resources/x-terminal-demo.gif)
 
-1. Updated dependencies
-   - xterm v4 introduced new plugins
-   - faster performance with webgl
-2. Themes
-   - Easily change terminal colors in settings
-3. Font Family
-   - Change font family in settings
-4. PlatformIO IDE API
-   - Works with packages that consume the `platformioIDETerminal` service
+## Pulsar Built-in Terminal
 
-![X-Terminal demo](https://cdn.statically.io/gh/bus-stop/x-terminal/master/resources/x-terminal-demo.gif)
-
-## Atom Feature Request for a Built in Terminal
-
-If you're reading this and you would rather see Atom have a built-in terminal
-by default, please go over to the built-in terminal feature request thread
-[here](https://github.com/atom/atom/issues/14490), give it a thumbs up, **and**
-give an explanation as to why you need a built-in terminal in Atom by default.
+Eventually, I'd like to transition this over to the [Pulsar repo](https://github.com/pulsar-edit/pulsar), however as of right now I'll maintain it separately because there's a lot on our plates over there.
 
 # Installation
 
-Go to <https://atom.io/packages/x-terminal> and click install, or search for
-the *x-terminal* package via Atom's package manager. It can also be installed
-via command-line with the [apm](https://github.com/atom/apm) command.
-
-```sh
-apm install x-terminal
-```
+There are 3 ways to install this package:
+1. Navigate to https://web.pulsar-edit.dev/packages/x-terminal-reloaded and click install.
+2. Open Pulsar, open Settings (Ctrl + Shift + Comma), click on Install, search for `x-terminal-reloaded`
+3. Install via CLI. `pulsar --package install x-terminal-reloaded` or `pulsar -p install x-terminal-reloaded`
 
 ## Opening Terminals
 
 To open terminals, you can open them through the menu or through the available key bindings.
 
-![X-Terminal menu](https://cdn.statically.io/gh/bus-stop/x-terminal/master/resources/x-terminal-packages-menu.png)
+![X-Terminal menu](https://cdn.statically.io/gh/Spiker985/x-terminal-reloaded/master/resources/x-terminal-packages-menu.png)
 
-See [the available key bindings](https://github.com/bus-stop/x-terminal/blob/master/keymaps/x-terminal.json) for the x-terminal package.
+See [the available key bindings](https://github.com/Spiker985/x-terminal-reloaded/blob/master/keymaps/x-terminal.json) for the x-terminal package.
 
 There's also menu items available for opening terminals via right clicking on a
 text editor or on a terminal.
 
 Finally, terminal tabs are automatically reopened at the spot you placed them
-when you last exited Atom.
+when you last exited Pulsar.
 
 ## Active Terminal
 
@@ -105,37 +86,37 @@ And of course, there's the old fashion way of just moving the tabs where you
 want them. Feel free to place your terminal tabs anywhere in your workspace to
 include any of the docks.
 
-![X-Terminal moving terminals demo](https://cdn.statically.io/gh/bus-stop/x-terminal/master/resources/x-terminal-moving-terminals-demo.gif)
+![X-Terminal moving terminals demo](https://cdn.statically.io/gh/Spiker985/x-terminal-reloaded/master/resources/x-terminal-moving-terminals-demo.gif)
 
 ## Profiles
 
 The x-terminal package supports saving and loading profiles. What this allows
 you to do is save commonly used commands and settings for later use.
 
-![X-Terminal profiles demo](https://cdn.statically.io/gh/bus-stop/x-terminal/master/resources/x-terminal-profiles-demo.gif)
+![X-Terminal profiles demo](https://cdn.statically.io/gh/Spiker985/x-terminal-reloaded/master/resources/x-terminal-profiles-demo.gif)
 
 ## Notifications
 
 The x-terminal package provides notifications about terminal process exit
-successes and failures. Notifications will appear in Atom's own notification
+successes and failures. Notifications will appear in Pulsar's own notification
 manager as well as on the terminal tab triggering the notification.
 
 Success
 
-![X-Terminal exit success](https://cdn.statically.io/gh/bus-stop/x-terminal/master/resources/x-terminal-exit-success.png)
+![X-Terminal exit success](https://cdn.statically.io/gh/Spiker985/x-terminal-reloaded/master/resources/x-terminal-exit-success.png)
 
 Failure
 
-![X-Terminal exit failure](https://cdn.statically.io/gh/bus-stop/x-terminal/master/resources/x-terminal-exit-failure.png)
+![X-Terminal exit failure](https://cdn.statically.io/gh/Spiker985/x-terminal-reloaded/master/resources/x-terminal-exit-failure.png)
 
 There are also activity notifications for terminal tabs not in focus.
 
-![X-Terminal activity notification](https://cdn.statically.io/gh/bus-stop/x-terminal/master/resources/x-terminal-activity-notification.gif)
+![X-Terminal activity notification](https://cdn.statically.io/gh/Spiker985/x-terminal-reloaded/master/resources/x-terminal-activity-notification.gif)
 
 ## Services
 
 For plugin writers, the `x-terminal` package supports three services, `terminal`, `atom-xterm`, and `platformioIDETerminal`, which
-can be used to easily open terminals. These methods are provided using Atom's [services](http://flight-manual.atom.io/behind-atom/sections/interacting-with-other-packages-via-services/)
+can be used to easily open terminals. These methods are provided using Pulsar's [services](https://pulsar-edit.dev/docs/atom-archive/behind-atom/#interacting-with-other-packages-via-services)
 API.
 
 To use a service, add a consumer method to consume the service, or
@@ -193,11 +174,11 @@ this.terminalService.run([
 ### 'atom-xterm' service v2.0.0
 
 The `atom-xterm` service provides the
-[openTerminal()](https://github.com/bus-stop/x-terminal/blob/42ddb71523a393178cacabca17b38d681b87f292/src/x-terminal.js#L262) method. The `openTerminal()` method behaves just like Atom's
-[open()](https://github.com/atom/atom/blob/917a00e195b93c8c2a9adc349fd8fa1844f61dbc/src/workspace.js#L1076)
+[openTerminal()](https://github.com/Spiker985/x-terminal-reloaded/blob/465d2909ea1e8457151bf5ddf9f57fc8404e10fe/src/x-terminal.js#L468) method. The `openTerminal()` method behaves just like Pulsar's
+[open()](https://github.com/pulsar-edit/pulsar/blob/7d933c561f6f43def1dbb0408df9575e265f6e7d/src/workspace.js#L1077)
 method except that the first argument must be a JSON object describing the
 terminal profile that should be opened. Docs about this JSON object can be
-found [here](https://github.com/bus-stop/x-terminal/blob/42ddb71523a393178cacabca17b38d681b87f292/src/config.js#L25).
+found [here](https://github.com/Spiker985/x-terminal-reloaded/blob/465d2909ea1e8457151bf5ddf9f57fc8404e10fe/src/config.js#L26).
 
 As an example on how to use the provided `openTerminal()` method, your
 `package.json` should have the following.
@@ -251,7 +232,7 @@ this.atomXtermService.openTerminal({
 
 ### 'platformioIDETerminal' service v1.1.0
 
-The `platformioIDETerminal` service provides an [object](https://github.com/bus-stop/x-terminal/blob/42ddb71523a393178cacabca17b38d681b87f292/src/x-terminal.js#L365) with `updateProcessEnv`, `run`, `getTerminalViews`, and `open` methods.
+The `platformioIDETerminal` service provides an [object](https://github.com/Spiker985/x-terminal-reloaded/blob/465d2909ea1e8457151bf5ddf9f57fc8404e10fe/src/x-terminal.js#L579) with `updateProcessEnv`, `run`, `getTerminalViews`, and `open` methods.
 
 As an example on how to use the provided `run()` method, your
 `package.json` should have the following.
@@ -302,37 +283,38 @@ this.platformioIDETerminalService.run([
 
 Want to help develop x-terminal? Here's how to quickly get setup.
 
-First use the [apm](https://github.com/atom/apm) command to clone the
-[x-terminal repo](https://github.com/bus-stop/x-terminal).
+First clone the [x-terminal-reloaded repo](https://github.com/Spiker985/x-terminal-reloaded.git). This step does _not_ need to be done with `pulsar --package`, if you already have an existing clone.
 
 ```sh
-apm develop x-terminal
+pulsar --package develop x-terminal
 ```
 
-This should clone the x-terminal package into the `$HOME/github/x-terminal`
-directory. Go into this directory and install its dependencies.
+This should clone the x-terminal-reloaded package into the `$HOME/github/x-terminal`
+directory. Go into this directory (or your pre-existing directory) and install its dependencies.
 
 ```sh
 cd $HOME/github/x-terminal
 npm install
 ```
 
-You shouldn't need to rebuild any [node-pty](https://github.com/Tyriar/node-pty)
+~You shouldn't need to rebuild any [node-pty](https://github.com/Tyriar/node-pty)
 since they are pre-compiled, however in the event they aren't available,
-you can rebuild them with:
+you can rebuild them with:~
+
+You will probably need to rebuild `node-pty` as Pulsar's current electron version is no longer LTS. Please do so with the following:
 
 ```sh
-apm rebuild
+pulsar --package rebuild
 ```
 
-Finally, open this directory in Atom's dev mode and hack away.
+Finally, open this directory in Pulsar's dev mode and hack away.
 
 ```sh
-atom --dev
+pulsar --dev
 ```
 
 There's a test suite available for automated testing of the x-terminal package.
-Simply go to `View > Developer > Run Package Specs` in Atom's main menu or
+Simply go to `View > Developer > Run Package Specs` in Pulsar's main menu or
 use the hotkey. You can run the full test suite (which includes running lint
 tools) via command-line by running `npm run test` inside the x-terminal
 directory.
@@ -343,12 +325,13 @@ the lint tools, simply run `npm run lint`.
 ## Pull Requests
 
 Whenever you're ready to submit a pull request, be sure to submit it
-against a fork of the main [x-terminal repo](https://github.com/bus-stop/x-terminal)
+against a fork of the main [x-terminal repo](https://github.com/Spiker985/x-terminal-reloaded)
 master branch that you'll own. Fork the repo using Github and make note of the
 new `git` URL. Set this new git URL as the URL for the `origin` remote in your
-already cloned git repo is follows.
+already cloned git repo is follows. You can also validate it with `git remote --verbose`
 
 ```sh
+git remote set-url upstream "https://github.com/Spiker985/x-terminal-reloaded.git"
 git remote set-url origin ${NEW_GIT_URL}
 ```
 
@@ -411,15 +394,14 @@ cd ${HOME}/github/x-terminal
 npm link xterm
 ```
 
-Finally, perform a rebuild with the [apm](https://github.com/atom/apm) program
-inside the x-terminal directory.
+Finally, perform a rebuild using pulsar inside the x-terminal directory.
 
 ```sh
-apm rebuild
+pulsar --package rebuild
 ```
 
 You're all set for developing xterm.js. Hack away in your xterm.js directory,
-run `npm run build`, then reload your Atom window to see the changes to your
+run `npm run build`, then reload your Pulsar window to see the changes to your
 terminals.
 
 # Credits and Legal
@@ -432,6 +414,6 @@ Click for copyright and license info about this package.
 
 Need to submit a bug report? Have a new feature you want to see implemented in
 *x-terminal*? Please feel free to submit them through the appropriate
-[issue template](https://github.com/bus-stop/x-terminal/issues/new/choose).
+[issue template](https://github.com/Spiker985/x-terminal-reloaded/issues/new/choose).
 
 For bug reports, please provide images or demos showing your issues if you can.
