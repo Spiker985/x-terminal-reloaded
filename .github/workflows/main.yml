@@ -61,6 +61,12 @@ jobs:
       
       - name: NPM install
         run: npm install
+        
+      - name: Shim apm call
+        run: |
+          cd /usr/bin/
+          # Only neccessary because of attempting to use the apm semantic-release config
+          ln --symbolic --force /usr/bin/ppm apm
       
       - name: Release 🎉
         env:
@@ -68,6 +74,4 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           #Used by ppm to auth for publishing of packages
           ATOM_ACCESS_TOKEN: ${{ secrets.PULSAR_ACCESS_TOKEN }}
-        run: |
-          alias apm="pulsar --package"
-          npx semantic-release
+        run: npx semantic-release
