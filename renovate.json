@@ -1,24 +1,16 @@
 {
-  "config": {
-    "extends": [
-      "github>whitesource/merge-confidence:beta",
-      "config:base"
-    ],
-    "packageRules": [
-      {
-        "matchPackagePatterns": [
-          "^xterm"
-        ],
-        "groupName": "xterm"
-      },
-      {
-        "matchDepTypes": [
-          "devDependencies"
-        ],
-        "automerge": true,
-        "commitMessageTopic": "devDependency {{depName}}"
-      }
-    ],
-    "rangeStrategy": "bump"
-  }
+  "extends": [
+    "config:base"
+  ],
+  "devDependencies": {
+    "automerge": true,
+    "commitMessageTopic": "devDependency {{depName}}"
+  },
+  "packageRules": [
+    {
+      "matchPackagePatterns": "^xterm",
+      "groupName": "xterm"
+    }
+  ],
+  "rangeStrategy": "bump"
 }
