@@ -1,3 +1,11 @@
+## [14.1.3](https://github.com/Spiker985/x-terminal-reloaded/compare/v14.1.2...v14.1.3) (2023-03-03)
+
+
+### Bug Fixes
+
+* **deps:** update dependency fs-extra to v11 ([#10](https://github.com/Spiker985/x-terminal-reloaded/issues/10)) ([b53cbf9](https://github.com/Spiker985/x-terminal-reloaded/commit/b53cbf98b2ff71fa30538d28ad2cf99518da3297))
+* **deps:** update dependency whatwg-url to v12 ([#11](https://github.com/Spiker985/x-terminal-reloaded/issues/11)) ([11e14ec](https://github.com/Spiker985/x-terminal-reloaded/commit/11e14ecbff3c71aa652c24b9b762eb1cdb858471))
+
 ## [14.1.2](https://github.com/Spiker985/x-terminal-reloaded/compare/v14.1.1...v14.1.2) (2023-03-03)
 
 
