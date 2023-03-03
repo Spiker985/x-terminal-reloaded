@@ -1,3 +1,10 @@
+## [14.1.1](https://github.com/Spiker985/x-terminal-reloaded/compare/v14.1.0...v14.1.1) (2023-03-03)
+
+
+### Bug Fixes
+
+* **deps:** update xterm ([8e8edab](https://github.com/Spiker985/x-terminal-reloaded/commit/8e8edaba5c30de706f1034579755c679c9460b36))
+
 ## [14.0.1](https://github.com/bus-stop/x-terminal/compare/v14.0.0...v14.0.1) (2022-10-09)
 
 
