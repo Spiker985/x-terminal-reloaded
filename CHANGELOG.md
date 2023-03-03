@@ -1,3 +1,10 @@
+## [14.1.2](https://github.com/Spiker985/x-terminal-reloaded/compare/v14.1.1...v14.1.2) (2023-03-03)
+
+
+### Bug Fixes
+
+* **deps:** update dependency which to v3 ([#17](https://github.com/Spiker985/x-terminal-reloaded/issues/17)) ([1d76b94](https://github.com/Spiker985/x-terminal-reloaded/commit/1d76b940c33ed1c6662630603ca494398aaec91c))
+
 ## [14.1.1](https://github.com/Spiker985/x-terminal-reloaded/compare/v14.1.0...v14.1.1) (2023-03-03)
 
 
