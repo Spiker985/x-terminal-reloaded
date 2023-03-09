@@ -1,3 +1,10 @@
+## [14.1.4](https://github.com/Spiker985/x-terminal-reloaded/compare/v14.1.3...v14.1.4) (2023-03-09)
+
+
+### Bug Fixes
+
+* **deps:** update dependency whatwg-url to ^12.0.1 ([#23](https://github.com/Spiker985/x-terminal-reloaded/issues/23)) ([119421c](https://github.com/Spiker985/x-terminal-reloaded/commit/119421c245ae94dda1f8c7ab89f25b11178fffe7))
+
 ## [14.1.3](https://github.com/Spiker985/x-terminal-reloaded/compare/v14.1.2...v14.1.3) (2023-03-03)
 
 
