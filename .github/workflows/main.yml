@@ -22,11 +22,11 @@ jobs:
       if: ${{ runner.os == 'Windows' }}
       # Currently the Pulsar process starts, but unlike *nix doesn't wait for ppm to finish, probably because pulsar.cmd needs updated
       # So we'll fallback to ppm (still named apm) instead
-      run: apm install
+      run: apm install --verbose
       
     - name: Install dependencies (*nix)
       if: ${{ runner.os != 'Windows' }}
-      run: pulsar --package install
+      run: pulsar --package install --verbose
             
     - name: Run the headless Pulsar Tests
       uses: coactions/setup-xvfb@v1.0.1
