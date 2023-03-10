@@ -35,7 +35,7 @@
   </a>
 </p>
 <h3 align="center">
-  An xterm based Pulsar plugin for providing terminals inside your workspace!&nbsp;❤️
+  An xterm based  for providing terminals inside your workspace!&nbsp;❤️
 </h3>
 <h5 align="center">A fork of
   <a href="https://web.pulsar-edit.dev/packages/atom-xterm">atom-xterm</a>
@@ -124,7 +124,7 @@ There are also activity notifications for terminal tabs not in focus.
 
 ## Services
 
-For plugin writers, the `x-terminal` package supports three services, `terminal`, `atom-xterm`, and `platformioIDETerminal`, which
+For package writers, the `x-terminal` package supports three services, `terminal`, `atom-xterm`, and `platformioIDETerminal`, which
 can be used to easily open terminals. These methods are provided using Pulsar's [services](https://pulsar-edit.dev/docs/atom-archive/behind-atom/#interacting-with-other-packages-via-services)
 API.
 
