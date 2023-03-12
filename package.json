@@ -6,7 +6,7 @@
   "bugs": {
     "url": "https://github.com/Spiker985/x-terminal-reloaded/issues/new/choose"
   },
-  "version": "14.1.4",
+  "version": "14.1.5",
   "description": "An xterm based plugin for providing terminals inside your workspace. Originally for Atom, updated for Pulsar. A fork of atom-xterm and x-terminal",
   "keywords": [
     "terminal",
