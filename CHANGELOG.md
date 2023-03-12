@@ -1,3 +1,10 @@
+## [14.1.5](https://github.com/Spiker985/x-terminal-reloaded/compare/v14.1.4...v14.1.5) (2023-03-12)
+
+
+### Reverts
+
+* Revert "fix(deps): update dependency which to v3 (#17)" ([247c952](https://github.com/Spiker985/x-terminal-reloaded/commit/247c952d17df8aadb03b9e6e21b8451596357261)), closes [#17](https://github.com/Spiker985/x-terminal-reloaded/issues/17)
+
 ## [14.1.4](https://github.com/Spiker985/x-terminal-reloaded/compare/v14.1.3...v14.1.4) (2023-03-09)
 
 
