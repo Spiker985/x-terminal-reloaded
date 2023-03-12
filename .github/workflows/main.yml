@@ -14,30 +14,20 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
     - uses: actions/checkout@v3
-    
+
     - name: Install Pulsar
       uses: pulsar-edit/action-pulsar-dependency@v3.2
-    
+
     - name: Install dependencies (Windows)
       if: ${{ runner.os == 'Windows' }}
       # Currently the Pulsar process starts, but unlike *nix doesn't wait for ppm to finish, probably because pulsar.cmd needs updated
       # So we'll fallback to ppm (still named apm) instead
       run: apm install --verbose
-      
-    - name: Rebuild native dependencies (Windows)
-      if: ${{ runner.os == 'Windows' }}
-      # Currently the Pulsar process starts, but unlike *nix doesn't wait for ppm to finish, probably because pulsar.cmd needs updated
-      # So we'll fallback to ppm (still named apm) instead
-      run: apm rebuild --verbose
-      
+
     - name: Install dependencies (*nix)
       if: ${{ runner.os != 'Windows' }}
       run: pulsar --package install --verbose
-    
-    - name: Rebuild native dependencies (*nix)
-      if: ${{ runner.os != 'Windows' }}
-      run: pulsar --package rebuild --verbose
-            
+
     - name: Run the headless Pulsar Tests
       uses: coactions/setup-xvfb@v1.0.1
       with:
@@ -62,22 +52,22 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      
+
       - uses: pulsar-edit/action-pulsar-dependency@v3.2
-      
+
       - uses: actions/setup-node@v3
         with:
           node-version: 'lts/*'
-      
+
       - name: NPM install
         run: npm install
-        
+
       - name: Shim apm call
         run: |
           cd /usr/bin/
           # Only neccessary because of attempting to use the apm semantic-release config
           sudo ln --symbolic --force /usr/bin/ppm apm
-      
+
       - name: Release 🎉
         env:
           #Used to allow the CI to push a new release automatically. Intrinsic to GitHub CI.
