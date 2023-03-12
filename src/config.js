@@ -25,6 +25,8 @@ import which from 'which'
 
 export function resetConfigDefaults () {
 	return {
+    debug: false,
+    activeIndicator: '*',
 		command: process.platform === 'win32' ? (process.env.COMSPEC || 'cmd.exe') : (process.env.SHELL || '/bin/sh'),
 		args: '[]',
 		termType: process.env.TERM || 'xterm-256color',
@@ -102,11 +104,41 @@ function configOrder (obj) {
 }
 
 export const config = configOrder({
+  debug: {
+    title: 'Debug',
+    description: 'Debug settings',
+    type: 'boolean',
+    default: configDefaults.debug,
+    profileData: {
+      defaultProfile: configDefaults.debug,
+      toUrlParam: (val) => JSON.stringify(val),
+      fromUrlParam: (val) => JSON.parse(val),
+      checkUrlParam: (val) => (val !== null && val !== ''),
+      toBaseProfile: (previousValue) => validateBooleanConfigSetting('x-terminal-reloaded.debug', configDefaults.debug),
+      fromMenuSetting: (element, baseValue) => element.checked,
+      toMenuSetting: (val) => val,
+    },
+  },
 	spawnPtySettings: {
 		title: 'Shell Process Settings',
 		description: 'Settings related to the process running the shell.',
 		type: 'object',
 		properties: {
+      activeindicator: {
+				title: 'Active Terminal Indicator',
+				description: 'Character(s) to use to indicate the active terminal',
+				type: 'string',
+				default: configDefaults.activeIndicator,
+				profileData: {
+					defaultProfile: configDefaults.activeIndicator,
+					toUrlParam: (val) => val,
+					fromUrlParam: (val) => val,
+					checkUrlParam: (val) => true,
+					toBaseProfile: (previousValue) => (atom.config.get('x-terminal-reloaded.spawnPtySettings.activeindicator') || configDefaults.activeIndicator),
+					fromMenuSetting: (element, baseValue) => (element.getModel().getText() || baseValue),
+					toMenuSetting: (val) => val,
+				},
+			},
 			command: {
 				title: 'Command',
 				description: 'Command to run',
