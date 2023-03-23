@@ -26,7 +26,7 @@ jobs:
 
     - name: Install dependencies (*nix)
       if: ${{ runner.os != 'Windows' }}
-      run: ppm install --verbose
+      run: pulsar --package install --verbose
 
     - name: Run the headless Pulsar Tests
       uses: coactions/setup-xvfb@v1.0.1
