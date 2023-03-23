@@ -55,7 +55,6 @@
   },
   "dependencies": {
     "deep-object-diff": "^1.1.9",
-    "electron-rebuild": "^3.2.9",
     "fs-extra": "^11.1.0",
     "marked": "^4.2.12",
     "node-pty-prebuilt-multiarch": "^0.10.1-pre.5",
@@ -89,8 +88,7 @@
     "lint": "npm run eslint && npm run stylelint",
     "lintfix": "npm run eslint -- --fix && npm run stylelint -- --fix",
     "pulsar-test": "pulsar --test spec",
-    "test": "npm run pulsar-test && npm run lint",
-    "postinstall": "scripts/postinstall.js"
+    "test": "npm run pulsar-test && npm run lint"
   },
   "deserializers": {
     "XTerminalModel": "deserializeXTerminalModel"
