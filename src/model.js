@@ -49,7 +49,6 @@ class XTerminalModel {
 		this.uriCwd = url.searchParams.get('cwd')
 		this.profilesSingleton = XTerminalProfilesSingleton.instance
 		this.profile = this.profilesSingleton.createProfileDataFromUri(this.uri)
-		this.debug = this.profile.debug
 		this.terminals_set = this.options.terminals_set
 		this.activeIndex = this.terminals_set.size
 		this.element = null
@@ -138,7 +137,7 @@ class XTerminalModel {
 	}
 
 	getTitle () {
-		return (this.isActiveTerminal() ? `${this.profile.activeIndicator} ` : '') + this.title
+		return (this.isActiveTerminal() ? '* ' : '') + this.title
 		// return this.activeIndex + '|' + this.title
 	}
 

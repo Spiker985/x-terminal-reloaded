@@ -34,8 +34,6 @@ temp.track()
 describe('XTerminalProfilesSingleton', () => {
 	const getDefaultExpectedProfile = () => {
 		return {
-			debug: true,
-			activeIndicator: 'active',
 			command: 'somecommand',
 			args: [],
 			name: 'sometermtype',
@@ -86,8 +84,6 @@ describe('XTerminalProfilesSingleton', () => {
 	const getDefaultExpectedUrl = () => {
 		const url = new URL('x-terminal-reloaded://somesessionid')
 		const defaultProfile = getDefaultExpectedProfile()
-		url.searchParams.set('debug', defaultProfile.debug)
-		url.searchParams.set('activeIndicator', defaultProfile.activeIndicator)
 		url.searchParams.set('command', defaultProfile.command)
 		url.searchParams.set('args', JSON.stringify(defaultProfile.args))
 		url.searchParams.set('name', defaultProfile.name)
@@ -110,12 +106,6 @@ describe('XTerminalProfilesSingleton', () => {
 	}
 
 	const fakeAtomConfigGet = (key) => {
-		if (key === 'x-terminal-reloaded.debug') {
-			return true
-		}
-		if (key === 'x-terminal-reloaded.spawnPtySettings.activeIndicator') {
-			return 'active'
-		}
 		if (key === 'x-terminal-reloaded.spawnPtySettings.command') {
 			return 'somecommand'
 		}
@@ -320,7 +310,7 @@ describe('XTerminalProfilesSingleton', () => {
 		const expected = {
 			foo: 'bar',
 		}
-		await XTerminalProfilesSingleton?.instance.updateProfiles(expected)
+		await XTerminalProfilesSingleton.instance.updateProfiles(expected)
 		expect(XTerminalProfilesSingleton.instance.profiles).toEqual(expected)
 	})
 
@@ -339,8 +329,6 @@ describe('XTerminalProfilesSingleton', () => {
 		const encoding = atom.config.get('x-terminal-reloaded.spawnPtySettings.encoding') || configDefaults.encoding
 		const title = atom.config.get('x-terminal-reloaded.terminalSettings.title') || configDefaults.title
 		const expected = {
-			debug: atom.config.get('x-terminal-reloaded.debug') || configDefaults.debug,
-			activeIndicator: atom.config.get('x-terminal-reloaded.spawnPtySettings.activeIndicator') || configDefaults.activeIndicator,
 			command: atom.config.get('x-terminal-reloaded.spawnPtySettings.command') || configDefaults.command,
 			args: JSON.parse(atom.config.get('x-terminal-reloaded.spawnPtySettings.args') || configDefaults.args),
 			name: atom.config.get('x-terminal-reloaded.spawnPtySettings.name') || configDefaults.termType,
@@ -391,8 +379,6 @@ describe('XTerminalProfilesSingleton', () => {
 		spyOn(atom.config, 'get').and.callFake(fakeAtomConfigGet)
 		XTerminalProfilesSingleton.instance.resetBaseProfile()
 		const expected = {
-			debug: true,
-			activeIndicator: 'active',
 			command: 'somecommand',
 			args: ['foo', 'bar'],
 			name: 'sometermtype',
@@ -626,8 +612,6 @@ describe('XTerminalProfilesSingleton', () => {
 	it('createProfileDataFromUri() base URI', () => {
 		const url = new URL('x-terminal-reloaded://somesessionid/')
 		const expected = {
-			debug: configDefaults.debug,
-			activeIndicator: configDefaults.activeIndicator,
 			command: configDefaults.command,
 			args: JSON.parse(configDefaults.args),
 			name: configDefaults.termType,
@@ -994,8 +978,6 @@ describe('XTerminalProfilesSingleton', () => {
 
 	it('getDefaultProfile()', () => {
 		const expected = {
-			debug: configDefaults.debug,
-			activeIndicator: configDefaults.activeIndicator,
 			command: configDefaults.command,
 			args: JSON.parse(configDefaults.args),
 			name: configDefaults.termType,
