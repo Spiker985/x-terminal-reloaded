@@ -320,7 +320,7 @@ describe('XTerminalProfilesSingleton', () => {
 		const expected = {
 			foo: 'bar',
 		}
-		await XTerminalProfilesSingleton?.instance.updateProfiles(expected)
+		await XTerminalProfilesSingleton.instance.updateProfiles(expected)
 		expect(XTerminalProfilesSingleton.instance.profiles).toEqual(expected)
 	})
 

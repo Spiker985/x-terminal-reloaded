@@ -138,7 +138,7 @@ class XTerminalModel {
 	}
 
 	getTitle () {
-		return (this.isActiveTerminal() ? `${this.profile.activeIndicator} ` : '') + this.title
+		return (this.isActiveTerminal() ? this.profile.activeIndicator + ' ' : '') + this.title
 		// return this.activeIndex + '|' + this.title
 	}
 
