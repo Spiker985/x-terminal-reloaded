@@ -1,3 +1,10 @@
+# [14.2.0](https://github.com/Spiker985/x-terminal-reloaded/compare/v14.1.5...v14.2.0) (2023-03-28)
+
+
+### Features
+
+* Add active terminal indicator setting ([#32](https://github.com/Spiker985/x-terminal-reloaded/issues/32)) ([96e35b2](https://github.com/Spiker985/x-terminal-reloaded/commit/96e35b213667472f20c9f9c034156f4b703f424f))
+
 ## [14.1.5](https://github.com/Spiker985/x-terminal-reloaded/compare/v14.1.4...v14.1.5) (2023-03-12)
 
 
