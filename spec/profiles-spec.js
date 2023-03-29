@@ -688,6 +688,24 @@ describe('XTerminalProfilesSingleton', () => {
 		expect(XTerminalProfilesSingleton.instance.createProfileDataFromUri(url.href)).toEqual(expected)
 	})
 
+	// todo Add activeIndicator, debug and endOfLineOverride tests
+
+	it('createProfileDataFromUri() URI activeIndicator set to null', () => {
+		const url = getDefaultExpectedUrl()
+		url.searchParams.set('activeIndicator', null)
+		const expected = getDefaultExpectedProfile()
+		expected.activeIndicator = 'null'
+		expect(XTerminalProfilesSingleton.instance.createProfileDataFromUri(url.href)).toEqual(expected)
+	})
+
+	it('createProfileDataFromUri() URI activeIndicator set to empty string', () => {
+		const url = getDefaultExpectedUrl()
+		url.searchParams.set('activeIndicator', '')
+		const expected = getDefaultExpectedProfile()
+		expected.activeIndicator = configDefaults.activeIndicator
+		expect(XTerminalProfilesSingleton.instance.createProfileDataFromUri(url.href)).toEqual(expected)
+	})
+
 	it('createProfileDataFromUri() URI command set to null', () => {
 		const url = getDefaultExpectedUrl()
 		url.searchParams.set('command', null)

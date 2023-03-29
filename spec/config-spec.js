@@ -25,6 +25,12 @@ import os from 'os'
 import path from 'path'
 
 describe('config', () => {
+	describe('debug', () => {
+		it('return false', () => {
+			expect(configDefaults.debug).toBe(false)
+		})
+	})
+
 	describe('shellCommand', () => {
 		const savedPlatform = process.platform
 		const savedEnv = JSON.parse(JSON.stringify(process.env))
@@ -72,6 +78,12 @@ describe('config', () => {
 			const expected = 'somecommand'
 			process.env.SHELL = expected
 			expect(resetConfigDefaults().command).toBe(expected)
+		})
+	})
+
+	describe('activeIndicator', () => {
+		it('return *', () => {
+			expect(configDefaults.activeIndicator).toBe('*')
 		})
 	})
 
@@ -337,6 +349,7 @@ describe('config', () => {
 			expect(configDefaults.allowHiddenToStayActive).toBe(false)
 		})
 	})
+
 	describe('runInActive', () => {
 		it('return false', () => {
 			expect(configDefaults.runInActive).toBe(false)
