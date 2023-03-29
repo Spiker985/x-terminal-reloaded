@@ -87,8 +87,8 @@
     "stylelint": "stylelint styles/*.less",
     "lint": "npm run eslint && npm run stylelint",
     "lintfix": "npm run eslint -- --fix && npm run stylelint -- --fix",
-    "atom-test": "atom --test spec",
-    "test": "npm run atom-test && npm run lint"
+    "editor-test": "pulsar --test spec",
+    "test": "npm run editor-test && npm run lint"
   },
   "deserializers": {
     "XTerminalModel": "deserializeXTerminalModel"
