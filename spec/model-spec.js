@@ -195,7 +195,7 @@ describe('XTerminalModel', () => {
 
 	it('getTitle() when active', () => {
 		spyOn(model, 'isActiveTerminal').and.returnValue(true)
-		expect(model.getTitle()).toBe('* X Terminal')
+		expect(model.getTitle()).toBe(configDefaults.activeIndicator + ' X Terminal')
 	})
 
 	it('getElement()', () => {
