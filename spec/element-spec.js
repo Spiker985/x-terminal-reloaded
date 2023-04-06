@@ -1847,7 +1847,7 @@ describe('XTerminalElement', () => {
 		const args = element.ptyProcess.on.calls.argsFor(0)
 		const onDataCallback = args[1]
 		onDataCallback('')
-		expect(element.model.title).toBe('X Terminal')
+		expect(element.model.title).toBe('X-Terminal-Reloaded')
 	})
 
 	it('on \'data\' handler no custom title on linux platform', async () => {

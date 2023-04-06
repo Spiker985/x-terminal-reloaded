@@ -32,7 +32,7 @@ class XTerminalProfileMenuModel {
 	}
 
 	getTitle () {
-		return 'X Terminal Profile Menu'
+		return 'X-Terminal-Reloaded Profile Menu'
 	}
 
 	getElement () {

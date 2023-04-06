@@ -34,7 +34,7 @@ class XTerminalOverwriteProfileModel {
 	}
 
 	getTitle () {
-		return 'X Terminal Overwrite Profile Model'
+		return 'X-Terminal-Reloaded Overwrite Profile Model'
 	}
 
 	getElement () {
