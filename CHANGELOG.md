@@ -1,3 +1,10 @@
+## [14.2.1](https://github.com/Spiker985/x-terminal-reloaded/compare/v14.2.0...v14.2.1) (2023-04-14)
+
+
+### Bug Fixes
+
+* Cursor blink match theme background ([#40](https://github.com/Spiker985/x-terminal-reloaded/issues/40)) ([4e3e787](https://github.com/Spiker985/x-terminal-reloaded/commit/4e3e78729248f9c2d5a64734a8dae9342067a85b))
+
 # [14.2.0](https://github.com/Spiker985/x-terminal-reloaded/compare/v14.1.5...v14.2.0) (2023-03-28)
 
 
