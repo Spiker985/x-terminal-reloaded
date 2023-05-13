@@ -75,12 +75,19 @@ class XTerminalModel {
 	async initialize () {
 		let cwd
 
-		if (this.uriCwd) {
+    if (this.uriCwd) {
 			cwd = this.uriCwd
 		} else if (this.profile.projectCwd) {
 			const previousActiveItem = atom.workspace.getActivePaneItem()
 			if (typeof previousActiveItem !== 'undefined' && typeof previousActiveItem.getPath === 'function') {
 				cwd = previousActiveItem.getPath()
+				const dir = atom.project.relativizePath(cwd)[0]
+				if (dir) {
+					this.profile.cwd = dir
+					return
+				}
+			} else if (typeof previousActiveItem !== 'undefined' && typeof previousActiveItem.selectedPath === 'string') {
+				cwd = previousActiveItem.selectedPath
 				const dir = atom.project.relativizePath(cwd)[0]
 				if (dir) {
 					this.profile.cwd = dir
