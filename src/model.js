@@ -75,7 +75,7 @@ class XTerminalModel {
 	async initialize () {
 		let cwd
 
-    if (this.uriCwd) {
+		if (this.uriCwd) {
 			cwd = this.uriCwd
 		} else if (this.profile.projectCwd) {
 			const previousActiveItem = atom.workspace.getActivePaneItem()

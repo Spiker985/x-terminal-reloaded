@@ -96,16 +96,16 @@ describe('XTerminalModel', () => {
 		expect(model.getPath()).toBe(configDefaults.cwd)
 	})
 
-  it('constructor with previous active item that has getPath() method', async () => {
-    const previousActiveItem = jasmine.createSpyObj('somemodel', ['getPath'])
-    previousActiveItem['getPath'].and.returnValue(tmpdir)
-    spyOn(atom.workspace, 'getActivePaneItem').and.returnValue(previousActiveItem)
+	it('constructor with previous active item that has getPath() method', async () => {
+		const previousActiveItem = jasmine.createSpyObj('somemodel', ['getPath'])
+		previousActiveItem.getPath.and.returnValue(tmpdir)
+		spyOn(atom.workspace, 'getActivePaneItem').and.returnValue(previousActiveItem)
 		const model = await createNewModel({ projectCwd: true })
 		expect(model.getPath()).toBe(tmpdir)
 	})
 
 	it('constructor with previous active item that has selectedPath property', async () => {
-    const previousActiveItem = jasmine.createSpyObj('somemodel', {}, { ['selectedPath']: '' })
+		const previousActiveItem = jasmine.createSpyObj('somemodel', {}, { selectedPath: '' })
 		Object.getOwnPropertyDescriptor(previousActiveItem, 'selectedPath').get.and.returnValue(tmpdir)
 		spyOn(atom.workspace, 'getActivePaneItem').and.returnValue(previousActiveItem)
 		const model = await createNewModel({ projectCwd: true })
@@ -113,17 +113,17 @@ describe('XTerminalModel', () => {
 	})
 
 	it('constructor with previous active item that has getPath() method that returns file path', async () => {
-    const previousActiveItem = jasmine.createSpyObj('somemodel', ['getPath'])
+		const previousActiveItem = jasmine.createSpyObj('somemodel', ['getPath'])
 		const filePath = path.join(tmpdir, 'somefile')
 		await fs.writeFile(filePath, '')
-		previousActiveItem['getPath'].and.returnValue(filePath)
+		previousActiveItem.getPath.and.returnValue(filePath)
 		spyOn(atom.workspace, 'getActivePaneItem').and.returnValue(previousActiveItem)
 		const model = await createNewModel({ projectCwd: true })
 		expect(model.getPath()).toBe(tmpdir)
 	})
 
 	it('constructor with previous active item that has selectedPath() property that returns file path', async () => {
-    const previousActiveItem = jasmine.createSpyObj('somemodel', {}, { ['selectedPath']: '' })
+		const previousActiveItem = jasmine.createSpyObj('somemodel', {}, { selectedPath: '' })
 		const filePath = path.join(tmpdir, 'somefile')
 		await fs.writeFile(filePath, '')
 		Object.getOwnPropertyDescriptor(previousActiveItem, 'selectedPath').get.and.returnValue(filePath)
@@ -133,15 +133,15 @@ describe('XTerminalModel', () => {
 	})
 
 	it('constructor with previous active item that has getPath() returning invalid path', async () => {
-    const previousActiveItem = jasmine.createSpyObj('somemodel', ['getPath'])
-		previousActiveItem['getPath'].and.returnValue(path.join(tmpdir, 'non-existent-dir'))
+		const previousActiveItem = jasmine.createSpyObj('somemodel', ['getPath'])
+		previousActiveItem.getPath.and.returnValue(path.join(tmpdir, 'non-existent-dir'))
 		spyOn(atom.workspace, 'getActivePaneItem').and.returnValue(previousActiveItem)
 		const model = await createNewModel({ projectCwd: true })
 		expect(model.getPath()).toBe(configDefaults.cwd)
 	})
 
 	it('constructor with previous active item that has selectedPath returning invalid path', async () => {
-    const previousActiveItem = jasmine.createSpyObj('somemodel', {}, { ['selectedPath']: '' })
+		const previousActiveItem = jasmine.createSpyObj('somemodel', {}, { selectedPath: '' })
 		Object.getOwnPropertyDescriptor(previousActiveItem, 'selectedPath').get.and.returnValue(path.join(tmpdir, 'non-existent-dir'))
 		spyOn(atom.workspace, 'getActivePaneItem').and.returnValue(previousActiveItem)
 		const model = await createNewModel({ projectCwd: true })
@@ -149,7 +149,7 @@ describe('XTerminalModel', () => {
 	})
 
 	it('constructor with previous active item which exists in project path and calls getPath', async () => {
-    const previousActiveItem = jasmine.createSpyObj('somemodel', ['getPath'])
+		const previousActiveItem = jasmine.createSpyObj('somemodel', ['getPath'])
 		spyOn(atom.workspace, 'getActivePaneItem').and.returnValue(previousActiveItem)
 		spyOn(atom.project, 'relativizePath').and.returnValue(['/some/dir', null])
 		const model = await createNewModel({ projectCwd: true })
@@ -157,7 +157,7 @@ describe('XTerminalModel', () => {
 	})
 
 	it('constructor with previous active item which exists in project path and calls selectedPath', async () => {
-    const previousActiveItem = jasmine.createSpyObj('somemodel', {}, { ['selectedPath']: '' })
+		const previousActiveItem = jasmine.createSpyObj('somemodel', {}, { selectedPath: '' })
 		spyOn(atom.workspace, 'getActivePaneItem').and.returnValue(previousActiveItem)
 		spyOn(atom.project, 'relativizePath').and.returnValue(['/some/dir', null])
 		const model = await createNewModel({ projectCwd: true })
