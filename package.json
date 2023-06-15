@@ -67,6 +67,11 @@
     "xterm-addon-web-links": "0.8.0",
     "xterm-addon-webgl": "0.14.0"
   },
+  "overrides": {
+    "node-pty-prebuilt-multiarch": {
+      "prebuild-install": "^7.0.0"
+    }
+  },
   "devDependencies": {
     "@semantic-release/apm-config": "^9.0.1",
     "atom-jasmine3-test-runner": "^5.2.13",
