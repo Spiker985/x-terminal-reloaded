@@ -33,7 +33,7 @@ class XTerminalDeleteProfileModel {
 	}
 
 	getTitle () {
-		return 'X Terminal Delete Profile Model'
+		return 'X-Terminal-Reloaded Delete Profile Model'
 	}
 
 	getElement () {

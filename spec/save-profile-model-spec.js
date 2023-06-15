@@ -44,7 +44,7 @@ describe('XTerminalSaveProfileModel', () => {
 
 	it('getTitle()', () => {
 		const model = new XTerminalSaveProfileModel(atomXtermProfileMenuElement)
-		expect(model.getTitle()).toBe('X Terminal Save Profile Model')
+		expect(model.getTitle()).toBe('X-Terminal-Reloaded Save Profile Model')
 	})
 
 	it('getElement()', () => {

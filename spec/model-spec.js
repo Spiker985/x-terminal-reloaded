@@ -184,7 +184,7 @@ describe('XTerminalModel', () => {
 	})
 
 	it('getTitle() with default title', () => {
-		expect(model.getTitle()).toBe('X Terminal')
+		expect(model.getTitle()).toBe('X-Terminal-Reloaded')
 	})
 
 	it('getTitle() with new title', () => {
@@ -195,7 +195,7 @@ describe('XTerminalModel', () => {
 
 	it('getTitle() when active', () => {
 		spyOn(model, 'isActiveTerminal').and.returnValue(true)
-		expect(model.getTitle()).toBe(configDefaults.activeIndicator + ' X Terminal')
+		expect(model.getTitle()).toBe(configDefaults.activeIndicator + ' X-Terminal-Reloaded')
 	})
 
 	it('getElement()', () => {
@@ -211,11 +211,11 @@ describe('XTerminalModel', () => {
 	})
 
 	it('getLongTitle() with default title', () => {
-		expect(model.getLongTitle()).toBe('X Terminal')
+		expect(model.getLongTitle()).toBe('X-Terminal-Reloaded')
 	})
 
 	it('getLongTitle() with new title', () => {
-		const expected = 'X Terminal (some new title)'
+		const expected = 'X-Terminal-Reloaded (some new title)'
 		model.title = 'some new title'
 		expect(model.getLongTitle()).toBe(expected)
 	})
