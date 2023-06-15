@@ -30,7 +30,7 @@ import os from 'os'
 
 import { URL } from 'whatwg-url'
 
-const DEFAULT_TITLE = 'X Terminal'
+const DEFAULT_TITLE = 'X-Terminal-Reloaded'
 
 /**
  * The main terminal model, or rather item, displayed in the Atom workspace.

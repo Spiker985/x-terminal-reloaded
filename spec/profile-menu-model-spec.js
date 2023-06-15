@@ -47,7 +47,7 @@ describe('XTerminalProfileMenuModel', () => {
 
 	it('getTitle()', () => {
 		const model = new XTerminalProfileMenuModel(atomXtermModel)
-		expect(model.getTitle()).toBe('X Terminal Profile Menu')
+		expect(model.getTitle()).toBe('X-Terminal-Reloaded Profile Menu')
 	})
 
 	it('getElement()', () => {

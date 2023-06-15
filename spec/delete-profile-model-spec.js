@@ -37,7 +37,7 @@ describe('XTerminalDeleteProfileModel', () => {
 
 	it('getTitle()', () => {
 		const model = new XTerminalDeleteProfileModel(atomXtermProfileMenuElement)
-		expect(model.getTitle()).toBe('X Terminal Delete Profile Model')
+		expect(model.getTitle()).toBe('X-Terminal-Reloaded Delete Profile Model')
 	})
 
 	it('getElement()', () => {
