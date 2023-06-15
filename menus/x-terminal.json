@@ -77,7 +77,7 @@
       }
     ],
     "atom-text-editor, .tree-view, .tab-bar": [{
-      "label": "X Terminal",
+      "label": "X-Terminal-Reloaded",
       "submenu": [
         {
           "label": "Open New Terminal",
@@ -159,7 +159,7 @@
         "label": "Packages",
         "submenu": [
           {
-            "label": "X Terminal",
+            "label": "X-Terminal-Reloaded",
             "submenu": [{
               "label": "Open New Terminal",
               "command": "x-terminal-reloaded:open"
