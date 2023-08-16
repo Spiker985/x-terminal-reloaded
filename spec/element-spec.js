@@ -18,8 +18,9 @@
  * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
  * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
+import nodeGypBuild from 'node-gyp-build'
+import { * as nodePty } from nodeGypBuild('node-pty')
 
-import * as nodePty from 'node-pty'
 import { shell } from 'electron'
 
 import { configDefaults } from '../src/config'

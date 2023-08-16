@@ -20,7 +20,8 @@
  */
 
 import { CompositeDisposable, Disposable } from 'atom'
-import { spawn as spawnPty } from 'node-pty'
+import nodeGypBuild from 'node-gyp-build'
+import { spawn as spawnPty } from nodeGypBuild('node-pty')
 import { Terminal } from 'xterm'
 import { FitAddon } from 'xterm-addon-fit'
 import { WebLinksAddon } from 'xterm-addon-web-links'
