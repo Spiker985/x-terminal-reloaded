@@ -21,8 +21,8 @@ jobs:
     - name: Install dependencies (Windows)
       if: ${{ runner.os == 'Windows' }}
       # Currently the Pulsar process starts, but unlike *nix doesn't wait for ppm to finish, probably because pulsar.cmd needs updated
-      # So we'll fallback to ppm (still named apm) instead
-      run: apm install --verbose
+      # As of Pulsar version 1.108.0, a ppm binary has been included (which is a clone of apm) with the intention of fully moving away from the apm binary
+      run: ppm install --verbose
       
     - name: Install dependencies (*nix)
       if: ${{ runner.os != 'Windows' }}
