@@ -57,6 +57,11 @@ There are 3 ways to install this package:
 2. Open Pulsar, open Settings (Ctrl + Shift + Comma), click on Install, search for `x-terminal-reloaded`
 3. Install via CLI. `pulsar --package install x-terminal-reloaded` or `pulsar -p install x-terminal-reloaded`
 
+#### Note:
+Due to native module requirements, you may need the C++ toolchain ([Windows](https://visualstudio.microsoft.com/vs/features/cplusplus/), [mac](https://www.cs.rhodes.edu/~kirlinp/courses/cs2/s17/installing-clion/xcode.html), [linux](https://www.google.com/search?q=%3Cdistro%3E+c%252B%252B+toolchain)) and [Python 3.10](https://www.python.org/downloads/release/python-3100/).
+
+Node-pty, which is used for terminal emulation, is a native module and may need to be built for your specific system. Provided you have the tooling listed above, Pulsar will do this for you automatically.
+
 ## Opening Terminals
 
 To open terminals, you can open them through the menu or through the available key bindings.
