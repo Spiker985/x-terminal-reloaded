@@ -1,3 +1,12 @@
+## [14.2.2](https://github.com/Spiker985/x-terminal-reloaded/compare/v14.2.1...v14.2.2) (2023-08-28)
+
+
+### Bug Fixes
+
+* **ci:** Change semantic-release to main ([e67cd19](https://github.com/Spiker985/x-terminal-reloaded/commit/e67cd1902f83cb263c69d287098b134d9f4c2044))
+* **ci:** Use proper key for release branch ([90f9e70](https://github.com/Spiker985/x-terminal-reloaded/commit/90f9e70f086c94d18f7580fb4aa4bc01db8ab09b))
+* use the path of the tree view's selected project as the terminal cwd ([#51](https://github.com/Spiker985/x-terminal-reloaded/issues/51)) ([bdbdb06](https://github.com/Spiker985/x-terminal-reloaded/commit/bdbdb0687aa4052b9d7237b50b6f13ceaca5a5da))
+
 ## [14.2.1](https://github.com/Spiker985/x-terminal-reloaded/compare/v14.2.0...v14.2.1) (2023-04-14)
 
 
