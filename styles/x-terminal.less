@@ -20,10 +20,10 @@
 // The ui-variables file is provided by whatever theme is selected by the
 // user at runtime. See also
 // https://flight-manual.atom.io/hacking-atom/sections/creating-a-theme/#creating-a-ui-theme .
-@import "ui-variables";
-@import "octicon-utf-codes";
-@import "octicon-mixins";
-@import "syntax-variables";
+@import url("ui-variables");
+@import url("octicon-utf-codes");
+@import url("octicon-mixins");
+@import url("syntax-variables");
 
 @profile-menu-background-color: lighten(@app-background-color, 2%);
 @component-size: @component-icon-size; // use for text-less controls like radio, checkboxes etc.
