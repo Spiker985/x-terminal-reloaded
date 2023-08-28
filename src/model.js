@@ -86,6 +86,13 @@ class XTerminalModel {
 					this.profile.cwd = dir
 					return
 				}
+			} else if (typeof previousActiveItem !== 'undefined' && typeof previousActiveItem.selectedPath === 'string') {
+				cwd = previousActiveItem.selectedPath
+				const dir = atom.project.relativizePath(cwd)[0]
+				if (dir) {
+					this.profile.cwd = dir
+					return
+				}
 			} else {
 				cwd = atom.project.getPaths()[0]
 			}
