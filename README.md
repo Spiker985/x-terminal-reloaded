@@ -31,7 +31,7 @@
     <img src="https://img.shields.io/cirrus/github/pulsar-edit/pulsar/master?label=Pulsar%20%28rolling%29&style=flat-square" alt="Pulsar download page">
   </a>
   <a href="https://web.pulsar-edit.dev/packages/x-terminal-reloaded">
-    <img src="https://img.shields.io/badge/Pulsar%20package-entry-informational?style=flat-square">
+    <img src="https://img.shields.io/pulsar/dt/x-terminal-reloaded?style=flat-square">
   </a>
 </p>
 <h3 align="center">
