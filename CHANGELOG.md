@@ -1,3 +1,10 @@
+## [14.2.6](https://github.com/Spiker985/x-terminal-reloaded/compare/v14.2.5...v14.2.6) (2023-08-29)
+
+
+### Bug Fixes
+
+* **deps:** update dependency marked to ^4.3.0 ([#30](https://github.com/Spiker985/x-terminal-reloaded/issues/30)) ([e90acce](https://github.com/Spiker985/x-terminal-reloaded/commit/e90acce25887e54d760ff000df91499a6384ef23))
+
 ## [14.2.5](https://github.com/Spiker985/x-terminal-reloaded/compare/v14.2.4...v14.2.5) (2023-08-29)
 
 
