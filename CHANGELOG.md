@@ -1,3 +1,10 @@
+## [14.2.4](https://github.com/Spiker985/x-terminal-reloaded/compare/v14.2.3...v14.2.4) (2023-08-29)
+
+
+### Bug Fixes
+
+* **deps:** update dependency fs-extra to ^11.1.1 ([#29](https://github.com/Spiker985/x-terminal-reloaded/issues/29)) ([8f28c4b](https://github.com/Spiker985/x-terminal-reloaded/commit/8f28c4b831984e09375c2c162d781464f47679c5))
+
 ## [14.2.3](https://github.com/Spiker985/x-terminal-reloaded/compare/v14.2.2...v14.2.3) (2023-08-29)
 
 
