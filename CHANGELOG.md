@@ -1,3 +1,10 @@
+## [14.2.5](https://github.com/Spiker985/x-terminal-reloaded/compare/v14.2.4...v14.2.5) (2023-08-29)
+
+
+### Bug Fixes
+
+* **deps:** update xterm ([#58](https://github.com/Spiker985/x-terminal-reloaded/issues/58)) ([3aba8b8](https://github.com/Spiker985/x-terminal-reloaded/commit/3aba8b81446d46323fdd0deea172b5e45560e28d))
+
 ## [14.2.4](https://github.com/Spiker985/x-terminal-reloaded/compare/v14.2.3...v14.2.4) (2023-08-29)
 
 
