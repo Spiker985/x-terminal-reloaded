@@ -16,22 +16,25 @@
 <br>
 <p align="center">
   <a href="https://github.com/Spiker985/x-terminal-reloaded/actions/workflows/main.yml">
-    <img src="https://img.shields.io/github/actions/workflow/status/Spiker985/x-terminal-reloaded/main.yml?style=flat-square&logo=github&label=CI%20status" alt="actions status">
+    <img src="https://img.shields.io/github/actions/workflow/status/Spiker985/x-terminal-reloaded/main.yml?style=flat-square&logo=github&label=CI%20status" alt="CI status">
   </a>
   <a href="https://github.com/Spiker985/x-terminal-reloaded/tags">
-    <img src="https://img.shields.io/github/tag/Spiker985/x-terminal-reloaded.svg?label=current%20version&style=flat-square" alt="version">
-  </a>
-  <a href="https://github.com/Spiker985/x-terminal-reloaded/stargazers">
-    <img src="https://img.shields.io/github/stars/Spiker985/x-terminal-reloaded.svg?style=flat-square" alt="stars">
-  </a>
-  <a href="https://github.com/Spiker985/x-terminal-reloaded/network">
-    <img src="https://img.shields.io/github/forks/Spiker985/x-terminal-reloaded.svg?style=flat-square" alt="forks">
-  </a>
-  <a href="https://pulsar-edit.dev/download.html">
-    <img src="https://img.shields.io/cirrus/github/pulsar-edit/pulsar/master?label=Pulsar%20%28rolling%29&style=flat-square" alt="Pulsar download page">
+    <img src="https://img.shields.io/github/tag/Spiker985/x-terminal-reloaded.svg?label=current%20version&style=flat-square" alt="Latest Version">
   </a>
   <a href="https://web.pulsar-edit.dev/packages/x-terminal-reloaded">
-    <img src="https://img.shields.io/pulsar/dt/x-terminal-reloaded?style=flat-square">
+    <img src="https://img.shields.io/pulsar/dt/x-terminal-reloaded?style=flat-square" alt="Pulsar package repository link">
+  </a>
+  <a href="https://github.com/Spiker985/x-terminal-reloaded/stargazers">
+    <img src="https://img.shields.io/github/stars/Spiker985/x-terminal-reloaded.svg?style=flat-square" alt="GitHub Stars">
+  </a>
+  <a href="https://github.com/Spiker985/x-terminal-reloaded/network">
+    <img src="https://img.shields.io/github/forks/Spiker985/x-terminal-reloaded.svg?style=flat-square" alt="GitHub Forks">
+  </a>
+  <a href="https://pulsar-edit.dev/download.html#rolling-release">
+    <img src="https://img.shields.io/github/actions/workflow/status/pulsar-edit/pulsar/build.yml?style=flat-square&label=Pulsar%20(rolling)" alt="Pulsar download page direct to rolling download">
+  </a>
+  <a href="https://pulsar-edit.dev/download.html#regular-releases">
+    <img src="https://img.shields.io/github/downloads/pulsar-edit/pulsar/latest/total?style=flat-square&label=Pulsar%20(regular)" alt="Pulsar download page direct to regular download">
   </a>
 </p>
 <h3 align="center">
