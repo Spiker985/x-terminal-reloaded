@@ -542,16 +542,18 @@ class XTerminalElementImpl extends HTMLElement {
 		messageDiv.appendChild(restartButton)
 		this.topDiv.innerHTML = ''
 		this.topDiv.appendChild(messageDiv)
-		if (infoType === 'success') {
-			atom.notifications.addSuccess(message)
-		} else if (infoType === 'error') {
-			atom.notifications.addError(message)
-		} else if (infoType === 'warning') {
-			atom.notifications.addWarning(message)
-		} else if (infoType === 'info') {
-			atom.notifications.addInfo(message)
-		} else {
-			throw new Error('Unknown info type: ' + infoType)
+		if (this.model.profile.showNotifications) {
+			if (infoType === 'success') {
+				atom.notifications.addSuccess(message)
+			} else if (infoType === 'error') {
+				atom.notifications.addError(message)
+			} else if (infoType === 'warning') {
+				atom.notifications.addWarning(message)
+			} else if (infoType === 'info') {
+				atom.notifications.addInfo(message)
+			} else {
+				throw new Error('Unknown info type: ' + infoType)
+			}
 		}
 	}
 
