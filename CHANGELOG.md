@@ -1,3 +1,10 @@
+# [14.3.0](https://github.com/Spiker985/x-terminal-reloaded/compare/v14.2.6...v14.3.0) (2023-10-09)
+
+
+### Features
+
+* Add configuration for Terminal Notifications ([#82](https://github.com/Spiker985/x-terminal-reloaded/issues/82)) ([8a1a063](https://github.com/Spiker985/x-terminal-reloaded/commit/8a1a06393b3d482f2a5fcbad28b322ede5febd26))
+
 ## [14.2.6](https://github.com/Spiker985/x-terminal-reloaded/compare/v14.2.5...v14.2.6) (2023-08-29)
 
 
