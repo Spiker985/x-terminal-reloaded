@@ -79,7 +79,7 @@
     "postcss-less": "^6.0.0",
     "semantic-release": "^22.0.5",
     "stylelint-config-standard": "^34.0.0",
-    "stylelint": "^15.10.3",
+    "stylelint": "^15.11.0",
     "stylelint-stylistic": "^0.4.3",
     "temp": "^0.9.4"
   },
