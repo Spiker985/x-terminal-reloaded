@@ -1,23 +1,32 @@
 {
   "extends": [
-    "config:base"
+    "config:recommended"
   ],
-  "devDependencies": {
-    "automerge": true,
-    "commitMessageTopic": "devDependency {{depName}}"
-  },
   "packageRules": [
     {
-      "matchPackagePatterns": "^xterm",
-      "groupName": "xterm"
+      "groupName": "xterm",
+      "matchPackageNames": [
+        "/^xterm/"
+      ]
     },
     {
-      "matchPackagePatterns": "^eslint",
-      "groupName": "eslint"
+      "groupName": "eslint",
+      "matchPackageNames": [
+        "/^eslint/"
+      ]
     },
     {
-      "matchPackagePatterns": "^stylelint",
-      "groupName": "stylelint"
+      "groupName": "stylelint",
+      "matchPackageNames": [
+        "/^stylelint/"
+      ]
+    },
+    {
+      "matchDepTypes": [
+        "devDependencies"
+      ],
+      "automerge": true,
+      "commitMessageTopic": "devDependency {{depName}}"
     }
   ],
   "rangeStrategy": "bump"
