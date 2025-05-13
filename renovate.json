@@ -10,11 +10,11 @@
     {
       "matchPackagePatterns": "^xterm",
       "groupName": "xterm"
-    }
+    },
     {
       "matchPackagePatterns": "^eslint",
       "groupName": "eslint"
-    }
+    },
     {
       "matchPackagePatterns": "^stylelint",
       "groupName": "stylelint"
