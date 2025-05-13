@@ -16,7 +16,7 @@ jobs:
     - uses: actions/checkout@v4
     
     - name: Install Pulsar
-      uses: pulsar-edit/action-pulsar-dependency@v3.3
+      uses: pulsar-edit/action-pulsar-dependency@v3.4
     
     - name: Install dependencies (Windows)
       if: ${{ runner.os == 'Windows' }}
@@ -53,7 +53,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       
-      - uses: pulsar-edit/action-pulsar-dependency@v3.3
+      - uses: pulsar-edit/action-pulsar-dependency@v3.4
       
       - uses: actions/setup-node@v3
         with:
