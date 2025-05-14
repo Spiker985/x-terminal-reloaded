@@ -80,7 +80,7 @@
     "semantic-release": "^22.0.7",
     "stylelint-config-standard": "^34.0.0",
     "stylelint": "^15.11.0",
-    "stylelint-stylistic": "^0.4.3",
+    "stylelint-stylistic": "^0.4.5",
     "temp": "^0.9.4"
   },
   "scripts": {
