@@ -7,11 +7,40 @@ on:
       - 'feature/*'
 
 jobs:
-  Test:
+  Test-GA:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest, macos-latest, windows-2019]
+        # Should be the static versions of the current "-latest" runners
+        os: [ubuntu-24.04, macos-14, windows-2022]
+    runs-on: ${{ matrix.os }}
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Install Pulsar
+      uses: pulsar-edit/action-pulsar-dependency@v3.4
+    
+    - name: Install dependencies (Windows)
+      if: ${{ runner.os == 'Windows' }}
+      # Currently the Pulsar process starts, but unlike *nix doesn't wait for ppm to finish, probably because pulsar.cmd needs updated
+      # As of Pulsar version 1.108.0, a ppm binary has been included (which is a clone of apm) with the intention of fully moving away from the apm binary
+      run: ppm install --verbose
+      
+    - name: Install dependencies (*nix)
+      if: ${{ runner.os != 'Windows' }}
+      run: pulsar --package install --verbose
+            
+    - name: Run the headless Pulsar Tests
+      uses: coactions/setup-xvfb@v1.0.1
+      with:
+        run: pulsar --test spec
+        
+  Test-RC:
+    strategy:
+      fail-fast: false
+      matrix:
+        # Should be the "-latest" runners to test before a new runner is promoted
+        os: [ubuntu-latest, macos-latest, windows-latest]
     runs-on: ${{ matrix.os }}
     steps:
     - uses: actions/checkout@v4
@@ -47,7 +76,7 @@ jobs:
         run: npm run lint
 
   Release:
-    needs: [Test, Lint]
+    needs: [Test-GA, Lint]
     if: |
       github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
