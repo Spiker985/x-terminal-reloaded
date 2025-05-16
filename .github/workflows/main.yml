@@ -16,18 +16,27 @@ jobs:
     runs-on: ${{ matrix.os }}
     timeout-minutes: 90
     steps:
-    - uses: actions/checkout@v4
+    - name: Checkout repo
+      uses: actions/checkout@v4
+
+    - name: Setup Node
+      uses: actions/setup-node@v4.4.0
+      with:
+        node-version: 'lts/*'
+    
+    - name: Install dependencies
+      run: npm install --verbose
     
     - name: Install Pulsar
       uses: pulsar-edit/action-pulsar-dependency@v3.4
-    
-    - name: Install dependencies (Windows)
+
+    - name: Rebuild dependencies (Windows)
       if: ${{ runner.os == 'Windows' }}
       # Currently the Pulsar process starts, but unlike *nix doesn't wait for ppm to finish, probably because pulsar.cmd needs updated
       # As of Pulsar version 1.108.0, a ppm binary has been included (which is a clone of apm) with the intention of fully moving away from the apm binary
-      run: ppm install --verbose
+      run: ppm rebuild --verbose
       
-    - name: Install dependencies (*nix)
+    - name: Rebuild dependencies (*nix)
       if: ${{ runner.os != 'Windows' }}
       run: pulsar --package install --verbose
             
@@ -37,6 +46,7 @@ jobs:
         run: pulsar --test spec
         
   Test-RC:
+    needs: [Test-GA]
     strategy:
       fail-fast: false
       matrix:
@@ -46,17 +56,27 @@ jobs:
     timeout-minutes: 90
     steps:
     - uses: actions/checkout@v4
+    - name: Checkout repo
+      uses: actions/checkout@v4
+
+    - name: Setup Node
+      uses: actions/setup-node@v4.4.0
+      with:
+        node-version: 'lts/*'
+    
+    - name: Install dependencies
+      run: npm install --verbose
     
     - name: Install Pulsar
       uses: pulsar-edit/action-pulsar-dependency@v3.4
-    
-    - name: Install dependencies (Windows)
+
+    - name: Rebuild dependencies (Windows)
       if: ${{ runner.os == 'Windows' }}
       # Currently the Pulsar process starts, but unlike *nix doesn't wait for ppm to finish, probably because pulsar.cmd needs updated
       # As of Pulsar version 1.108.0, a ppm binary has been included (which is a clone of apm) with the intention of fully moving away from the apm binary
-      run: ppm install --verbose
+      run: ppm rebuild --verbose
       
-    - name: Install dependencies (*nix)
+    - name: Rebuild dependencies (*nix)
       if: ${{ runner.os != 'Windows' }}
       run: pulsar --package install --verbose
             
@@ -68,12 +88,17 @@ jobs:
   Lint:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v3
+      - name: Checkout repot
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4.4.0
         with:
           node-version: 'lts/*'
-      - name: NPM install
-        run: npm install
+
+      - name: Install package
+        run: npm install --legacy-peer-deps
+
       - name: Lint ✨
         run: npm run lint
 
