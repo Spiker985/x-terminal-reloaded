@@ -19,7 +19,7 @@
  * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import * as nodePty from 'node-pty-prebuilt-multiarch'
+import * as nodePty from 'node-pty'
 import { shell } from 'electron'
 
 import { configDefaults } from '../src/config'

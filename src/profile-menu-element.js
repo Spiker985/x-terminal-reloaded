@@ -294,7 +294,7 @@ class XTerminalProfileMenuElementImpl extends HTMLElement {
 			if (initialValue.constructor === Array || initialValue.constructor === Object) {
 				textbox.setText(JSON.stringify(initialValue))
 			} else {
-				textbox.setText(initialValue)
+				textbox.setText(initialValue.toString())
 			}
 		}
 		menuItemContainer.appendChild(textbox.getElement())
