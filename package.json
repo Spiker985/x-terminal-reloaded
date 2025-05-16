@@ -79,7 +79,7 @@
     "eslint-plugin-jasmine": "^4.2.2",
     "globals": "^16.1.0",
     "postcss-less": "^6.0.0",
-    "semantic-release": "^22.0.7",
+    "semantic-release": "^22.0.12",
     "stylelint": "^16.19.1",
     "stylelint-config-standard": "^38.0.0",
     "temp": "^0.9.4"
