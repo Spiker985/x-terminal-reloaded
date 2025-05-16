@@ -63,8 +63,8 @@ x-terminal-reloaded-profile {
 	overflow: auto;
 	visibility: hidden;
 	display: grid;
-	grid-template-columns: (@component-padding * 5) auto (@component-padding * 5);
-	grid-template-rows: (@component-padding * 5) auto (@component-padding * 5);
+	grid-template-columns: (@component-padding * 5) auto (@component-padding * 5); /* stylelint-disable-line declaration-property-value-no-unknown */
+	grid-template-rows: (@component-padding * 5) auto (@component-padding * 5); /* stylelint-disable-line declaration-property-value-no-unknown */
 	grid-template-areas: "top top top" "left main right" "bottom bottom bottom";
 }
 
@@ -289,12 +289,12 @@ x-terminal-reloaded-profile {
 
 		&:hover {
 			background-color: @button-background-color-hover;
-			color: lighten(@text-color, 20%);
+			color: lighten(@text-color, 20%); /* stylelint-disable-line declaration-property-value-no-unknown */
 		}
 
 		&:focus {
 			background-color: @button-background-color-hover;
-			color: lighten(@text-color, 20%);
+			color: lighten(@text-color, 20%); /* stylelint-disable-line declaration-property-value-no-unknown */
 			border-color: @accent-color;
 		}
 	}
@@ -319,8 +319,8 @@ x-terminal-reloaded-profile {
 
 .x-terminal-reloaded-notice-type(@tx; @bg) {
 	@x-terminal-reloaded-notice-background-color: mix(@bg, @base-background-color, 10%);
-	color: contrast(@x-terminal-reloaded-notice-background-color, darken(@tx, 20%), lighten(@tx, 20%));
-	border-color: lighten(@x-terminal-reloaded-notice-background-color, 10%);
+	color: contrast(@x-terminal-reloaded-notice-background-color, darken(@tx, 20%), lighten(@tx, 20%)); /* stylelint-disable-line declaration-property-value-no-unknown */
+	border-color: lighten(@x-terminal-reloaded-notice-background-color, 10%); /* stylelint-disable-line declaration-property-value-no-unknown */
 	background-color: @x-terminal-reloaded-notice-background-color;
 	border-style: solid;
 	font-size: @input-font-size;
@@ -351,3 +351,4 @@ x-terminal-reloaded-profile {
 }
 // Load the static styles here.
 @import (less) "../node_modules/xterm/css/xterm.css";
+/* stylelint-disable-next-line */
