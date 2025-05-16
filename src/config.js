@@ -290,7 +290,7 @@ export const config = configOrder({
 		properties: {
 			webgl: {
 				title: 'WebGL Renderer',
-				description: 'Enable the WebGL-based renderer using the xterm.js [WebGL addon](https://github.com/xtermjs/xterm.js/tree/master/addons/xterm-addon-webgl)',
+				description: 'Enable the WebGL-based renderer using the xterm.js [WebGL addon](https://github.com/xtermjs/xterm.js/tree/master/addons/addon-webgl)',
 				type: 'boolean',
 				default: configDefaults.webgl,
 				profileData: {
@@ -305,7 +305,7 @@ export const config = configOrder({
 			},
 			webLinks: {
 				title: 'Web Links',
-				description: 'Enable clickable web links using the xterm.js [Web links addon](https://github.com/xtermjs/xterm.js/tree/master/addons/xterm-addon-web-links)',
+				description: 'Enable clickable web links using the xterm.js [Web links addon](https://github.com/xtermjs/xterm.js/tree/master/addons/addon-web-links)',
 				type: 'boolean',
 				default: configDefaults.webLinks,
 				profileData: {

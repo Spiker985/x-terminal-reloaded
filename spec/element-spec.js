@@ -1260,9 +1260,9 @@ describe('XTerminalElement', () => {
 	})
 
 	describe('loaded addons', () => {
-		const { Terminal } = require('xterm')
-		const { WebLinksAddon } = require('xterm-addon-web-links')
-		const { WebglAddon } = require('xterm-addon-webgl')
+		const { Terminal } = require('@xterm/xterm')
+		const { WebLinksAddon } = require('@xterm/addon-web-links')
+		const { WebglAddon } = require('@xterm/addon-webgl')
 
 		beforeEach(() => {
 			spyOn(Terminal.prototype, 'loadAddon').and.callThrough()

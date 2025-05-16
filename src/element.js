@@ -21,11 +21,11 @@
 
 import { CompositeDisposable, Disposable } from 'atom'
 import { spawn as spawnPty } from 'node-pty-prebuilt-multiarch'
-import { Terminal } from 'xterm'
-import { FitAddon } from 'xterm-addon-fit'
-import { WebLinksAddon } from 'xterm-addon-web-links'
-import { WebglAddon } from 'xterm-addon-webgl'
-import { LigaturesAddon } from 'xterm-addon-ligatures'
+import { Terminal } from '@xterm/xterm'
+import { FitAddon } from '@xterm/addon-fit'
+import { WebLinksAddon } from '@xterm/addon-web-links'
+import { WebglAddon } from '@xterm/addon-webgl'
+import { LigaturesAddon } from '@xterm/addon-ligatures'
 import { shell } from 'electron'
 
 import { configDefaults, COLORS, CONFIG_DATA } from './config'
