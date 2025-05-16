@@ -252,6 +252,7 @@ x-terminal-reloaded-profile {
 		&::before {
 			content: @settings;
 			.octicon-font();
+
 			margin-right: @component-padding;
 		}
 	}
@@ -260,6 +261,7 @@ x-terminal-reloaded-profile {
 		&::before {
 			content: @file;
 			.octicon-font();
+
 			margin-right: @component-padding;
 		}
 	}
@@ -268,6 +270,7 @@ x-terminal-reloaded-profile {
 		&::before {
 			content: @trashcan;
 			.octicon-font();
+
 			margin-right: @component-padding;
 		}
 	}
@@ -276,6 +279,7 @@ x-terminal-reloaded-profile {
 		&::before {
 			content: @terminal;
 			.octicon-font();
+
 			margin-right: @component-padding;
 		}
 	}
@@ -284,6 +288,7 @@ x-terminal-reloaded-profile {
 		&::before {
 			content: @sign-out;
 			.octicon-font();
+
 			margin-right: @component-padding;
 		}
 
@@ -307,6 +312,7 @@ x-terminal-reloaded-profile {
 	&::before {
 		content: @arrow-right;
 		.octicon-font();
+
 		margin-right: @component-padding;
 	}
 }
@@ -319,6 +325,7 @@ x-terminal-reloaded-profile {
 
 .x-terminal-reloaded-notice-type(@tx; @bg) {
 	@x-terminal-reloaded-notice-background-color: mix(@bg, @base-background-color, 10%);
+
 	color: contrast(@x-terminal-reloaded-notice-background-color, darken(@tx, 20%), lighten(@tx, 20%)); /* stylelint-disable-line declaration-property-value-no-unknown */
 	border-color: lighten(@x-terminal-reloaded-notice-background-color, 10%); /* stylelint-disable-line declaration-property-value-no-unknown */
 	background-color: @x-terminal-reloaded-notice-background-color;
@@ -349,6 +356,7 @@ x-terminal-reloaded-profile {
 .x-terminal-reloaded-notice-error {
 	.x-terminal-reloaded-notice-type(@text-color-error; @background-color-error);
 }
+
 // Load the static styles here.
 /* stylelint-disable-next-line */
 @import (less) "../node_modules/@xterm/xterm/css/xterm.css";

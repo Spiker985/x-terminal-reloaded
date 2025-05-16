@@ -49,7 +49,8 @@ describe('config', () => {
 			if (process.env.COMSPEC) {
 				delete process.env.COMSPEC
 			}
-			expect(resetConfigDefaults().command).toBe('cmd.exe')
+
+   expect(resetConfigDefaults().command).toBe('cmd.exe')
 		})
 
 		it('on win32 with COMSPEC set', () => {
@@ -58,7 +59,8 @@ describe('config', () => {
 			})
 			const expected = 'somecommand.exe'
 			process.env.COMSPEC = expected
-			expect(resetConfigDefaults().command).toBe(expected)
+
+   expect(resetConfigDefaults().command).toBe(expected)
 		})
 
 		it('on linux without SHELL set', () => {
@@ -68,7 +70,8 @@ describe('config', () => {
 			if (process.env.SHELL) {
 				delete process.env.SHELL
 			}
-			expect(resetConfigDefaults().command).toBe('/bin/sh')
+
+   expect(resetConfigDefaults().command).toBe('/bin/sh')
 		})
 
 		it('on linux with SHELL set', () => {
@@ -77,7 +80,8 @@ describe('config', () => {
 			})
 			const expected = 'somecommand'
 			process.env.SHELL = expected
-			expect(resetConfigDefaults().command).toBe(expected)
+
+   expect(resetConfigDefaults().command).toBe(expected)
 		})
 	})
 
@@ -108,13 +112,15 @@ describe('config', () => {
 			if (process.env.TERM) {
 				delete process.env.TERM
 			}
-			expect(resetConfigDefaults().termType).toBe('xterm-256color')
+
+   expect(resetConfigDefaults().termType).toBe('xterm-256color')
 		})
 
 		it('with TERM set', () => {
 			const expected = 'sometermtype'
 			process.env.TERM = expected
-			expect(resetConfigDefaults().termType).toBe(expected)
+
+   expect(resetConfigDefaults().termType).toBe(expected)
 		})
 	})
 
@@ -139,7 +145,8 @@ describe('config', () => {
 			})
 			const expected = 'C:\\some\\dir'
 			process.env.USERPROFILE = expected
-			expect(resetConfigDefaults().cwd).toBe(expected)
+
+   expect(resetConfigDefaults().cwd).toBe(expected)
 		})
 
 		it('on linux', () => {
@@ -148,7 +155,8 @@ describe('config', () => {
 			})
 			const expected = '/some/dir'
 			process.env.HOME = expected
-			expect(resetConfigDefaults().cwd).toBe(expected)
+
+   expect(resetConfigDefaults().cwd).toBe(expected)
 		})
 	})
 
@@ -203,12 +211,14 @@ describe('config', () => {
 	describe('fontFamily', () => {
 		it('uses editor\'s font', () => {
 			atom.config.set('editor.fontFamily', 'Cascadia Code PL')
-			expect(resetConfigDefaults().fontFamily).toBe('Cascadia Code PL')
+
+   expect(resetConfigDefaults().fontFamily).toBe('Cascadia Code PL')
 		})
 
 		it('uses \'monospace\' when the editor font is not set', () => {
 			atom.config.set('editor.fontFamily', '')
-			expect(resetConfigDefaults().fontFamily).toBe('monospace')
+
+   expect(resetConfigDefaults().fontFamily).toBe('monospace')
 		})
 	})
 
@@ -403,7 +413,8 @@ describe('config', () => {
 				delete process.env.APPDATA
 			}
 			const expected = path.join(os.homedir(), 'AppData', 'Roaming', 'x-terminal-reloaded')
-			expect(resetConfigDefaults().userDataPath).toBe(expected)
+
+   expect(resetConfigDefaults().userDataPath).toBe(expected)
 		})
 
 		it('on win32 with APPDATA set', () => {
@@ -412,7 +423,8 @@ describe('config', () => {
 			})
 			process.env.APPDATA = path.join('/some', 'dir')
 			const expected = path.join(process.env.APPDATA, 'x-terminal-reloaded')
-			expect(resetConfigDefaults().userDataPath).toBe(expected)
+
+   expect(resetConfigDefaults().userDataPath).toBe(expected)
 		})
 
 		it('on darwin', () => {
@@ -420,7 +432,8 @@ describe('config', () => {
 				value: 'darwin',
 			})
 			const expected = path.join(os.homedir(), 'Library', 'Application Support', 'x-terminal-reloaded')
-			expect(resetConfigDefaults().userDataPath).toBe(expected)
+
+   expect(resetConfigDefaults().userDataPath).toBe(expected)
 		})
 
 		it('on linux without XDG_CONFIG_HOME set', () => {
@@ -431,7 +444,8 @@ describe('config', () => {
 				delete process.env.XDG_CONFIG_HOME
 			}
 			const expected = path.join(os.homedir(), '.config', 'x-terminal-reloaded')
-			expect(resetConfigDefaults().userDataPath).toBe(expected)
+
+   expect(resetConfigDefaults().userDataPath).toBe(expected)
 		})
 
 		it('on linux with XDG_CONFIG_HOME set', () => {
@@ -440,7 +454,8 @@ describe('config', () => {
 			})
 			process.env.XDG_CONFIG_HOME = path.join('/some', 'dir')
 			const expected = path.join(process.env.XDG_CONFIG_HOME, 'x-terminal-reloaded')
-			expect(resetConfigDefaults().userDataPath).toBe(expected)
+
+   expect(resetConfigDefaults().userDataPath).toBe(expected)
 		})
 	})
 

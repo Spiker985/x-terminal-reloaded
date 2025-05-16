@@ -188,7 +188,9 @@ class XTerminalElementImpl extends HTMLElement {
 				if (stats && stats.isDirectory()) {
 					return true
 				}
-			} catch (err) {}
+			} catch (err) {
+				return false
+			}
 		}
 
 		return false

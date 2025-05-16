@@ -75,13 +75,15 @@ describe('XTerminalProfileMenuElement', () => {
 			],
 		)
 		element.destroy()
-		expect(element.disposables.dispose).toHaveBeenCalled()
+
+  expect(element.disposables.dispose).toHaveBeenCalled()
 	})
 
 	it('getModelProfile()', () => {
 		const mock = jasmine.createSpy('mock')
 		element.model.atomXtermModel.profile = mock
-		expect(element.getModelProfile()).toBe(mock)
+
+  expect(element.getModelProfile()).toBe(mock)
 	})
 
 	it('getMenuElements()', () => {
@@ -91,81 +93,96 @@ describe('XTerminalProfileMenuElement', () => {
 	it('getProfileMenuSettings()', () => {
 		const expected = element.profilesSingleton.getBaseProfile()
 		const actual = element.getProfileMenuSettings()
-		expect(actual).toEqual(expected)
+
+  expect(actual).toEqual(expected)
 	})
 
 	it('applyProfileChanges()', () => {
 		element.applyProfileChanges('foo')
-		expect(element.model.getXTerminalModel().applyProfileChanges).toHaveBeenCalledWith('foo')
+
+  expect(element.model.getXTerminalModel().applyProfileChanges).toHaveBeenCalledWith('foo')
 	})
 
 	it('applyProfileChanges() profile menu hidden', () => {
 		spyOn(element, 'hideProfileMenu')
 		element.applyProfileChanges('foo')
-		expect(element.hideProfileMenu).toHaveBeenCalled()
+
+  expect(element.hideProfileMenu).toHaveBeenCalled()
 	})
 
 	it('restartTerminal()', () => {
 		element.restartTerminal()
-		expect(element.model.getXTerminalModelElement().restartPtyProcess).toHaveBeenCalled()
+
+  expect(element.model.getXTerminalModelElement().restartPtyProcess).toHaveBeenCalled()
 	})
 
 	it('restartTerminal() profile menu hidden', () => {
 		spyOn(element, 'hideProfileMenu')
 		element.restartTerminal()
-		expect(element.hideProfileMenu).toHaveBeenCalled()
+
+  expect(element.hideProfileMenu).toHaveBeenCalled()
 	})
 
 	it('createMenuItemContainer() check id', () => {
 		const container = element.createMenuItemContainer('foo', 'bar', 'baz')
-		expect(container.getAttribute('id')).toBe('foo')
+
+  expect(container.getAttribute('id')).toBe('foo')
 	})
 
 	it('createMenuItemContainer() check title', () => {
 		const container = element.createMenuItemContainer('foo', 'bar', 'baz')
 		const titleDiv = container.querySelector('.x-terminal-reloaded-profile-menu-item-title')
-		expect(titleDiv.textContent).toBe('bar')
+
+  expect(titleDiv.textContent).toBe('bar')
 	})
 
 	it('createMenuItemContainer() check description', () => {
 		const container = element.createMenuItemContainer('foo', 'bar', 'baz')
 		const descriptionDiv = container.querySelector('.x-terminal-reloaded-profile-menu-item-description')
-		expect(descriptionDiv.innerHTML).toBe('<p>baz</p>\n')
+
+  expect(descriptionDiv.innerHTML).toBe('<p>baz</p>\n')
 	})
 
 	it('createProfilesDropDownSelectItem() check id', async () => {
 		const select = await element.createProfilesDropDownSelectItem()
-		expect(select.getAttribute('id')).toBe('profiles-dropdown')
+
+  expect(select.getAttribute('id')).toBe('profiles-dropdown')
 	})
 
 	it('createProfilesDropDownSelectItem() check classList', async () => {
 		const select = await element.createProfilesDropDownSelectItem()
-		expect(select.classList.contains('x-terminal-reloaded-profile-menu-item-select')).toBe(true)
+
+  expect(select.classList.contains('x-terminal-reloaded-profile-menu-item-select')).toBe(true)
 	})
 
 	it('createProfilesDropDown()', async () => {
 		const menuItemContainer = await element.createProfilesDropDown()
-		expect(menuItemContainer.getAttribute('id')).toBe('profiles-selection')
+
+  expect(menuItemContainer.getAttribute('id')).toBe('profiles-selection')
 	})
 
 	it('createProfileMenuButtons()', () => {
 		const buttonsContainer = element.createProfileMenuButtons()
-		expect(buttonsContainer.classList.contains('x-terminal-reloaded-profile-menu-buttons-div')).toBe(true)
+
+  expect(buttonsContainer.classList.contains('x-terminal-reloaded-profile-menu-buttons-div')).toBe(true)
 	})
 
 	it('createButton()', () => {
 		const button = element.createButton()
-		expect(button.classList.contains('x-terminal-reloaded-profile-menu-button')).toBe(true)
+
+  expect(button.classList.contains('x-terminal-reloaded-profile-menu-button')).toBe(true)
 	})
 
 	it('createTextbox()', () => {
 		const menuItemContainer = element.createTextbox('foo', 'bar', 'baz', 'cat', 'dog')
-		expect(menuItemContainer.getAttribute('id')).toBe('foo')
+
+  expect(menuItemContainer.getAttribute('id')).toBe('foo')
 	})
 
 	it('createCheckbox()', () => {
 		const menuItemContainer = element.createCheckbox('foo', 'bar', 'baz', true, false)
-		expect(menuItemContainer.getAttribute('id')).toBe('foo')
+
+  expect(menuItemContainer.getAttribute('id')).toBe('foo')
 	})
 
 	it('isVisible() initial value', () => {
@@ -174,41 +191,48 @@ describe('XTerminalProfileMenuElement', () => {
 
 	it('hideProfileMenu()', () => {
 		element.hideProfileMenu()
-		expect(element.style.visibility).toBe('hidden')
+
+  expect(element.style.visibility).toBe('hidden')
 	})
 
 	it('hideProfileMenu() terminal shown', () => {
 		element.hideProfileMenu()
-		expect(element.model.getXTerminalModelElement().showTerminal).toHaveBeenCalled()
+
+  expect(element.model.getXTerminalModelElement().showTerminal).toHaveBeenCalled()
 	})
 
 	it('hideProfileMenu() terminal focused', () => {
 		element.hideProfileMenu()
-		expect(element.model.getXTerminalModelElement().focusOnTerminal).toHaveBeenCalled()
+
+  expect(element.model.getXTerminalModelElement().focusOnTerminal).toHaveBeenCalled()
 	})
 
 	it('showProfileMenu()', () => {
 		element.showProfileMenu()
-		expect(element.style.visibility).toBe('visible')
+
+  expect(element.style.visibility).toBe('visible')
 	})
 
 	it('showProfileMenu() terminal hidden', () => {
 		element.showProfileMenu()
-		expect(element.model.getXTerminalModelElement().hideTerminal).toHaveBeenCalled()
+
+  expect(element.model.getXTerminalModelElement().hideTerminal).toHaveBeenCalled()
 	})
 
 	it('toggleProfileMenu() currently hidden', () => {
 		spyOn(element, 'isVisible').and.returnValue(false)
 		spyOn(element, 'showProfileMenu')
 		element.toggleProfileMenu()
-		expect(element.showProfileMenu).toHaveBeenCalled()
+
+  expect(element.showProfileMenu).toHaveBeenCalled()
 	})
 
 	it('toggleProfileMenu() currently visible', () => {
 		spyOn(element, 'isVisible').and.returnValue(true)
 		spyOn(element, 'hideProfileMenu')
 		element.toggleProfileMenu()
-		expect(element.hideProfileMenu).toHaveBeenCalled()
+
+  expect(element.hideProfileMenu).toHaveBeenCalled()
 	})
 
 	it('getNewProfileAndChanges()', () => {
@@ -239,25 +263,29 @@ describe('XTerminalProfileMenuElement', () => {
 			},
 		}
 		const actual = element.getNewProfileAndChanges()
-		expect(actual).toEqual(expected)
+
+  expect(actual).toEqual(expected)
 	})
 
 	it('loadProfile()', () => {
 		spyOn(element, 'applyProfileChanges')
 		element.loadProfile()
-		expect(element.applyProfileChanges).toHaveBeenCalled()
+
+  expect(element.applyProfileChanges).toHaveBeenCalled()
 	})
 
 	it('saveProfile()', () => {
 		spyOn(element, 'promptForNewProfileName')
 		element.saveProfile()
-		expect(element.promptForNewProfileName).toHaveBeenCalled()
+
+  expect(element.promptForNewProfileName).toHaveBeenCalled()
 	})
 
 	it('deleteProfile() nothing selected', () => {
 		spyOn(element, 'promptDelete')
 		element.deleteProfile()
-		expect(element.promptDelete).not.toHaveBeenCalled()
+
+  expect(element.promptDelete).not.toHaveBeenCalled()
 	})
 
 	it('deleteProfile() option selected', () => {
@@ -267,7 +295,8 @@ describe('XTerminalProfileMenuElement', () => {
 		mock.selectedIndex = 0
 		spyOn(element.mainDiv, 'querySelector').and.returnValue(mock)
 		element.deleteProfile()
-		expect(element.promptDelete).toHaveBeenCalledWith('foo')
+
+  expect(element.promptDelete).toHaveBeenCalledWith('foo')
 	})
 
 	it('promptDelete()', (done) => {

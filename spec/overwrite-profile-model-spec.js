@@ -35,24 +35,28 @@ describe('XTerminalOverwriteProfileModel', () => {
 
 	it('constructor()', () => {
 		const model = new XTerminalOverwriteProfileModel(atomXtermSaveProfileModel)
-		expect(model).not.toBeNull()
+
+  expect(model).not.toBeNull()
 	})
 
 	it('getTitle()', () => {
 		const model = new XTerminalOverwriteProfileModel(atomXtermSaveProfileModel)
-		expect(model.getTitle()).toBe('X-Terminal-Reloaded Overwrite Profile Model')
+
+  expect(model.getTitle()).toBe('X-Terminal-Reloaded Overwrite Profile Model')
 	})
 
 	it('getElement()', () => {
 		const model = new XTerminalOverwriteProfileModel(atomXtermSaveProfileModel)
-		expect(model.getElement()).toBeNull()
+
+  expect(model.getElement()).toBeNull()
 	})
 
 	it('setElement()', () => {
 		const model = new XTerminalOverwriteProfileModel(atomXtermSaveProfileModel)
 		const element = jasmine.createSpy('atomXtermOverwriteProfileElement')
 		model.setElement(element)
-		expect(model.getElement()).toBe(element)
+
+  expect(model.getElement()).toBe(element)
 	})
 
 	it('close() panel is not visible', () => {
@@ -60,7 +64,8 @@ describe('XTerminalOverwriteProfileModel', () => {
 		model.panel = jasmine.createSpyObj('panel', ['isVisible', 'hide'])
 		model.panel.isVisible.and.returnValue(false)
 		model.close('foo', 'bar')
-		expect(model.panel.hide).not.toHaveBeenCalled()
+
+  expect(model.panel.hide).not.toHaveBeenCalled()
 		expect(model.atomXtermSaveProfileModel.promptForNewProfileName).not.toHaveBeenCalled()
 	})
 
@@ -69,7 +74,8 @@ describe('XTerminalOverwriteProfileModel', () => {
 		model.panel = jasmine.createSpyObj('panel', ['isVisible', 'hide'])
 		model.panel.isVisible.and.returnValue(true)
 		model.close('foo', 'bar')
-		expect(model.panel.hide).toHaveBeenCalled()
+
+  expect(model.panel.hide).toHaveBeenCalled()
 		expect(model.atomXtermSaveProfileModel.promptForNewProfileName).not.toHaveBeenCalled()
 	})
 
@@ -78,7 +84,8 @@ describe('XTerminalOverwriteProfileModel', () => {
 		model.panel = jasmine.createSpyObj('panel', ['isVisible', 'hide'])
 		model.panel.isVisible.and.returnValue(false)
 		model.close('foo', 'bar', true)
-		expect(model.panel.hide).not.toHaveBeenCalled()
+
+  expect(model.panel.hide).not.toHaveBeenCalled()
 		expect(model.atomXtermSaveProfileModel.promptForNewProfileName).not.toHaveBeenCalled()
 	})
 
@@ -87,7 +94,8 @@ describe('XTerminalOverwriteProfileModel', () => {
 		model.panel = jasmine.createSpyObj('panel', ['isVisible', 'hide'])
 		model.panel.isVisible.and.returnValue(true)
 		model.close('foo', 'bar', true)
-		expect(model.panel.hide).toHaveBeenCalled()
+
+  expect(model.panel.hide).toHaveBeenCalled()
 		expect(model.atomXtermSaveProfileModel.promptForNewProfileName).toHaveBeenCalled()
 	})
 
@@ -97,7 +105,8 @@ describe('XTerminalOverwriteProfileModel', () => {
 		model.panel.isVisible.and.returnValue(true)
 		model.element = jasmine.createSpyObj('atomXtermDeleteProfileElement', ['setNewPrompt'])
 		model.promptOverwrite('foo', 'bar', 'baz')
-		expect(model.panel.show).toHaveBeenCalled()
+
+  expect(model.panel.show).toHaveBeenCalled()
 	})
 
 	it('promptOverwrite() new prompt is set', () => {
@@ -106,6 +115,7 @@ describe('XTerminalOverwriteProfileModel', () => {
 		model.panel.isVisible.and.returnValue(true)
 		model.element = jasmine.createSpyObj('atomXtermDeleteProfileElement', ['setNewPrompt'])
 		model.promptOverwrite('foo', 'bar', 'baz')
-		expect(model.element.setNewPrompt).toHaveBeenCalled()
+
+  expect(model.element.setNewPrompt).toHaveBeenCalled()
 	})
 })
