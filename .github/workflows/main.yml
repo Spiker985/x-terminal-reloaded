@@ -112,7 +112,8 @@ jobs:
       
       - uses: pulsar-edit/action-pulsar-dependency@v3.4
       
-      - uses: actions/setup-node@v3
+      - name: Setup Node
+        uses: actions/setup-node@v4.4.0
         with:
           node-version: 'lts/*'
       
