@@ -1,9 +1,7 @@
-module.exports = {
-	extends: [
-		'stylelint-config-standard',
-	],
+export default {
+	extends: "stylelint-config-standard",
 	plugins: [
-		'stylelint-stylistic',
+		"@stylistic/stylelint-plugin",
 	],
 	customSyntax: 'postcss-less',
 	rules: {
@@ -11,9 +9,9 @@ module.exports = {
 		'declaration-block-no-redundant-longhand-properties': null,
 		'no-invalid-position-at-import-rule': null,
 		'selector-pseudo-element-colon-notation': 'double',
-		'stylistic/no-extra-semicolons': true,
+		'@stylistic/no-extra-semicolons': true,
 		'function-no-unknown': null,
-		'stylistic/indentation': 'tab',
+		'@stylistic/indentation': 'tab',
 		'selector-type-no-unknown': [
 			true, {
 				ignoreTypes: [
@@ -23,4 +21,4 @@ module.exports = {
 			},
 		],
 	},
-}
+};

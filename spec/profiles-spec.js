@@ -277,7 +277,8 @@ describe('XTerminalProfilesSingleton', () => {
 		const cb = () => {
 			return new XTerminalProfilesSingleton()
 		}
-		expect(cb).toThrowError('XTerminalProfilesSingleton cannot be instantiated directly.')
+
+  expect(cb).toThrowError('XTerminalProfilesSingleton cannot be instantiated directly.')
 	})
 
 	it('instance property works', () => {
@@ -301,7 +302,8 @@ describe('XTerminalProfilesSingleton', () => {
 			y: 'y',
 			z: 'z',
 		}
-		expect(XTerminalProfilesSingleton.instance.sortProfiles(data)).toEqual(expected)
+
+  expect(XTerminalProfilesSingleton.instance.sortProfiles(data)).toEqual(expected)
 	})
 
 	it('reloadProfiles()', (done) => {
@@ -326,7 +328,8 @@ describe('XTerminalProfilesSingleton', () => {
 			foo: 'bar',
 		}
 		await XTerminalProfilesSingleton.instance.updateProfiles(expected)
-		expect(XTerminalProfilesSingleton.instance.profiles).toEqual(expected)
+
+  expect(XTerminalProfilesSingleton.instance.profiles).toEqual(expected)
 	})
 
 	it('deepClone()', () => {
@@ -335,7 +338,8 @@ describe('XTerminalProfilesSingleton', () => {
 			y: 'y',
 			x: 'x',
 		}
-		expect(XTerminalProfilesSingleton.instance.deepClone(data)).toEqual(data)
+
+  expect(XTerminalProfilesSingleton.instance.deepClone(data)).toEqual(data)
 		expect(XTerminalProfilesSingleton.instance.deepClone(data)).not.toBe(data)
 	})
 
@@ -390,7 +394,8 @@ describe('XTerminalProfilesSingleton', () => {
 			webgl: atom.config.get('x-terminal-reloaded.xtermAddons.webgl') || configDefaults.webgl,
 			webLinks: atom.config.get('x-terminal-reloaded.xtermAddons.webLinks') || configDefaults.webLinks,
 		}
-		expect(XTerminalProfilesSingleton.instance.getBaseProfile()).toEqual(expected)
+
+  expect(XTerminalProfilesSingleton.instance.getBaseProfile()).toEqual(expected)
 	})
 
 	it('getBaseProfile() settings from atom.config', () => {
@@ -445,7 +450,8 @@ describe('XTerminalProfilesSingleton', () => {
 			webgl: true,
 			webLinks: false,
 		}
-		expect(XTerminalProfilesSingleton.instance.getBaseProfile()).toEqual(expected)
+
+  expect(XTerminalProfilesSingleton.instance.getBaseProfile()).toEqual(expected)
 	})
 
 	it('getBaseProfile() useEditorFont true', () => {
@@ -471,7 +477,8 @@ describe('XTerminalProfilesSingleton', () => {
 	it('resetBaseProfile()', () => {
 		XTerminalProfilesSingleton.instance.baseProfile.env = 'asdfasdfafd'
 		XTerminalProfilesSingleton.instance.resetBaseProfile()
-		expect(XTerminalProfilesSingleton.instance.baseProfile.env).toBeNull()
+
+  expect(XTerminalProfilesSingleton.instance.baseProfile.env).toBeNull()
 	})
 
 	it('sanitizeData() empty data', () => {
@@ -482,12 +489,14 @@ describe('XTerminalProfilesSingleton', () => {
 		const data = {
 			foo: 'bar',
 		}
-		expect(XTerminalProfilesSingleton.instance.sanitizeData(data)).toEqual({})
+
+  expect(XTerminalProfilesSingleton.instance.sanitizeData(data)).toEqual({})
 	})
 
 	it('sanitizeData() check all valid keys', () => {
 		const data = getDefaultExpectedProfile()
-		expect(XTerminalProfilesSingleton.instance.sanitizeData(data)).toEqual(data)
+
+  expect(XTerminalProfilesSingleton.instance.sanitizeData(data)).toEqual(data)
 	})
 
 	it('sanitizeData() valid and unknown keys set', () => {
@@ -497,22 +506,26 @@ describe('XTerminalProfilesSingleton', () => {
 			foo: 'bar',
 			baz: null,
 		}
-		expect(XTerminalProfilesSingleton.instance.sanitizeData(data)).toEqual(expected)
+
+  expect(XTerminalProfilesSingleton.instance.sanitizeData(data)).toEqual(expected)
 	})
 
 	it('getProfiles() no profiles defined', async () => {
 		const profiles = await XTerminalProfilesSingleton.instance.getProfiles()
-		expect(profiles).toEqual({})
+
+  expect(profiles).toEqual({})
 	})
 
 	it('getProfile() no profiles defined', async () => {
 		const profile = await XTerminalProfilesSingleton.instance.getProfile('foo')
-		expect(profile).toEqual(XTerminalProfilesSingleton.instance.getBaseProfile())
+
+  expect(profile).toEqual(XTerminalProfilesSingleton.instance.getBaseProfile())
 	})
 
 	it('isProfileExists() non-existent profile', async () => {
 		const exists = await XTerminalProfilesSingleton.instance.isProfileExists('foo')
-		expect(exists).toBe(false)
+
+  expect(exists).toBe(false)
 	})
 
 	it('isProfileExists() existent profile', async () => {
@@ -523,7 +536,8 @@ describe('XTerminalProfilesSingleton', () => {
 		const profileName = 'Django module runserver'
 		await XTerminalProfilesSingleton.instance.setProfile(profileName, data)
 		const exists = await XTerminalProfilesSingleton.instance.isProfileExists(profileName)
-		expect(exists).toBe(true)
+
+  expect(exists).toBe(true)
 	})
 
 	it('setProfile()', async () => {
@@ -538,7 +552,8 @@ describe('XTerminalProfilesSingleton', () => {
 		const profileName = 'Django module runserver'
 		await XTerminalProfilesSingleton.instance.setProfile(profileName, data)
 		const profile = await XTerminalProfilesSingleton.instance.getProfile(profileName)
-		expect(profile).toEqual(expected)
+
+  expect(profile).toEqual(expected)
 	})
 
 	it('deleteProfile()', async () => {
@@ -550,22 +565,26 @@ describe('XTerminalProfilesSingleton', () => {
 		await XTerminalProfilesSingleton.instance.setProfile(profileName, data)
 		await XTerminalProfilesSingleton.instance.deleteProfile(profileName)
 		const exists = await XTerminalProfilesSingleton.instance.isProfileExists(profileName)
-		expect(exists).toBe(false)
+
+  expect(exists).toBe(false)
 	})
 
 	it('generateNewUri() starts with x-terminal-reloaded://', () => {
 		spyOn(XTerminalProfilesSingleton.instance, 'generateNewUri').and.callThrough()
-		expect(XTerminalProfilesSingleton.instance.generateNewUri().startsWith('x-terminal-reloaded://')).toBe(true)
+
+  expect(XTerminalProfilesSingleton.instance.generateNewUri().startsWith('x-terminal-reloaded://')).toBe(true)
 	})
 
 	it('generateNewUri() ends with /', () => {
 		spyOn(XTerminalProfilesSingleton.instance, 'generateNewUri').and.callThrough()
-		expect(XTerminalProfilesSingleton.instance.generateNewUri().endsWith('/')).toBe(true)
+
+  expect(XTerminalProfilesSingleton.instance.generateNewUri().endsWith('/')).toBe(true)
 	})
 
 	it('generateNewUrlFromProfileData() empty data', () => {
 		const url = XTerminalProfilesSingleton.instance.generateNewUrlFromProfileData({})
-		expect(url.searchParams.toString()).toBe('')
+
+  expect(url.searchParams.toString()).toBe('')
 	})
 
 	it('generateNewUrlFromProfileData() unknown key set', () => {
@@ -573,7 +592,8 @@ describe('XTerminalProfilesSingleton', () => {
 			foo: 'bar',
 		}
 		const url = XTerminalProfilesSingleton.instance.generateNewUrlFromProfileData(data)
-		expect(url.searchParams.toString()).toBe('')
+
+  expect(url.searchParams.toString()).toBe('')
 	})
 
 	it('generateNewUrlFromProfileData() check all valid keys', () => {
@@ -597,7 +617,8 @@ describe('XTerminalProfilesSingleton', () => {
 		const expected = 'args=%5B%5D&command=somecommand&copyOnSelect=false&cwd=%2Fsome%2Fpath&deleteEnv=%5B%5D&encoding=&env=null&fontSize=14&leaveOpenAfterExit=true&name=sometermtype&promptToStartup=false&relaunchTerminalOnStartup=true&setEnv=%7B%7D&showNotifications=true&title='
 		const url = XTerminalProfilesSingleton.instance.generateNewUrlFromProfileData(data)
 		url.searchParams.sort()
-		expect(url.searchParams.toString()).toBe(expected)
+
+  expect(url.searchParams.toString()).toBe(expected)
 	})
 
 	it('generateNewUrlFromProfileData() valid and unknown keys set', () => {
@@ -629,7 +650,8 @@ describe('XTerminalProfilesSingleton', () => {
 		const expected = 'args=%5B%5D&command=somecommand&copyOnSelect=false&cwd=%2Fsome%2Fpath&deleteEnv=%5B%5D&encoding=&env=null&fontSize=14&leaveOpenAfterExit=true&name=sometermtype&promptToStartup=false&relaunchTerminalOnStartup=true&setEnv=%7B%7D&showNotifications=true&title=&xtermOptions=%7B%22cursorBlink%22%3Atrue%7D'
 		const url = XTerminalProfilesSingleton.instance.generateNewUrlFromProfileData(data)
 		url.searchParams.sort()
-		expect(url.searchParams.toString()).toEqual(expected)
+
+  expect(url.searchParams.toString()).toEqual(expected)
 	})
 
 	it('createProfileDataFromUri() base URI', () => {
@@ -681,13 +703,15 @@ describe('XTerminalProfilesSingleton', () => {
 			webgl: configDefaults.webgl,
 			webLinks: configDefaults.webLinks,
 		}
-		expect(XTerminalProfilesSingleton.instance.createProfileDataFromUri(url.href)).toEqual(expected)
+
+  expect(XTerminalProfilesSingleton.instance.createProfileDataFromUri(url.href)).toEqual(expected)
 	})
 
 	it('createProfileDataFromUri() URI with all params set', () => {
 		const url = getDefaultExpectedUrl()
 		const expected = getDefaultExpectedProfile()
-		expect(XTerminalProfilesSingleton.instance.createProfileDataFromUri(url.href)).toEqual(expected)
+
+  expect(XTerminalProfilesSingleton.instance.createProfileDataFromUri(url.href)).toEqual(expected)
 	})
 
 	it('createProfileDataFromUri() URI with all params set and invalid params set', () => {
@@ -695,7 +719,8 @@ describe('XTerminalProfilesSingleton', () => {
 		url.searchParams.set('foo', 'text')
 		url.searchParams.set('bar', null)
 		const expected = getDefaultExpectedProfile()
-		expect(XTerminalProfilesSingleton.instance.createProfileDataFromUri(url.href)).toEqual(expected)
+
+  expect(XTerminalProfilesSingleton.instance.createProfileDataFromUri(url.href)).toEqual(expected)
 	})
 
 	// todo Add activeIndicator, debug and endOfLineOverride tests
@@ -705,7 +730,8 @@ describe('XTerminalProfilesSingleton', () => {
 		url.searchParams.set('activeIndicator', null)
 		const expected = getDefaultExpectedProfile()
 		expected.activeIndicator = 'null'
-		expect(XTerminalProfilesSingleton.instance.createProfileDataFromUri(url.href)).toEqual(expected)
+
+  expect(XTerminalProfilesSingleton.instance.createProfileDataFromUri(url.href)).toEqual(expected)
 	})
 
 	it('createProfileDataFromUri() URI activeIndicator set to empty string', () => {
@@ -713,7 +739,8 @@ describe('XTerminalProfilesSingleton', () => {
 		url.searchParams.set('activeIndicator', '')
 		const expected = getDefaultExpectedProfile()
 		expected.activeIndicator = configDefaults.activeIndicator
-		expect(XTerminalProfilesSingleton.instance.createProfileDataFromUri(url.href)).toEqual(expected)
+
+  expect(XTerminalProfilesSingleton.instance.createProfileDataFromUri(url.href)).toEqual(expected)
 	})
 
 	it('createProfileDataFromUri() URI command set to null', () => {
@@ -721,7 +748,8 @@ describe('XTerminalProfilesSingleton', () => {
 		url.searchParams.set('command', null)
 		const expected = getDefaultExpectedProfile()
 		expected.command = 'null'
-		expect(XTerminalProfilesSingleton.instance.createProfileDataFromUri(url.href)).toEqual(expected)
+
+  expect(XTerminalProfilesSingleton.instance.createProfileDataFromUri(url.href)).toEqual(expected)
 	})
 
 	it('createProfileDataFromUri() URI command set to empty string', () => {
@@ -729,21 +757,24 @@ describe('XTerminalProfilesSingleton', () => {
 		url.searchParams.set('command', '')
 		const expected = getDefaultExpectedProfile()
 		expected.command = configDefaults.command
-		expect(XTerminalProfilesSingleton.instance.createProfileDataFromUri(url.href)).toEqual(expected)
+
+  expect(XTerminalProfilesSingleton.instance.createProfileDataFromUri(url.href)).toEqual(expected)
 	})
 
 	it('createProfileDataFromUri() URI args set to null', () => {
 		const url = getDefaultExpectedUrl()
 		url.searchParams.set('args', null)
 		const expected = getDefaultExpectedProfile()
-		expect(XTerminalProfilesSingleton.instance.createProfileDataFromUri(url.href)).toEqual(expected)
+
+  expect(XTerminalProfilesSingleton.instance.createProfileDataFromUri(url.href)).toEqual(expected)
 	})
 
 	it('createProfileDataFromUri() URI args set to empty string', () => {
 		const url = getDefaultExpectedUrl()
 		url.searchParams.set('args', '')
 		const expected = getDefaultExpectedProfile()
-		expect(XTerminalProfilesSingleton.instance.createProfileDataFromUri(url.href)).toEqual(expected)
+
+  expect(XTerminalProfilesSingleton.instance.createProfileDataFromUri(url.href)).toEqual(expected)
 	})
 
 	it('createProfileDataFromUri() URI name set to null', () => {
@@ -751,7 +782,8 @@ describe('XTerminalProfilesSingleton', () => {
 		url.searchParams.set('name', null)
 		const expected = getDefaultExpectedProfile()
 		expected.name = 'null'
-		expect(XTerminalProfilesSingleton.instance.createProfileDataFromUri(url.href)).toEqual(expected)
+
+  expect(XTerminalProfilesSingleton.instance.createProfileDataFromUri(url.href)).toEqual(expected)
 	})
 
 	it('createProfileDataFromUri() URI name set to empty string', () => {
@@ -759,7 +791,8 @@ describe('XTerminalProfilesSingleton', () => {
 		url.searchParams.set('name', '')
 		const expected = getDefaultExpectedProfile()
 		expected.name = configDefaults.termType
-		expect(XTerminalProfilesSingleton.instance.createProfileDataFromUri(url.href)).toEqual(expected)
+
+  expect(XTerminalProfilesSingleton.instance.createProfileDataFromUri(url.href)).toEqual(expected)
 	})
 
 	it('createProfileDataFromUri() URI cwd set to null', () => {
@@ -767,7 +800,8 @@ describe('XTerminalProfilesSingleton', () => {
 		url.searchParams.set('cwd', null)
 		const expected = getDefaultExpectedProfile()
 		expected.cwd = 'null'
-		expect(XTerminalProfilesSingleton.instance.createProfileDataFromUri(url.href)).toEqual(expected)
+
+  expect(XTerminalProfilesSingleton.instance.createProfileDataFromUri(url.href)).toEqual(expected)
 	})
 
 	it('createProfileDataFromUri() URI cwd set to empty string', () => {
@@ -775,21 +809,24 @@ describe('XTerminalProfilesSingleton', () => {
 		url.searchParams.set('cwd', '')
 		const expected = getDefaultExpectedProfile()
 		expected.cwd = configDefaults.cwd
-		expect(XTerminalProfilesSingleton.instance.createProfileDataFromUri(url.href)).toEqual(expected)
+
+  expect(XTerminalProfilesSingleton.instance.createProfileDataFromUri(url.href)).toEqual(expected)
 	})
 
 	it('createProfileDataFromUri() URI env set to null', () => {
 		const url = getDefaultExpectedUrl()
 		url.searchParams.set('env', null)
 		const expected = getDefaultExpectedProfile()
-		expect(XTerminalProfilesSingleton.instance.createProfileDataFromUri(url.href)).toEqual(expected)
+
+  expect(XTerminalProfilesSingleton.instance.createProfileDataFromUri(url.href)).toEqual(expected)
 	})
 
 	it('createProfileDataFromUri() URI env set to empty string', () => {
 		const url = getDefaultExpectedUrl()
 		url.searchParams.set('env', '')
 		const expected = getDefaultExpectedProfile()
-		expect(XTerminalProfilesSingleton.instance.createProfileDataFromUri(url.href)).toEqual(expected)
+
+  expect(XTerminalProfilesSingleton.instance.createProfileDataFromUri(url.href)).toEqual(expected)
 	})
 
 	it('createProfileDataFromUri() URI env set to empty object', () => {
@@ -799,35 +836,40 @@ describe('XTerminalProfilesSingleton', () => {
 		// Specifically defining an empty object for env will mean the
 		// pty process will run with no environment.
 		expected.env = {}
-		expect(XTerminalProfilesSingleton.instance.createProfileDataFromUri(url.href)).toEqual(expected)
+
+  expect(XTerminalProfilesSingleton.instance.createProfileDataFromUri(url.href)).toEqual(expected)
 	})
 
 	it('createProfileDataFromUri() URI setEnv set to null', () => {
 		const url = getDefaultExpectedUrl()
 		url.searchParams.set('setEnv', null)
 		const expected = getDefaultExpectedProfile()
-		expect(XTerminalProfilesSingleton.instance.createProfileDataFromUri(url.href)).toEqual(expected)
+
+  expect(XTerminalProfilesSingleton.instance.createProfileDataFromUri(url.href)).toEqual(expected)
 	})
 
 	it('createProfileDataFromUri() URI setEnv set to empty string', () => {
 		const url = getDefaultExpectedUrl()
 		url.searchParams.set('setEnv', '')
 		const expected = getDefaultExpectedProfile()
-		expect(XTerminalProfilesSingleton.instance.createProfileDataFromUri(url.href)).toEqual(expected)
+
+  expect(XTerminalProfilesSingleton.instance.createProfileDataFromUri(url.href)).toEqual(expected)
 	})
 
 	it('createProfileDataFromUri() URI deleteEnv set to null', () => {
 		const url = getDefaultExpectedUrl()
 		url.searchParams.set('deleteEnv', null)
 		const expected = getDefaultExpectedProfile()
-		expect(XTerminalProfilesSingleton.instance.createProfileDataFromUri(url.href)).toEqual(expected)
+
+  expect(XTerminalProfilesSingleton.instance.createProfileDataFromUri(url.href)).toEqual(expected)
 	})
 
 	it('createProfileDataFromUri() URI deleteEnv set to empty string', () => {
 		const url = getDefaultExpectedUrl()
 		url.searchParams.set('deleteEnv', '')
 		const expected = getDefaultExpectedProfile()
-		expect(XTerminalProfilesSingleton.instance.createProfileDataFromUri(url.href)).toEqual(expected)
+
+  expect(XTerminalProfilesSingleton.instance.createProfileDataFromUri(url.href)).toEqual(expected)
 	})
 
 	it('createProfileDataFromUri() URI encoding set to null', () => {
@@ -835,56 +877,64 @@ describe('XTerminalProfilesSingleton', () => {
 		url.searchParams.set('encoding', null)
 		const expected = getDefaultExpectedProfile()
 		expected.encoding = null
-		expect(XTerminalProfilesSingleton.instance.createProfileDataFromUri(url.href)).toEqual(expected)
+
+  expect(XTerminalProfilesSingleton.instance.createProfileDataFromUri(url.href)).toEqual(expected)
 	})
 
 	it('createProfileDataFromUri() URI encoding set to empty string', () => {
 		const url = getDefaultExpectedUrl()
 		url.searchParams.set('encoding', '')
 		const expected = getDefaultExpectedProfile()
-		expect(XTerminalProfilesSingleton.instance.createProfileDataFromUri(url.href)).toEqual(expected)
+
+  expect(XTerminalProfilesSingleton.instance.createProfileDataFromUri(url.href)).toEqual(expected)
 	})
 
 	it('createProfileDataFromUri() URI fontSize set to null', () => {
 		const url = getDefaultExpectedUrl()
 		url.searchParams.set('fontSize', null)
 		const expected = getDefaultExpectedProfile()
-		expect(XTerminalProfilesSingleton.instance.createProfileDataFromUri(url.href)).toEqual(expected)
+
+  expect(XTerminalProfilesSingleton.instance.createProfileDataFromUri(url.href)).toEqual(expected)
 	})
 
 	it('createProfileDataFromUri() URI fontSize set to empty string', () => {
 		const url = getDefaultExpectedUrl()
 		url.searchParams.set('fontSize', '')
 		const expected = getDefaultExpectedProfile()
-		expect(XTerminalProfilesSingleton.instance.createProfileDataFromUri(url.href)).toEqual(expected)
+
+  expect(XTerminalProfilesSingleton.instance.createProfileDataFromUri(url.href)).toEqual(expected)
 	})
 
 	it('createProfileDataFromUri() URI leaveOpenAfterExit set to null', () => {
 		const url = getDefaultExpectedUrl()
 		url.searchParams.set('leaveOpenAfterExit', null)
 		const expected = getDefaultExpectedProfile()
-		expect(XTerminalProfilesSingleton.instance.createProfileDataFromUri(url.href)).toEqual(expected)
+
+  expect(XTerminalProfilesSingleton.instance.createProfileDataFromUri(url.href)).toEqual(expected)
 	})
 
 	it('createProfileDataFromUri() URI leaveOpenAfterExit set to empty string', () => {
 		const url = getDefaultExpectedUrl()
 		url.searchParams.set('leaveOpenAfterExit', '')
 		const expected = getDefaultExpectedProfile()
-		expect(XTerminalProfilesSingleton.instance.createProfileDataFromUri(url.href)).toEqual(expected)
+
+  expect(XTerminalProfilesSingleton.instance.createProfileDataFromUri(url.href)).toEqual(expected)
 	})
 
 	it('createProfileDataFromUri() URI relaunchTerminalOnStartup set to null', () => {
 		const url = getDefaultExpectedUrl()
 		url.searchParams.set('relaunchTerminalOnStartup', null)
 		const expected = getDefaultExpectedProfile()
-		expect(XTerminalProfilesSingleton.instance.createProfileDataFromUri(url.href)).toEqual(expected)
+
+  expect(XTerminalProfilesSingleton.instance.createProfileDataFromUri(url.href)).toEqual(expected)
 	})
 
 	it('createProfileDataFromUri() URI relaunchTerminalOnStartup set to empty string', () => {
 		const url = getDefaultExpectedUrl()
 		url.searchParams.set('relaunchTerminalOnStartup', '')
 		const expected = getDefaultExpectedProfile()
-		expect(XTerminalProfilesSingleton.instance.createProfileDataFromUri(url.href)).toEqual(expected)
+
+  expect(XTerminalProfilesSingleton.instance.createProfileDataFromUri(url.href)).toEqual(expected)
 	})
 
 	it('createProfileDataFromUri() URI title set to null', () => {
@@ -892,7 +942,8 @@ describe('XTerminalProfilesSingleton', () => {
 		url.searchParams.set('title', null)
 		const expected = getDefaultExpectedProfile()
 		expected.title = null
-		expect(XTerminalProfilesSingleton.instance.createProfileDataFromUri(url.href)).toEqual(expected)
+
+  expect(XTerminalProfilesSingleton.instance.createProfileDataFromUri(url.href)).toEqual(expected)
 	})
 
 	it('createProfileDataFromUri() URI title set to empty string', () => {
@@ -900,7 +951,8 @@ describe('XTerminalProfilesSingleton', () => {
 		url.searchParams.set('title', '')
 		const expected = getDefaultExpectedProfile()
 		expected.title = null
-		expect(XTerminalProfilesSingleton.instance.createProfileDataFromUri(url.href)).toEqual(expected)
+
+  expect(XTerminalProfilesSingleton.instance.createProfileDataFromUri(url.href)).toEqual(expected)
 	})
 
 	it('createProfileDataFromUri() URI xtermOptions set to null', () => {
@@ -908,7 +960,8 @@ describe('XTerminalProfilesSingleton', () => {
 		url.searchParams.set('xtermOptions', null)
 		const expected = getDefaultExpectedProfile()
 		expected.xtermOptions = {}
-		expect(XTerminalProfilesSingleton.instance.createProfileDataFromUri(url.href)).toEqual(expected)
+
+  expect(XTerminalProfilesSingleton.instance.createProfileDataFromUri(url.href)).toEqual(expected)
 	})
 
 	it('createProfileDataFromUri() URI xtermOptions set to empty string', () => {
@@ -916,56 +969,64 @@ describe('XTerminalProfilesSingleton', () => {
 		url.searchParams.set('xtermOptions', '')
 		const expected = getDefaultExpectedProfile()
 		expected.xtermOptions = {}
-		expect(XTerminalProfilesSingleton.instance.createProfileDataFromUri(url.href)).toEqual(expected)
+
+  expect(XTerminalProfilesSingleton.instance.createProfileDataFromUri(url.href)).toEqual(expected)
 	})
 
 	it('createProfileDataFromUri() URI promptToStartup set to null', () => {
 		const url = getDefaultExpectedUrl()
 		url.searchParams.set('promptToStartup', null)
 		const expected = getDefaultExpectedProfile()
-		expect(XTerminalProfilesSingleton.instance.createProfileDataFromUri(url.href)).toEqual(expected)
+
+  expect(XTerminalProfilesSingleton.instance.createProfileDataFromUri(url.href)).toEqual(expected)
 	})
 
 	it('createProfileDataFromUri() URI promptToStartup set to empty string', () => {
 		const url = getDefaultExpectedUrl()
 		url.searchParams.set('promptToStartup', '')
 		const expected = getDefaultExpectedProfile()
-		expect(XTerminalProfilesSingleton.instance.createProfileDataFromUri(url.href)).toEqual(expected)
+
+  expect(XTerminalProfilesSingleton.instance.createProfileDataFromUri(url.href)).toEqual(expected)
 	})
 
 	it('createProfileDataFromUri() URI copyOnSelect set to null', () => {
 		const url = getDefaultExpectedUrl()
 		url.searchParams.set('copyOnSelect', null)
 		const expected = getDefaultExpectedProfile()
-		expect(XTerminalProfilesSingleton.instance.createProfileDataFromUri(url.href)).toEqual(expected)
+
+  expect(XTerminalProfilesSingleton.instance.createProfileDataFromUri(url.href)).toEqual(expected)
 	})
 
 	it('createProfileDataFromUri() URI copyOnSelect set to empty string', () => {
 		const url = getDefaultExpectedUrl()
 		url.searchParams.set('copyOnSelect', '')
 		const expected = getDefaultExpectedProfile()
-		expect(XTerminalProfilesSingleton.instance.createProfileDataFromUri(url.href)).toEqual(expected)
+
+  expect(XTerminalProfilesSingleton.instance.createProfileDataFromUri(url.href)).toEqual(expected)
 	})
 
 	it('createProfileDataFromUri() URI showNotifications set to null', () => {
 		const url = getDefaultExpectedUrl()
 		url.searchParams.set('showNotifications', null)
 		const expected = getDefaultExpectedProfile()
-		expect(XTerminalProfilesSingleton.instance.createProfileDataFromUri(url.href)).toEqual(expected)
+
+  expect(XTerminalProfilesSingleton.instance.createProfileDataFromUri(url.href)).toEqual(expected)
 	})
 
 	it('createProfileDataFromUri() URI showNotifications set to empty string', () => {
 		const url = getDefaultExpectedUrl()
 		url.searchParams.set('showNotifications', '')
 		const expected = getDefaultExpectedProfile()
-		expect(XTerminalProfilesSingleton.instance.createProfileDataFromUri(url.href)).toEqual(expected)
+
+  expect(XTerminalProfilesSingleton.instance.createProfileDataFromUri(url.href)).toEqual(expected)
 	})
 
 	it('diffProfiles() no change between objects', () => {
 		const baseProfile = XTerminalProfilesSingleton.instance.getBaseProfile()
 		const expected = {}
 		const actual = XTerminalProfilesSingleton.instance.diffProfiles(baseProfile, baseProfile)
-		expect(actual).toEqual(expected)
+
+  expect(actual).toEqual(expected)
 	})
 
 	it('diffProfiles() removed entries', () => {
@@ -973,7 +1034,8 @@ describe('XTerminalProfilesSingleton', () => {
 		const profileChanges = {}
 		const expected = {}
 		const actual = XTerminalProfilesSingleton.instance.diffProfiles(baseProfile, profileChanges)
-		expect(actual).toEqual(expected)
+
+  expect(actual).toEqual(expected)
 	})
 
 	it('diffProfiles() modified entries', () => {
@@ -985,7 +1047,8 @@ describe('XTerminalProfilesSingleton', () => {
 			command: 'someothercommand',
 		}
 		const actual = XTerminalProfilesSingleton.instance.diffProfiles(baseProfile, profileChanges)
-		expect(actual).toEqual(expected)
+
+  expect(actual).toEqual(expected)
 	})
 
 	it('diffProfiles() added entries', () => {
@@ -1007,7 +1070,8 @@ describe('XTerminalProfilesSingleton', () => {
 			],
 		}
 		const actual = XTerminalProfilesSingleton.instance.diffProfiles(oldProfile, profileChanges)
-		expect(actual).toEqual(expected)
+
+  expect(actual).toEqual(expected)
 	})
 
 	it('diffProfiles() added and modified entries', () => {
@@ -1031,7 +1095,8 @@ describe('XTerminalProfilesSingleton', () => {
 			],
 		}
 		const actual = XTerminalProfilesSingleton.instance.diffProfiles(oldProfile, profileChanges)
-		expect(actual).toEqual(expected)
+
+  expect(actual).toEqual(expected)
 	})
 
 	it('getDefaultProfile()', () => {
@@ -1082,6 +1147,7 @@ describe('XTerminalProfilesSingleton', () => {
 			webgl: configDefaults.webgl,
 			webLinks: configDefaults.webLinks,
 		}
-		expect(XTerminalProfilesSingleton.instance.getDefaultProfile()).toEqual(expected)
+
+  expect(XTerminalProfilesSingleton.instance.getDefaultProfile()).toEqual(expected)
 	})
 })

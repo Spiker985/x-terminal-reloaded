@@ -31,7 +31,8 @@ describe('XTerminalSaveProfileElement', () => {
 	it('initialize()', () => {
 		const element = new XTerminalSaveProfileElementImpl()
 		element.initialize(model)
-		expect(element.messageDiv.textContent).toBe('Enter new profile name')
+
+  expect(element.messageDiv.textContent).toBe('Enter new profile name')
 	})
 
 	it('setNewTextbox()', () => {
@@ -40,6 +41,7 @@ describe('XTerminalSaveProfileElement', () => {
 		const textbox = jasmine.createSpyObj('textbox', ['getElement'])
 		textbox.getElement.and.returnValue(document.createElement('div'))
 		element.setNewTextbox(textbox)
-		expect(textbox.getElement).toHaveBeenCalled()
+
+  expect(textbox.getElement).toHaveBeenCalled()
 	})
 })

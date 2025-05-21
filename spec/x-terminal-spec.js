@@ -21,7 +21,8 @@ describe('x-terminal-reloaded', () => {
 				},
 			})
 			const selection = xTerminalInstance.getSelectedText()
-			expect(selection).toBe('selection')
+
+   expect(selection).toBe('selection')
 		})
 
 		it('returns removes newlines at the end', () => {
@@ -31,7 +32,8 @@ describe('x-terminal-reloaded', () => {
 				},
 			})
 			const selection = xTerminalInstance.getSelectedText()
-			expect(selection).toBe('line1\r\nline2')
+
+   expect(selection).toBe('line1\r\nline2')
 		})
 
 		it('returns entire line if nothing selected and moves down', () => {
@@ -49,7 +51,8 @@ describe('x-terminal-reloaded', () => {
 				moveDown,
 			})
 			const selection = xTerminalInstance.getSelectedText()
-			expect(selection).toBe('line1')
+
+   expect(selection).toBe('line1')
 			expect(moveDown).toHaveBeenCalledWith(1)
 		})
 	})
@@ -63,7 +66,8 @@ describe('x-terminal-reloaded', () => {
 
 			expect(model.element).toHaveFocus()
 			xTerminalInstance.unfocus()
-			expect(model.element).not.toHaveFocus()
+
+   expect(model.element).not.toHaveFocus()
 		})
 	})
 
@@ -76,7 +80,8 @@ describe('x-terminal-reloaded', () => {
 
 			expect(xTerminalInstance.open).not.toHaveBeenCalled()
 			xTerminalInstance.focus()
-			expect(xTerminalInstance.open).toHaveBeenCalledTimes(1)
+
+   expect(xTerminalInstance.open).toHaveBeenCalledTimes(1)
 		})
 
 		it('focuses terminal', async () => {
@@ -89,7 +94,8 @@ describe('x-terminal-reloaded', () => {
 
 			expect(model.element).not.toHaveFocus()
 			xTerminalInstance.focus()
-			expect(model.element).toHaveFocus()
+
+   expect(model.element).toHaveFocus()
 		})
 	})
 
@@ -102,7 +108,8 @@ describe('x-terminal-reloaded', () => {
 
 			expect(xTerminalInstance.open).not.toHaveBeenCalled()
 			xTerminalInstance.focus(1)
-			expect(xTerminalInstance.open).toHaveBeenCalledTimes(1)
+
+   expect(xTerminalInstance.open).toHaveBeenCalledTimes(1)
 		})
 
 		it('focuses next terminal', async () => {
@@ -114,15 +121,20 @@ describe('x-terminal-reloaded', () => {
 				await terminals[i].initializedPromise
 				await terminals[i].element.createTerminal()
 			}
-			expect(terminals[2].element).toHaveFocus()
+
+   expect(terminals[2].element).toHaveFocus()
 			xTerminalInstance.focusNext()
-			expect(terminals[0].element).toHaveFocus()
+
+   expect(terminals[0].element).toHaveFocus()
 			xTerminalInstance.focusNext()
-			expect(terminals[1].element).toHaveFocus()
+
+   expect(terminals[1].element).toHaveFocus()
 			xTerminalInstance.focusNext()
-			expect(terminals[2].element).toHaveFocus()
+
+   expect(terminals[2].element).toHaveFocus()
 			xTerminalInstance.focusNext()
-			expect(terminals[0].element).toHaveFocus()
+
+   expect(terminals[0].element).toHaveFocus()
 		})
 	})
 
@@ -135,7 +147,8 @@ describe('x-terminal-reloaded', () => {
 
 			expect(xTerminalInstance.open).not.toHaveBeenCalled()
 			xTerminalInstance.focus(-1)
-			expect(xTerminalInstance.open).toHaveBeenCalledTimes(1)
+
+   expect(xTerminalInstance.open).toHaveBeenCalledTimes(1)
 		})
 
 		it('focuses prev terminal', async () => {
@@ -147,15 +160,20 @@ describe('x-terminal-reloaded', () => {
 				await terminals[i].initializedPromise
 				await terminals[i].element.createTerminal()
 			}
-			expect(terminals[2].element).toHaveFocus()
+
+   expect(terminals[2].element).toHaveFocus()
 			xTerminalInstance.focusPrev()
-			expect(terminals[1].element).toHaveFocus()
+
+   expect(terminals[1].element).toHaveFocus()
 			xTerminalInstance.focusPrev()
-			expect(terminals[0].element).toHaveFocus()
+
+   expect(terminals[0].element).toHaveFocus()
 			xTerminalInstance.focusPrev()
-			expect(terminals[2].element).toHaveFocus()
+
+   expect(terminals[2].element).toHaveFocus()
 			xTerminalInstance.focusPrev()
-			expect(terminals[1].element).toHaveFocus()
+
+   expect(terminals[1].element).toHaveFocus()
 		})
 	})
 
@@ -348,7 +366,8 @@ describe('x-terminal-reloaded services', () => {
 			atom.packages.serviceHub.consume('terminal', '^1.0.0', resolve)
 		})
 		service.run(['test'])
-		expect(xTerminalInstance.runCommands).toHaveBeenCalledWith(['test'])
+
+  expect(xTerminalInstance.runCommands).toHaveBeenCalledWith(['test'])
 	})
 
 	it('platformioIDETerminal.run', async () => {
@@ -357,7 +376,8 @@ describe('x-terminal-reloaded services', () => {
 			atom.packages.serviceHub.consume('platformioIDETerminal', '^1.1.0', resolve)
 		})
 		service.run(['test'])
-		expect(xTerminalInstance.runCommands).toHaveBeenCalledWith(['test'])
+
+  expect(xTerminalInstance.runCommands).toHaveBeenCalledWith(['test'])
 	})
 
 	it('atom-xterm.openTerminal', async () => {
@@ -366,6 +386,7 @@ describe('x-terminal-reloaded services', () => {
 			atom.packages.serviceHub.consume('atom-xterm', '^2.0.0', resolve)
 		})
 		service.openTerminal({})
-		expect(xTerminalInstance.openTerminal).toHaveBeenCalledWith({})
+
+  expect(xTerminalInstance.openTerminal).toHaveBeenCalledWith({})
 	})
 })

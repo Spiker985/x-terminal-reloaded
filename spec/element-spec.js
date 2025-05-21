@@ -19,7 +19,7 @@
  * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import * as nodePty from 'node-pty-prebuilt-multiarch'
+import * as nodePty from 'node-pty'
 import { shell } from 'electron'
 
 import { configDefaults } from '../src/config'
@@ -91,19 +91,22 @@ describe('XTerminalElement', () => {
 
 	it('destroy() check ptyProcess killed', () => {
 		element.destroy()
-		expect(element.ptyProcess.kill).toHaveBeenCalled()
+
+  expect(element.ptyProcess.kill).toHaveBeenCalled()
 	})
 
 	it('destroy() check terminal destroyed', () => {
 		spyOn(element.terminal, 'dispose').and.callThrough()
 		element.destroy()
-		expect(element.terminal.dispose).toHaveBeenCalled()
+
+  expect(element.terminal.dispose).toHaveBeenCalled()
 	})
 
 	it('destroy() check disposables disposed', () => {
 		spyOn(element.disposables, 'dispose').and.callThrough()
 		element.destroy()
-		expect(element.disposables.dispose).toHaveBeenCalled()
+
+  expect(element.disposables.dispose).toHaveBeenCalled()
 	})
 
 	it('getShellCommand()', () => {
@@ -113,7 +116,8 @@ describe('XTerminalElement', () => {
 	it('getShellCommand() command set in uri', async () => {
 		const expected = 'somecommand'
 		const element = await createNewElement({ command: expected })
-		expect(element.getShellCommand()).toBe(expected)
+
+  expect(element.getShellCommand()).toBe(expected)
 	})
 
 	it('getArgs()', () => {
@@ -123,12 +127,14 @@ describe('XTerminalElement', () => {
 	it('getArgs() args set in uri', async () => {
 		const expected = ['some', 'extra', 'args']
 		const element = await createNewElement({ args: JSON.stringify(expected) })
-		expect(element.getArgs()).toEqual(expected)
+
+  expect(element.getArgs()).toEqual(expected)
 	})
 
 	it('getArgs() throw exception when args is not an array', () => {
 		element.model.profile.args = {}
-		expect(() => { element.getArgs() }).toThrow(new Error('Arguments set are not an array.'))
+
+  expect(() => { element.getArgs() }).toThrow(new Error('Arguments set are not an array.'))
 	})
 
 	it('getTermType()', () => {
@@ -138,44 +144,52 @@ describe('XTerminalElement', () => {
 	it('getTermType() name set in uri', async () => {
 		const expected = 'sometermtype'
 		const element = await createNewElement({ name: expected })
-		expect(element.getTermType()).toBe(expected)
+
+  expect(element.getTermType()).toBe(expected)
 	})
 
 	it('checkPathIsDirectory() no path given', async () => {
 		const isDirectory = await element.checkPathIsDirectory()
-		expect(isDirectory).toBe(false)
+
+  expect(isDirectory).toBe(false)
 	})
 
 	it('checkPathIsDirectory() path set to undefined', async () => {
 		const isDirectory = await element.checkPathIsDirectory(undefined)
-		expect(isDirectory).toBe(false)
+
+  expect(isDirectory).toBe(false)
 	})
 
 	it('checkPathIsDirectory() path set to null', async () => {
 		const isDirectory = await element.checkPathIsDirectory(null)
-		expect(isDirectory).toBe(false)
+
+  expect(isDirectory).toBe(false)
 	})
 
 	it('checkPathIsDirectory() path set to tmpdir', async () => {
 		const isDirectory = await element.checkPathIsDirectory(tmpdir)
-		expect(isDirectory).toBe(true)
+
+  expect(isDirectory).toBe(true)
 	})
 
 	it('checkPathIsDirectory() path set to non-existent dir', async () => {
 		const isDirectory = await element.checkPathIsDirectory(path.join(tmpdir, 'non-existent-dir'))
-		expect(isDirectory).toBe(false)
+
+  expect(isDirectory).toBe(false)
 	})
 
 	it('getCwd()', async () => {
 		const cwd = await element.getCwd()
-		expect(cwd).toBe(configDefaults.cwd)
+
+  expect(cwd).toBe(configDefaults.cwd)
 	})
 
 	it('getCwd() cwd set in uri', async () => {
 		const expected = tmpdir
 		const element = await createNewElement({ cwd: expected })
 		const cwd = await element.getCwd()
-		expect(cwd).toBe(expected)
+
+  expect(cwd).toBe(expected)
 	})
 
 	it('getCwd() ignore cwd base profile if projectCwd is set', async () => {
@@ -184,7 +198,8 @@ describe('XTerminalElement', () => {
 		spyOn(atom.project, 'getPaths').and.returnValue([expected])
 		const element = await createNewElement({ projectCwd: true })
 		const cwd = await element.getCwd()
-		expect(cwd).toBe(expected)
+
+  expect(cwd).toBe(expected)
 	})
 
 	it('getCwd() model getPath() returns valid path', async () => {
@@ -198,7 +213,8 @@ describe('XTerminalElement', () => {
 		)
 		const element = await createNewElement({ projectCwd: true })
 		const cwd = await element.getCwd()
-		expect(cwd).toBe(tmpdir)
+
+  expect(cwd).toBe(tmpdir)
 	})
 
 	it('getCwd() model getPath() returns invalid path', async () => {
@@ -212,28 +228,32 @@ describe('XTerminalElement', () => {
 		)
 		const element = await createNewElement({ projectCwd: true })
 		const cwd = await element.getCwd()
-		expect(cwd).toBe(configDefaults.cwd)
+
+  expect(cwd).toBe(configDefaults.cwd)
 	})
 
 	it('getCwd() non-existent cwd set in uri', async () => {
 		const dir = path.join(tmpdir, 'non-existent-dir')
 		await createNewElement({ cwd: dir })
 		const cwd = await element.getCwd()
-		expect(cwd).toBe(configDefaults.cwd)
+
+  expect(cwd).toBe(configDefaults.cwd)
 	})
 
 	it('getCwd() non-existent project path added', async () => {
 		spyOn(atom.project, 'getPaths').and.returnValue([path.join(tmpdir, 'non-existent-dir')])
 		const element = await createNewElement({ projectCwd: true })
 		const cwd = await element.getCwd()
-		expect(cwd).toBe(configDefaults.cwd)
+
+  expect(cwd).toBe(configDefaults.cwd)
 	})
 
 	it('getEnv()', () => {
 		const NODE_ENV = process.env.NODE_ENV
 		try {
 			delete process.env.NODE_ENV
-			expect(JSON.stringify(element.getEnv())).toEqual(JSON.stringify(process.env))
+
+   expect(JSON.stringify(element.getEnv())).toEqual(JSON.stringify(process.env))
 		} finally {
 			process.env.NODE_ENV = NODE_ENV
 		}
@@ -242,36 +262,42 @@ describe('XTerminalElement', () => {
 	it('getEnv() env set in uri', async () => {
 		const expected = { var1: 'value1', var2: 'value2' }
 		const element = await createNewElement({ env: JSON.stringify(expected) })
-		expect(element.getEnv()).toEqual(expected)
+
+  expect(element.getEnv()).toEqual(expected)
 	})
 
 	it('getEnv() throw exception when env is not an object', () => {
 		element.model.profile.env = []
-		expect(() => { element.getEnv() }).toThrow(new Error('Environment set is not an object.'))
+
+  expect(() => { element.getEnv() }).toThrow(new Error('Environment set is not an object.'))
 	})
 
 	it('getEnv() setEnv set in uri', async () => {
 		const expected = { var2: 'value2' }
 		const element = await createNewElement({ env: JSON.stringify({ var1: 'value1' }), setEnv: JSON.stringify(expected) })
-		expect(element.getEnv().var2).toEqual(expected.var2)
+
+  expect(element.getEnv().var2).toEqual(expected.var2)
 	})
 
 	it('getEnv() deleteEnv set in config', () => {
 		atom.config.set('x-terminal-reloaded.spawnPtySettings.env', JSON.stringify({ var1: 'value1' }))
 		atom.config.set('x-terminal-reloaded.spawnPtySettings.deleteEnv', JSON.stringify(['var1']))
-		expect(element.getEnv().var1).toBe(undefined)
+
+  expect(element.getEnv().var1).toBe(undefined)
 	})
 
 	it('getEnv() deleteEnv set in uri', async () => {
 		await createNewElement({ env: JSON.stringify({ var1: 'value1' }), deleteEnv: JSON.stringify(['var1']) })
-		expect(element.getEnv().var1).toBe(undefined)
+
+  expect(element.getEnv().var1).toBe(undefined)
 	})
 
 	it('getEnv() deleteEnv has precendence over senEnv', () => {
 		atom.config.set('x-terminal-reloaded.spawnPtySettings.env', JSON.stringify({ var1: 'value1' }))
 		atom.config.set('x-terminal-reloaded.spawnPtySettings.setEnv', JSON.stringify({ var2: 'value2' }))
 		atom.config.set('x-terminal-reloaded.spawnPtySettings.deleteEnv', JSON.stringify(['var2']))
-		expect(element.getEnv().var2).toBe(undefined)
+
+  expect(element.getEnv().var2).toBe(undefined)
 	})
 
 	it('getEncoding()', () => {
@@ -281,7 +307,8 @@ describe('XTerminalElement', () => {
 	it('getEncoding() encoding set in uri', async () => {
 		const expected = 'someencoding'
 		const element = await createNewElement({ encoding: expected })
-		expect(element.getEncoding()).toBe(expected)
+
+  expect(element.getEncoding()).toBe(expected)
 	})
 
 	it('leaveOpenAfterExit()', () => {
@@ -291,13 +318,15 @@ describe('XTerminalElement', () => {
 	it('leaveOpenAfterExit() true set in uri', async () => {
 		const expected = true
 		const element = await createNewElement({ leaveOpenAfterExit: expected })
-		expect(element.leaveOpenAfterExit()).toBe(expected)
+
+  expect(element.leaveOpenAfterExit()).toBe(expected)
 	})
 
 	it('leaveOpenAfterExit() false set in uri', async () => {
 		const expected = false
 		const element = await createNewElement({ leaveOpenAfterExit: expected })
-		expect(element.leaveOpenAfterExit()).toBe(expected)
+
+  expect(element.leaveOpenAfterExit()).toBe(expected)
 	})
 
 	it('isPromptToStartup()', () => {
@@ -307,37 +336,43 @@ describe('XTerminalElement', () => {
 	it('isPromptToStartup() false set in uri', async () => {
 		const expected = false
 		const element = await createNewElement({ promptToStartup: expected })
-		expect(element.isPromptToStartup()).toBe(expected)
+
+  expect(element.isPromptToStartup()).toBe(expected)
 	})
 
 	it('isPromptToStartup() true set in uri', async () => {
 		const expected = true
 		const element = await createNewElement({ promptToStartup: expected })
-		expect(element.isPromptToStartup()).toBe(expected)
+
+  expect(element.isPromptToStartup()).toBe(expected)
 	})
 
 	it('isPtyProcessRunning() ptyProcess null, ptyProcessRunning false', () => {
 		element.ptyProcess = null
 		element.ptyProcessRunning = false
-		expect(element.isPtyProcessRunning()).toBeFalsy()
+
+  expect(element.isPtyProcessRunning()).toBeFalsy()
 	})
 
 	it('isPtyProcessRunning() ptyProcess not null, ptyProcessRunning false', () => {
 		element.ptyProcess = jasmine.createSpyObj('ptyProcess', ['kill'])
 		element.ptyProcessRunning = false
-		expect(element.isPtyProcessRunning()).toBeFalsy()
+
+  expect(element.isPtyProcessRunning()).toBeFalsy()
 	})
 
 	it('isPtyProcessRunning() ptyProcess not null, ptyProcessRunning true', () => {
 		element.ptyProcess = jasmine.createSpyObj('ptyProcess', ['kill'])
 		element.ptyProcessRunning = true
-		expect(element.isPtyProcessRunning()).toBeTruthy()
+
+  expect(element.isPtyProcessRunning()).toBeTruthy()
 	})
 
 	describe('getTheme()', () => {
 		it('Custom', () => {
 			const theme = element.getTheme({ theme: 'Custom' })
-			expect(theme).toEqual({
+
+   expect(theme).toEqual({
 				background: '#000000',
 				foreground: '#ffffff',
 				selectionBackground: '#4d4d4d',
@@ -366,13 +401,15 @@ describe('XTerminalElement', () => {
 			it('Custom webgl selection', async () => {
 				const element = await createNewElement({ webgl: true })
 				const webgltheme = element.getTheme({ theme: 'Custom' })
-				expect(webgltheme.selectionBackground).toBe('#4d4d4d')
+
+    expect(webgltheme.selectionBackground).toBe('#4d4d4d')
 			})
 		}
 
 		it('Atom Dark', () => {
 			const theme = element.getTheme({ theme: 'Atom Dark' })
-			expect(theme).toEqual({
+
+   expect(theme).toEqual({
 				background: '#1d1f21',
 				foreground: '#c5c8c6',
 				selectionBackground: '#999999',
@@ -401,13 +438,15 @@ describe('XTerminalElement', () => {
 			it('Atom Dark webgl selection', async () => {
 				const element = await createNewElement({ webgl: true })
 				const webgltheme = element.getTheme({ theme: 'Atom Dark' })
-				expect(webgltheme.selectionBackground).toBe('#999999')
+
+    expect(webgltheme.selectionBackground).toBe('#999999')
 			})
 		}
 
 		it('Atom Light', () => {
 			const theme = element.getTheme({ theme: 'Atom Light' })
-			expect(theme).toEqual({
+
+   expect(theme).toEqual({
 				background: '#ffffff',
 				foreground: '#555555',
 				selectionBackground: '#afc4da',
@@ -436,13 +475,15 @@ describe('XTerminalElement', () => {
 			it('Atom Light webgl selection', async () => {
 				const element = await createNewElement({ webgl: true })
 				const webgltheme = element.getTheme({ theme: 'Atom Light' })
-				expect(webgltheme.selectionBackground).toBe('#afc4da')
+
+    expect(webgltheme.selectionBackground).toBe('#afc4da')
 			})
 		}
 
 		it('Base16 Tomorrow Dark', () => {
 			const theme = element.getTheme({ theme: 'Base16 Tomorrow Dark' })
-			expect(theme).toEqual({
+
+   expect(theme).toEqual({
 				background: '#1d1f21',
 				foreground: '#c5c8c6',
 				selectionBackground: '#b4b7b4',
@@ -472,13 +513,15 @@ describe('XTerminalElement', () => {
 			it('Base16 Tomorrow Dark webgl selection', async () => {
 				const element = await createNewElement({ webgl: true })
 				const webgltheme = element.getTheme({ theme: 'Base16 Tomorrow Dark' })
-				expect(webgltheme.selectionBackground).toBe('#b4b7b4')
+
+    expect(webgltheme.selectionBackground).toBe('#b4b7b4')
 			})
 		}
 
 		it('Base16 Tomorrow Light', () => {
 			const theme = element.getTheme({ theme: 'Base16 Tomorrow Light' })
-			expect(theme).toEqual({
+
+   expect(theme).toEqual({
 				background: '#ffffff',
 				foreground: '#1d1f21',
 				selectionBackground: '#282a2e',
@@ -508,13 +551,15 @@ describe('XTerminalElement', () => {
 			it('Base16 Tomorrow Light webgl selection', async () => {
 				const element = await createNewElement({ webgl: true })
 				const webgltheme = element.getTheme({ theme: 'Base16 Tomorrow Light' })
-				expect(webgltheme.selectionBackground).toBe('#282a2e')
+
+    expect(webgltheme.selectionBackground).toBe('#282a2e')
 			})
 		}
 
 		it('Christmas', () => {
 			const theme = element.getTheme({ theme: 'Christmas' })
-			expect(theme).toEqual({
+
+   expect(theme).toEqual({
 				background: '#0c0047',
 				foreground: '#f81705',
 				selectionBackground: '#298f16',
@@ -543,13 +588,15 @@ describe('XTerminalElement', () => {
 			it('Christmas webgl selection', async () => {
 				const element = await createNewElement({ webgl: true })
 				const webgltheme = element.getTheme({ theme: 'Christmas' })
-				expect(webgltheme.selectionBackground).toBe('#298f16')
+
+    expect(webgltheme.selectionBackground).toBe('#298f16')
 			})
 		}
 
 		it('City Lights', () => {
 			const theme = element.getTheme({ theme: 'City Lights' })
-			expect(theme).toEqual({
+
+   expect(theme).toEqual({
 				background: '#181d23',
 				foreground: '#666d81',
 				selectionBackground: '#2a2f38',
@@ -579,13 +626,15 @@ describe('XTerminalElement', () => {
 			it('City Lights webgl selection', async () => {
 				const element = await createNewElement({ webgl: true })
 				const webgltheme = element.getTheme({ theme: 'City Lights' })
-				expect(webgltheme.selectionBackground).toBe('#2a2f38')
+
+    expect(webgltheme.selectionBackground).toBe('#2a2f38')
 			})
 		}
 
 		it('Dracula', () => {
 			const theme = element.getTheme({ theme: 'Dracula' })
-			expect(theme).toEqual({
+
+   expect(theme).toEqual({
 				background: '#1e1f29',
 				foreground: 'white',
 				selectionBackground: '#44475a',
@@ -614,13 +663,15 @@ describe('XTerminalElement', () => {
 			it('Dracula webgl selection', async () => {
 				const element = await createNewElement({ webgl: true })
 				const webgltheme = element.getTheme({ theme: 'Dracula' })
-				expect(webgltheme.selectionBackground).toBe('#44475a')
+
+    expect(webgltheme.selectionBackground).toBe('#44475a')
 			})
 		}
 
 		it('Grass', () => {
 			const theme = element.getTheme({ theme: 'Grass' })
-			expect(theme).toEqual({
+
+   expect(theme).toEqual({
 				background: 'rgb(19, 119, 61)',
 				foreground: 'rgb(255, 240, 165)',
 				selectionBackground: 'rgba(182, 73, 38, .99)',
@@ -649,13 +700,15 @@ describe('XTerminalElement', () => {
 			it('Grass webgl selection', async () => {
 				const element = await createNewElement({ webgl: true })
 				const webgltheme = element.getTheme({ theme: 'Grass' })
-				expect(webgltheme.selectionBackground).toBe('rgba(182, 73, 38, .99)')
+
+    expect(webgltheme.selectionBackground).toBe('rgba(182, 73, 38, .99)')
 			})
 		}
 
 		it('Homebrew', () => {
 			const theme = element.getTheme({ theme: 'Homebrew' })
-			expect(theme).toEqual({
+
+   expect(theme).toEqual({
 				background: '#000000',
 				foreground: 'rgb(41, 254, 20)',
 				selectionBackground: 'rgba(7, 30, 155, .99)',
@@ -684,13 +737,15 @@ describe('XTerminalElement', () => {
 			it('Homebrew webgl selection', async () => {
 				const element = await createNewElement({ webgl: true })
 				const webgltheme = element.getTheme({ theme: 'Homebrew' })
-				expect(webgltheme.selectionBackground).toBe('rgba(7, 30, 155, .99)')
+
+    expect(webgltheme.selectionBackground).toBe('rgba(7, 30, 155, .99)')
 			})
 		}
 
 		it('Inverse', () => {
 			const theme = element.getTheme({ theme: 'Inverse' })
-			expect(theme).toEqual({
+
+   expect(theme).toEqual({
 				background: '#ffffff',
 				foreground: '#000000',
 				selectionBackground: 'rgba(178, 215, 255, .99)',
@@ -719,13 +774,15 @@ describe('XTerminalElement', () => {
 			it('Inverse webgl selection', async () => {
 				const element = await createNewElement({ webgl: true })
 				const webgltheme = element.getTheme({ theme: 'Inverse' })
-				expect(webgltheme.selectionBackground).toBe('rgba(178, 215, 255, .99)')
+
+    expect(webgltheme.selectionBackground).toBe('rgba(178, 215, 255, .99)')
 			})
 		}
 
 		it('Linux', () => {
 			const theme = element.getTheme({ theme: 'Linux' })
-			expect(theme).toEqual({
+
+   expect(theme).toEqual({
 				background: '#000000',
 				foreground: 'rgb(230, 230, 230)',
 				selectionBackground: 'rgba(155, 30, 7, .99)',
@@ -754,13 +811,15 @@ describe('XTerminalElement', () => {
 			it('Linux webgl selection', async () => {
 				const element = await createNewElement({ webgl: true })
 				const webgltheme = element.getTheme({ theme: 'Linux' })
-				expect(webgltheme.selectionBackground).toBe('rgba(155, 30, 7, .99)')
+
+    expect(webgltheme.selectionBackground).toBe('rgba(155, 30, 7, .99)')
 			})
 		}
 
 		it('Man Page', () => {
 			const theme = element.getTheme({ theme: 'Man Page' })
-			expect(theme).toEqual({
+
+   expect(theme).toEqual({
 				background: 'rgb(254, 244, 156)',
 				foreground: 'black',
 				selectionBackground: 'rgba(178, 215, 255, .99)',
@@ -789,13 +848,15 @@ describe('XTerminalElement', () => {
 			it('Man Page webgl selection', async () => {
 				const element = await createNewElement({ webgl: true })
 				const webgltheme = element.getTheme({ theme: 'Man Page' })
-				expect(webgltheme.selectionBackground).toBe('rgba(178, 215, 255, .99)')
+
+    expect(webgltheme.selectionBackground).toBe('rgba(178, 215, 255, .99)')
 			})
 		}
 
 		it('Novel', () => {
 			const theme = element.getTheme({ theme: 'Novel' })
-			expect(theme).toEqual({
+
+   expect(theme).toEqual({
 				background: 'rgb(223, 219, 196)',
 				foreground: 'rgb(77, 47, 46)',
 				selectionBackground: 'rgba(155, 153, 122, .99)',
@@ -824,13 +885,15 @@ describe('XTerminalElement', () => {
 			it('Novel webgl selection', async () => {
 				const element = await createNewElement({ webgl: true })
 				const webgltheme = element.getTheme({ theme: 'Novel' })
-				expect(webgltheme.selectionBackground).toBe('rgba(155, 153, 122, .99)')
+
+    expect(webgltheme.selectionBackground).toBe('rgba(155, 153, 122, .99)')
 			})
 		}
 
 		it('Ocean', () => {
 			const theme = element.getTheme({ theme: 'Ocean' })
-			expect(theme).toEqual({
+
+   expect(theme).toEqual({
 				background: 'rgb(44, 102, 201)',
 				foreground: 'white',
 				selectionBackground: 'rgba(41, 134, 255, .99)',
@@ -859,13 +922,15 @@ describe('XTerminalElement', () => {
 			it('Ocean webgl selection', async () => {
 				const element = await createNewElement({ webgl: true })
 				const webgltheme = element.getTheme({ theme: 'Ocean' })
-				expect(webgltheme.selectionBackground).toBe('rgba(41, 134, 255, .99)')
+
+    expect(webgltheme.selectionBackground).toBe('rgba(41, 134, 255, .99)')
 			})
 		}
 
 		it('One Dark', () => {
 			const theme = element.getTheme({ theme: 'One Dark' })
-			expect(theme).toEqual({
+
+   expect(theme).toEqual({
 				background: '#282c34',
 				foreground: '#abb2bf',
 				selectionBackground: '#9196a1',
@@ -894,13 +959,15 @@ describe('XTerminalElement', () => {
 			it('One Dark webgl selection', async () => {
 				const element = await createNewElement({ webgl: true })
 				const webgltheme = element.getTheme({ theme: 'One Dark' })
-				expect(webgltheme.selectionBackground).toBe('#9196a1')
+
+    expect(webgltheme.selectionBackground).toBe('#9196a1')
 			})
 		}
 
 		it('One Light', () => {
 			const theme = element.getTheme({ theme: 'One Light' })
-			expect(theme).toEqual({
+
+   expect(theme).toEqual({
 				background: 'hsl(230, 1%, 98%)',
 				foreground: 'hsl(230, 8%, 24%)',
 				selectionBackground: 'hsl(230, 1%, 90%)',
@@ -929,13 +996,15 @@ describe('XTerminalElement', () => {
 			it('One Light webgl selection', async () => {
 				const element = await createNewElement({ webgl: true })
 				const webgltheme = element.getTheme({ theme: 'One Light' })
-				expect(webgltheme.selectionBackground).toBe('hsl(230, 1%, 90%)')
+
+    expect(webgltheme.selectionBackground).toBe('hsl(230, 1%, 90%)')
 			})
 		}
 
 		it('Predawn', () => {
 			const theme = element.getTheme({ theme: 'Predawn' })
-			expect(theme).toEqual({
+
+   expect(theme).toEqual({
 				background: '#282828',
 				foreground: '#f1f1f1',
 				selectionBackground: 'rgba(255,255,255,0.25)',
@@ -964,13 +1033,15 @@ describe('XTerminalElement', () => {
 			it('Predawn webgl selection', async () => {
 				const element = await createNewElement({ webgl: true })
 				const webgltheme = element.getTheme({ theme: 'Predawn' })
-				expect(webgltheme.selectionBackground).toBe('rgba(255,255,255,0.25)')
+
+    expect(webgltheme.selectionBackground).toBe('rgba(255,255,255,0.25)')
 			})
 		}
 
 		it('Pro', () => {
 			const theme = element.getTheme({ theme: 'Pro' })
-			expect(theme).toEqual({
+
+   expect(theme).toEqual({
 				background: '#000000',
 				foreground: 'rgb(244, 244, 244)',
 				selectionBackground: 'rgba(82, 82, 82, .99)',
@@ -999,13 +1070,15 @@ describe('XTerminalElement', () => {
 			it('Pro webgl selection', async () => {
 				const element = await createNewElement({ webgl: true })
 				const webgltheme = element.getTheme({ theme: 'Pro' })
-				expect(webgltheme.selectionBackground).toBe('rgba(82, 82, 82, .99)')
+
+    expect(webgltheme.selectionBackground).toBe('rgba(82, 82, 82, .99)')
 			})
 		}
 
 		it('Red Sands', () => {
 			const theme = element.getTheme({ theme: 'Red Sands' })
-			expect(theme).toEqual({
+
+   expect(theme).toEqual({
 				background: 'rgb(143, 53, 39)',
 				foreground: 'rgb(215, 201, 167)',
 				selectionBackground: 'rgba(60, 25, 22, .99)',
@@ -1034,13 +1107,15 @@ describe('XTerminalElement', () => {
 			it('Red Sands webgl selection', async () => {
 				const element = await createNewElement({ webgl: true })
 				const webgltheme = element.getTheme({ theme: 'Red Sands' })
-				expect(webgltheme.selectionBackground).toBe('rgba(60, 25, 22, .99)')
+
+    expect(webgltheme.selectionBackground).toBe('rgba(60, 25, 22, .99)')
 			})
 		}
 
 		it('Red', () => {
 			const theme = element.getTheme({ theme: 'Red' })
-			expect(theme).toEqual({
+
+   expect(theme).toEqual({
 				background: '#000000',
 				foreground: 'rgb(255, 38, 14)',
 				selectionBackground: 'rgba(7, 30, 155, .99)',
@@ -1069,13 +1144,15 @@ describe('XTerminalElement', () => {
 			it('Red webgl selection', async () => {
 				const element = await createNewElement({ webgl: true })
 				const webgltheme = element.getTheme({ theme: 'Red' })
-				expect(webgltheme.selectionBackground).toBe('rgba(7, 30, 155, .99)')
+
+    expect(webgltheme.selectionBackground).toBe('rgba(7, 30, 155, .99)')
 			})
 		}
 
 		it('Silver Aerogel', () => {
 			const theme = element.getTheme({ theme: 'Silver Aerogel' })
-			expect(theme).toEqual({
+
+   expect(theme).toEqual({
 				background: 'rgb(146, 146, 146)',
 				foreground: '#000000',
 				selectionBackground: 'rgba(120, 123, 156, .99)',
@@ -1104,13 +1181,15 @@ describe('XTerminalElement', () => {
 			it('Silver Aerogel webgl selection', async () => {
 				const element = await createNewElement({ webgl: true })
 				const webgltheme = element.getTheme({ theme: 'Silver Aerogel' })
-				expect(webgltheme.selectionBackground).toBe('rgba(120, 123, 156, .99)')
+
+    expect(webgltheme.selectionBackground).toBe('rgba(120, 123, 156, .99)')
 			})
 		}
 
 		it('Solarized Dark', () => {
 			const theme = element.getTheme({ theme: 'Solarized Dark' })
-			expect(theme).toEqual({
+
+   expect(theme).toEqual({
 				background: '#042029',
 				foreground: '#708284',
 				selectionBackground: '#839496',
@@ -1139,13 +1218,15 @@ describe('XTerminalElement', () => {
 			it('Solarized Dark webgl selection', async () => {
 				const element = await createNewElement({ webgl: true })
 				const webgltheme = element.getTheme({ theme: 'Solarized Dark' })
-				expect(webgltheme.selectionBackground).toBe('#839496')
+
+    expect(webgltheme.selectionBackground).toBe('#839496')
 			})
 		}
 
 		it('Solarized Light', () => {
 			const theme = element.getTheme({ theme: 'Solarized Light' })
-			expect(theme).toEqual({
+
+   expect(theme).toEqual({
 				background: '#fdf6e3',
 				foreground: '#657a81',
 				selectionBackground: '#ece7d5',
@@ -1174,13 +1255,15 @@ describe('XTerminalElement', () => {
 			it('Solarized Light webgl selection', async () => {
 				const element = await createNewElement({ webgl: true })
 				const webgltheme = element.getTheme({ theme: 'Solarized Light' })
-				expect(webgltheme.selectionBackground).toBe('#ece7d5')
+
+    expect(webgltheme.selectionBackground).toBe('#ece7d5')
 			})
 		}
 
 		it('Solid Colors', () => {
 			const theme = element.getTheme({ theme: 'Solid Colors' })
-			expect(theme).toEqual({
+
+   expect(theme).toEqual({
 				background: 'rgb(120, 132, 151)',
 				foreground: '#000000',
 				selectionBackground: 'rgba(178, 215, 255, .99)',
@@ -1209,14 +1292,16 @@ describe('XTerminalElement', () => {
 			it('Solid Colors webgl selection', async () => {
 				const element = await createNewElement({ webgl: true })
 				const webgltheme = element.getTheme({ theme: 'Solid Colors' })
-				expect(webgltheme.selectionBackground).toBe('rgba(178, 215, 255, .99)')
+
+    expect(webgltheme.selectionBackground).toBe('rgba(178, 215, 255, .99)')
 			})
 		}
 
 		it('Standard', () => {
 			const theme = element.getTheme({ theme: 'Standard' })
 			const root = getComputedStyle(document.documentElement)
-			expect(theme).toEqual({
+
+   expect(theme).toEqual({
 				background: root.getPropertyValue('--standard-app-background-color'),
 				foreground: root.getPropertyValue('--standard-text-color'),
 				selectionBackground: root.getPropertyValue('--standard-background-color-selected'),
@@ -1246,7 +1331,8 @@ describe('XTerminalElement', () => {
 				const root = getComputedStyle(document.documentElement)
 				const element = await createNewElement({ webgl: true })
 				const webgltheme = element.getTheme({ theme: 'Standard' })
-				expect(webgltheme.selectionBackground).toBe(root.getPropertyValue('--standard-background-color-selected'))
+
+    expect(webgltheme.selectionBackground).toBe(root.getPropertyValue('--standard-background-color-selected'))
 			})
 		}
 	})
@@ -1260,9 +1346,9 @@ describe('XTerminalElement', () => {
 	})
 
 	describe('loaded addons', () => {
-		const { Terminal } = require('xterm')
-		const { WebLinksAddon } = require('xterm-addon-web-links')
-		const { WebglAddon } = require('xterm-addon-webgl')
+		const { Terminal } = require('@xterm/xterm')
+		const { WebLinksAddon } = require('@xterm/addon-web-links')
+		const { WebglAddon } = require('@xterm/addon-webgl')
 
 		beforeEach(() => {
 			spyOn(Terminal.prototype, 'loadAddon').and.callThrough()
@@ -1273,7 +1359,8 @@ describe('XTerminalElement', () => {
 			const wasAdded = Terminal.prototype.loadAddon.calls.all().some(call => {
 				return call.args[0] instanceof WebLinksAddon
 			})
-			expect(wasAdded).toBe(true)
+
+   expect(wasAdded).toBe(true)
 		})
 
 		it('createTerminal() disable web-link addon', async () => {
@@ -1281,7 +1368,8 @@ describe('XTerminalElement', () => {
 			const wasAdded = Terminal.prototype.loadAddon.calls.all().some(call => {
 				return call.args[0] instanceof WebLinksAddon
 			})
-			expect(wasAdded).toBe(false)
+
+   expect(wasAdded).toBe(false)
 		})
 
 		if (process.platform !== 'linux') {
@@ -1290,7 +1378,8 @@ describe('XTerminalElement', () => {
 				const wasAdded = Terminal.prototype.loadAddon.calls.all().some(call => {
 					return call.args[0] instanceof WebglAddon
 				})
-				expect(wasAdded).toBe(true)
+
+    expect(wasAdded).toBe(true)
 			})
 		}
 
@@ -1299,7 +1388,8 @@ describe('XTerminalElement', () => {
 			const wasAdded = Terminal.prototype.loadAddon.calls.all().some(call => {
 				return call.args[0] instanceof WebglAddon
 			})
-			expect(wasAdded).toBe(false)
+
+   expect(wasAdded).toBe(false)
 		})
 	})
 
@@ -1311,7 +1401,8 @@ describe('XTerminalElement', () => {
 			.and.returnValue('sometestprocess')
 		nodePty.spawn.and.returnValue(newPtyProcess)
 		await element.restartPtyProcess()
-		expect(element.ptyProcess).toBe(newPtyProcess)
+
+  expect(element.ptyProcess).toBe(newPtyProcess)
 		expect(oldPtyProcess).not.toBe(element.ptyProcess)
 	})
 
@@ -1322,7 +1413,8 @@ describe('XTerminalElement', () => {
 			.and.returnValue('sometestprocess')
 		nodePty.spawn.and.returnValue(newPtyProcess)
 		await element.restartPtyProcess()
-		expect(element.ptyProcessRunning).toBe(true)
+
+  expect(element.ptyProcessRunning).toBe(true)
 	})
 
 	it('restartPtyProcess() command not found', async () => {
@@ -1333,7 +1425,8 @@ describe('XTerminalElement', () => {
 		}
 		nodePty.spawn.and.callFake(fakeCall)
 		await element.restartPtyProcess()
-		expect(element.ptyProcess).toBe(null)
+
+  expect(element.ptyProcess).toBe(null)
 		expect(element.ptyProcessRunning).toBe(false)
 		expect(element.showNotification.calls.argsFor(0)).toEqual(
 			[
@@ -1351,7 +1444,8 @@ describe('XTerminalElement', () => {
 		}
 		nodePty.spawn.and.callFake(fakeCall)
 		await element.restartPtyProcess()
-		expect(element.ptyProcess).toBe(null)
+
+  expect(element.ptyProcess).toBe(null)
 		expect(element.ptyProcessRunning).toBe(false)
 		expect(element.showNotification.calls.argsFor(0)).toEqual(
 			[
@@ -1372,7 +1466,8 @@ describe('XTerminalElement', () => {
 		spyOn(element.model, 'exit')
 		spyOn(element, 'leaveOpenAfterExit').and.returnValue(false)
 		exitHandler(0)
-		expect(element.ptyProcessRunning).toBe(false)
+
+  expect(element.ptyProcessRunning).toBe(false)
 	})
 
 	it('ptyProcess exit handler code 0 don\'t leave open', () => {
@@ -1386,7 +1481,8 @@ describe('XTerminalElement', () => {
 		spyOn(element.model, 'exit')
 		spyOn(element, 'leaveOpenAfterExit').and.returnValue(false)
 		exitHandler(0)
-		expect(element.model.exit).toHaveBeenCalled()
+
+  expect(element.model.exit).toHaveBeenCalled()
 	})
 
 	it('ptyProcess exit handler code 1 don\'t leave open', () => {
@@ -1400,7 +1496,8 @@ describe('XTerminalElement', () => {
 		spyOn(element.model, 'exit')
 		spyOn(element, 'leaveOpenAfterExit').and.returnValue(false)
 		exitHandler(1)
-		expect(element.model.exit).toHaveBeenCalled()
+
+  expect(element.model.exit).toHaveBeenCalled()
 	})
 
 	it('ptyProcess exit handler code 0 leave open', () => {
@@ -1414,7 +1511,8 @@ describe('XTerminalElement', () => {
 		spyOn(element.model, 'exit')
 		spyOn(element, 'leaveOpenAfterExit').and.returnValue(true)
 		exitHandler(0)
-		expect(element.model.exit).not.toHaveBeenCalled()
+
+  expect(element.model.exit).not.toHaveBeenCalled()
 	})
 
 	it('ptyProcess exit handler code 0 leave open check top message', () => {
@@ -1430,7 +1528,8 @@ describe('XTerminalElement', () => {
 		exitHandler(0)
 		const successDiv = element.topDiv.querySelector('.x-terminal-reloaded-notice-success')
 		const errorDiv = element.topDiv.querySelector('.x-terminal-reloaded-notice-error')
-		expect(successDiv).not.toBeNull()
+
+  expect(successDiv).not.toBeNull()
 		expect(errorDiv).toBeNull()
 	})
 
@@ -1447,7 +1546,8 @@ describe('XTerminalElement', () => {
 		exitHandler(1)
 		const successDiv = element.topDiv.querySelector('.x-terminal-reloaded-notice-success')
 		const errorDiv = element.topDiv.querySelector('.x-terminal-reloaded-notice-error')
-		expect(successDiv).toBeNull()
+
+  expect(successDiv).toBeNull()
 		expect(errorDiv).not.toBeNull()
 	})
 
@@ -1464,7 +1564,8 @@ describe('XTerminalElement', () => {
 		exitHandler(0)
 		const messageDiv = element.topDiv.querySelector('.x-terminal-reloaded-notice-success')
 		const restartButton = messageDiv.querySelector('.btn-success')
-		expect(restartButton).not.toBeNull()
+
+  expect(restartButton).not.toBeNull()
 	})
 
 	it('ptyProcess exit handler code 1 leave open check top message has restart button', () => {
@@ -1480,7 +1581,8 @@ describe('XTerminalElement', () => {
 		exitHandler(1)
 		const messageDiv = element.topDiv.querySelector('.x-terminal-reloaded-notice-error')
 		const restartButton = messageDiv.querySelector('.btn-error')
-		expect(restartButton).not.toBeNull()
+
+  expect(restartButton).not.toBeNull()
 	})
 
 	it('ptyProcess exit handler code 0 leave open check restart button click handler', () => {
@@ -1499,13 +1601,15 @@ describe('XTerminalElement', () => {
 		spyOn(element, 'restartPtyProcess')
 		const mouseEvent = new MouseEvent('click')
 		restartButton.dispatchEvent(mouseEvent)
-		expect(element.restartPtyProcess).toHaveBeenCalled()
+
+  expect(element.restartPtyProcess).toHaveBeenCalled()
 	})
 
 	it('refitTerminal() initial state', () => {
 		spyOn(element.fitAddon, 'proposeDimensions')
 		element.refitTerminal()
-		expect(element.fitAddon.proposeDimensions).not.toHaveBeenCalled()
+
+  expect(element.fitAddon.proposeDimensions).not.toHaveBeenCalled()
 	})
 
 	it('refitTerminal() terminal not visible', () => {
@@ -1513,7 +1617,8 @@ describe('XTerminalElement', () => {
 		element.mainDivContentRect = { width: 1, height: 1 }
 		element.terminalDivInitiallyVisible = false
 		element.refitTerminal()
-		expect(element.fitAddon.proposeDimensions).not.toHaveBeenCalled()
+
+  expect(element.fitAddon.proposeDimensions).not.toHaveBeenCalled()
 	})
 
 	it('refitTerminal() terminal no width', () => {
@@ -1521,7 +1626,8 @@ describe('XTerminalElement', () => {
 		element.mainDivContentRect = { width: 0, height: 1 }
 		element.terminalDivInitiallyVisible = true
 		element.refitTerminal()
-		expect(element.fitAddon.proposeDimensions).not.toHaveBeenCalled()
+
+  expect(element.fitAddon.proposeDimensions).not.toHaveBeenCalled()
 	})
 
 	it('refitTerminal() terminal no height', () => {
@@ -1529,7 +1635,8 @@ describe('XTerminalElement', () => {
 		element.mainDivContentRect = { width: 1, height: 0 }
 		element.terminalDivInitiallyVisible = true
 		element.refitTerminal()
-		expect(element.fitAddon.proposeDimensions).not.toHaveBeenCalled()
+
+  expect(element.fitAddon.proposeDimensions).not.toHaveBeenCalled()
 	})
 
 	it('refitTerminal() terminal completely visible', () => {
@@ -1537,7 +1644,8 @@ describe('XTerminalElement', () => {
 		element.mainDivContentRect = { width: 1, height: 1 }
 		element.terminalDivInitiallyVisible = true
 		element.refitTerminal()
-		expect(element.fitAddon.proposeDimensions).toHaveBeenCalled()
+
+  expect(element.fitAddon.proposeDimensions).toHaveBeenCalled()
 	})
 
 	it('refitTerminal() terminal size not changed', () => {
@@ -1550,7 +1658,8 @@ describe('XTerminalElement', () => {
 		element.terminalDivInitiallyVisible = true
 		element.ptyProcessRunning = false
 		element.refitTerminal()
-		expect(element.terminal.resize).not.toHaveBeenCalled()
+
+  expect(element.terminal.resize).not.toHaveBeenCalled()
 	})
 
 	it('refitTerminal() terminal size cols increased', () => {
@@ -1563,7 +1672,8 @@ describe('XTerminalElement', () => {
 		element.terminalDivInitiallyVisible = true
 		element.ptyProcessRunning = false
 		element.refitTerminal()
-		expect(element.terminal.resize).toHaveBeenCalled()
+
+  expect(element.terminal.resize).toHaveBeenCalled()
 	})
 
 	it('refitTerminal() terminal size rows increased', () => {
@@ -1576,7 +1686,8 @@ describe('XTerminalElement', () => {
 		element.terminalDivInitiallyVisible = true
 		element.ptyProcessRunning = false
 		element.refitTerminal()
-		expect(element.terminal.resize).toHaveBeenCalled()
+
+  expect(element.terminal.resize).toHaveBeenCalled()
 	})
 
 	it('refitTerminal() terminal size cols and rows increased', () => {
@@ -1589,7 +1700,8 @@ describe('XTerminalElement', () => {
 		element.terminalDivInitiallyVisible = true
 		element.ptyProcessRunning = false
 		element.refitTerminal()
-		expect(element.terminal.resize).toHaveBeenCalled()
+
+  expect(element.terminal.resize).toHaveBeenCalled()
 	})
 
 	it('refitTerminal() terminal size rows decreased', () => {
@@ -1602,7 +1714,8 @@ describe('XTerminalElement', () => {
 		element.terminalDivInitiallyVisible = true
 		element.ptyProcessRunning = false
 		element.refitTerminal()
-		expect(element.terminal.resize).toHaveBeenCalled()
+
+  expect(element.terminal.resize).toHaveBeenCalled()
 	})
 
 	it('refitTerminal() terminal size cols and rows decreased', () => {
@@ -1615,7 +1728,8 @@ describe('XTerminalElement', () => {
 		element.terminalDivInitiallyVisible = true
 		element.ptyProcessRunning = false
 		element.refitTerminal()
-		expect(element.terminal.resize).toHaveBeenCalled()
+
+  expect(element.terminal.resize).toHaveBeenCalled()
 	})
 
 	it('refitTerminal() pty process size not changed ptyProcess running', () => {
@@ -1628,7 +1742,8 @@ describe('XTerminalElement', () => {
 		element.terminalDivInitiallyVisible = true
 		element.ptyProcessRunning = true
 		element.refitTerminal()
-		expect(element.ptyProcess.resize).not.toHaveBeenCalled()
+
+  expect(element.ptyProcess.resize).not.toHaveBeenCalled()
 	})
 
 	it('refitTerminal() pty process size cols increased ptyProcess running', () => {
@@ -1641,7 +1756,8 @@ describe('XTerminalElement', () => {
 		element.terminalDivInitiallyVisible = true
 		element.ptyProcessRunning = true
 		element.refitTerminal()
-		expect(element.ptyProcess.resize).toHaveBeenCalled()
+
+  expect(element.ptyProcess.resize).toHaveBeenCalled()
 	})
 
 	it('refitTerminal() pty process size rows increased ptyProcess running', () => {
@@ -1654,7 +1770,8 @@ describe('XTerminalElement', () => {
 		element.terminalDivInitiallyVisible = true
 		element.ptyProcessRunning = true
 		element.refitTerminal()
-		expect(element.ptyProcess.resize).toHaveBeenCalled()
+
+  expect(element.ptyProcess.resize).toHaveBeenCalled()
 	})
 
 	it('refitTerminal() pty process size cols and rows increased ptyProcess running', () => {
@@ -1667,7 +1784,8 @@ describe('XTerminalElement', () => {
 		element.terminalDivInitiallyVisible = true
 		element.ptyProcessRunning = true
 		element.refitTerminal()
-		expect(element.ptyProcess.resize).toHaveBeenCalled()
+
+  expect(element.ptyProcess.resize).toHaveBeenCalled()
 	})
 
 	it('refitTerminal() pty process size cols decreased ptyProcess running', () => {
@@ -1680,7 +1798,8 @@ describe('XTerminalElement', () => {
 		element.terminalDivInitiallyVisible = true
 		element.ptyProcessRunning = true
 		element.refitTerminal()
-		expect(element.ptyProcess.resize).toHaveBeenCalled()
+
+  expect(element.ptyProcess.resize).toHaveBeenCalled()
 	})
 
 	it('refitTerminal() pty process size rows decreased ptyProcess running', () => {
@@ -1693,7 +1812,8 @@ describe('XTerminalElement', () => {
 		element.terminalDivInitiallyVisible = true
 		element.ptyProcessRunning = true
 		element.refitTerminal()
-		expect(element.ptyProcess.resize).toHaveBeenCalled()
+
+  expect(element.ptyProcess.resize).toHaveBeenCalled()
 	})
 
 	it('refitTerminal() pty process size cols and rows decreased ptyProcess running', () => {
@@ -1706,7 +1826,8 @@ describe('XTerminalElement', () => {
 		element.terminalDivInitiallyVisible = true
 		element.ptyProcessRunning = true
 		element.refitTerminal()
-		expect(element.ptyProcess.resize).toHaveBeenCalled()
+
+  expect(element.ptyProcess.resize).toHaveBeenCalled()
 	})
 
 	it('refitTerminal() pty process size cols increased ptyProcess running check call args', () => {
@@ -1720,7 +1841,8 @@ describe('XTerminalElement', () => {
 		element.terminalDivInitiallyVisible = true
 		element.ptyProcessRunning = true
 		element.refitTerminal()
-		expect(element.ptyProcess.resize).toHaveBeenCalledWith(expected.cols, expected.rows)
+
+  expect(element.ptyProcess.resize).toHaveBeenCalledWith(expected.cols, expected.rows)
 	})
 
 	it('refitTerminal() pty process size rows increased ptyProcess running check call args', () => {
@@ -1734,7 +1856,8 @@ describe('XTerminalElement', () => {
 		element.terminalDivInitiallyVisible = true
 		element.ptyProcessRunning = true
 		element.refitTerminal()
-		expect(element.ptyProcess.resize).toHaveBeenCalledWith(expected.cols, expected.rows)
+
+  expect(element.ptyProcess.resize).toHaveBeenCalledWith(expected.cols, expected.rows)
 	})
 
 	it('refitTerminal() pty process size cols and rows increased ptyProcess running check call args', () => {
@@ -1748,7 +1871,8 @@ describe('XTerminalElement', () => {
 		element.terminalDivInitiallyVisible = true
 		element.ptyProcessRunning = true
 		element.refitTerminal()
-		expect(element.ptyProcess.resize).toHaveBeenCalledWith(expected.cols, expected.rows)
+
+  expect(element.ptyProcess.resize).toHaveBeenCalledWith(expected.cols, expected.rows)
 	})
 
 	it('refitTerminal() pty process size cols decreased ptyProcess running check call args', () => {
@@ -1762,7 +1886,8 @@ describe('XTerminalElement', () => {
 		element.terminalDivInitiallyVisible = true
 		element.ptyProcessRunning = true
 		element.refitTerminal()
-		expect(element.ptyProcess.resize).toHaveBeenCalledWith(expected.cols, expected.rows)
+
+  expect(element.ptyProcess.resize).toHaveBeenCalledWith(expected.cols, expected.rows)
 	})
 
 	it('refitTerminal() pty process size rows decreased ptyProcess running check call args', () => {
@@ -1776,7 +1901,8 @@ describe('XTerminalElement', () => {
 		element.terminalDivInitiallyVisible = true
 		element.ptyProcessRunning = true
 		element.refitTerminal()
-		expect(element.ptyProcess.resize).toHaveBeenCalledWith(expected.cols, expected.rows)
+
+  expect(element.ptyProcess.resize).toHaveBeenCalledWith(expected.cols, expected.rows)
 	})
 
 	it('refitTerminal() pty process size cols and rows decreased ptyProcess running check call args', () => {
@@ -1790,14 +1916,16 @@ describe('XTerminalElement', () => {
 		element.terminalDivInitiallyVisible = true
 		element.ptyProcessRunning = true
 		element.refitTerminal()
-		expect(element.ptyProcess.resize).toHaveBeenCalledWith(expected.cols, expected.rows)
+
+  expect(element.ptyProcess.resize).toHaveBeenCalledWith(expected.cols, expected.rows)
 	})
 
 	it('focusOnTerminal()', () => {
 		spyOn(element.terminal, 'focus')
 		spyOn(element.model, 'setActive')
 		element.focusOnTerminal()
-		expect(element.model.setActive).toHaveBeenCalled()
+
+  expect(element.model.setActive).toHaveBeenCalled()
 		expect(element.terminal.focus).toHaveBeenCalled()
 	})
 
@@ -1823,12 +1951,14 @@ describe('XTerminalElement', () => {
 
 	it('hideTerminal()', () => {
 		element.hideTerminal()
-		expect(element.terminalDiv.style.visibility).toBe('hidden')
+
+  expect(element.terminalDiv.style.visibility).toBe('hidden')
 	})
 
 	it('showTerminal()', () => {
 		element.showTerminal()
-		expect(element.terminalDiv.style.visibility).toBe('visible')
+
+  expect(element.terminalDiv.style.visibility).toBe('visible')
 	})
 
 	it('hoveredLink initially null', () => {
@@ -1847,7 +1977,8 @@ describe('XTerminalElement', () => {
 		const args = element.ptyProcess.on.calls.argsFor(0)
 		const onDataCallback = args[1]
 		onDataCallback('')
-		expect(element.model.title).toBe('X-Terminal-Reloaded')
+
+  expect(element.model.title).toBe('X-Terminal-Reloaded')
 	})
 
 	it('on \'data\' handler no custom title on linux platform', async () => {
@@ -1862,7 +1993,8 @@ describe('XTerminalElement', () => {
 		const args = element.ptyProcess.on.calls.argsFor(0)
 		const onDataCallback = args[1]
 		onDataCallback('')
-		expect(element.model.title).toBe('sometestprocess')
+
+  expect(element.model.title).toBe('sometestprocess')
 	})
 
 	it('on \'data\' handler custom title on win32 platform', async () => {
@@ -1878,7 +2010,8 @@ describe('XTerminalElement', () => {
 		const args = element.ptyProcess.on.calls.argsFor(0)
 		const onDataCallback = args[1]
 		onDataCallback('')
-		expect(element.model.title).toBe('foo')
+
+  expect(element.model.title).toBe('foo')
 	})
 
 	it('on \'data\' handler custom title on linux platform', async () => {
@@ -1894,7 +2027,8 @@ describe('XTerminalElement', () => {
 		const args = element.ptyProcess.on.calls.argsFor(0)
 		const onDataCallback = args[1]
 		onDataCallback('')
-		expect(element.model.title).toBe('foo')
+
+  expect(element.model.title).toBe('foo')
 	})
 
 	it('on \'exit\' handler leave open after exit success', async () => {
@@ -1908,7 +2042,8 @@ describe('XTerminalElement', () => {
 		const onExitCallback = args[1]
 		element.model.profile.leaveOpenAfterExit = true
 		onExitCallback(0)
-		expect(element.querySelector('.x-terminal-reloaded-notice-success')).toBeTruthy()
+
+  expect(element.querySelector('.x-terminal-reloaded-notice-success')).toBeTruthy()
 		expect(element.querySelector('.x-terminal-reloaded-notice-error')).toBe(null)
 	})
 
@@ -1923,7 +2058,8 @@ describe('XTerminalElement', () => {
 		const onExitCallback = args[1]
 		element.model.profile.leaveOpenAfterExit = true
 		onExitCallback(1)
-		expect(element.querySelector('.x-terminal-reloaded-notice-success')).toBe(null)
+
+  expect(element.querySelector('.x-terminal-reloaded-notice-success')).toBe(null)
 		expect(element.querySelector('.x-terminal-reloaded-notice-error')).toBeTruthy()
 	})
 
@@ -1939,7 +2075,8 @@ describe('XTerminalElement', () => {
 		element.model.profile.leaveOpenAfterExit = false
 		spyOn(element.model, 'exit')
 		onExitCallback(1)
-		expect(element.model.exit).toHaveBeenCalled()
+
+  expect(element.model.exit).toHaveBeenCalled()
 	})
 
 	it('showNotification() success message', () => {
@@ -1948,7 +2085,8 @@ describe('XTerminalElement', () => {
 			'success',
 		)
 		const messageDiv = element.topDiv.querySelector('.x-terminal-reloaded-notice-success')
-		expect(messageDiv.textContent).toBe('fooRestart')
+
+  expect(messageDiv.textContent).toBe('fooRestart')
 	})
 
 	it('showNotification() error message', () => {
@@ -1957,7 +2095,8 @@ describe('XTerminalElement', () => {
 			'error',
 		)
 		const messageDiv = element.topDiv.querySelector('.x-terminal-reloaded-notice-error')
-		expect(messageDiv.textContent).toBe('fooRestart')
+
+  expect(messageDiv.textContent).toBe('fooRestart')
 	})
 
 	it('showNotification() success message with Atom notification', () => {
@@ -1966,7 +2105,8 @@ describe('XTerminalElement', () => {
 			'foo',
 			'success',
 		)
-		expect(atom.notifications.addSuccess).toHaveBeenCalled()
+
+  expect(atom.notifications.addSuccess).toHaveBeenCalled()
 	})
 
 	function givenShowNotificationsFalse () {
@@ -1980,7 +2120,8 @@ describe('XTerminalElement', () => {
 			'foo',
 			'success',
 		)
-		expect(atom.notifications.addSuccess).not.toHaveBeenCalled()
+
+  expect(atom.notifications.addSuccess).not.toHaveBeenCalled()
 	})
 
 	it('showNotification() error message with Atom notification', () => {
@@ -1989,7 +2130,8 @@ describe('XTerminalElement', () => {
 			'foo',
 			'error',
 		)
-		expect(atom.notifications.addError).toHaveBeenCalled()
+
+  expect(atom.notifications.addError).toHaveBeenCalled()
 	})
 
 	it('showNotification() error message with Atom notification disabled', () => {
@@ -1999,7 +2141,8 @@ describe('XTerminalElement', () => {
 			'foo',
 			'error',
 		)
-		expect(atom.notifications.addError).not.toHaveBeenCalled()
+
+  expect(atom.notifications.addError).not.toHaveBeenCalled()
 	})
 
 	it('showNotification() warning message with Atom notification', () => {
@@ -2008,7 +2151,8 @@ describe('XTerminalElement', () => {
 			'foo',
 			'warning',
 		)
-		expect(atom.notifications.addWarning).toHaveBeenCalled()
+
+  expect(atom.notifications.addWarning).toHaveBeenCalled()
 	})
 
 	it('showNotification() warning message with Atom notification disabled', () => {
@@ -2018,7 +2162,8 @@ describe('XTerminalElement', () => {
 			'foo',
 			'warning',
 		)
-		expect(atom.notifications.addWarning).not.toHaveBeenCalled()
+
+  expect(atom.notifications.addWarning).not.toHaveBeenCalled()
 	})
 
 	it('showNotification() info message with Atom notification', () => {
@@ -2027,7 +2172,8 @@ describe('XTerminalElement', () => {
 			'foo',
 			'info',
 		)
-		expect(atom.notifications.addInfo).toHaveBeenCalled()
+
+  expect(atom.notifications.addInfo).toHaveBeenCalled()
 	})
 
 	it('showNotification() info message with Atom notification disabled', () => {
@@ -2037,7 +2183,8 @@ describe('XTerminalElement', () => {
 			'foo',
 			'info',
 		)
-		expect(atom.notifications.addInfo).not.toHaveBeenCalled()
+
+  expect(atom.notifications.addInfo).not.toHaveBeenCalled()
 	})
 
 	it('showNotification() bogus info type with Atom notification', () => {
@@ -2047,7 +2194,8 @@ describe('XTerminalElement', () => {
 				'bogus',
 			)
 		}
-		expect(call).toThrow(new Error('Unknown info type: bogus'))
+
+  expect(call).toThrow(new Error('Unknown info type: bogus'))
 	})
 
 	it('showNotification() bogus info type with Atom notification disabled', () => {
@@ -2058,7 +2206,8 @@ describe('XTerminalElement', () => {
 				'bogus',
 			)
 		}
-		expect(call).not.toThrow(new Error('Unknown info type: bogus'))
+
+  expect(call).not.toThrow(new Error('Unknown info type: bogus'))
 	})
 
 	it('showNotification() custom restart button text', () => {
@@ -2068,13 +2217,15 @@ describe('XTerminalElement', () => {
 			'Some text',
 		)
 		const restartButton = element.topDiv.querySelector('.x-terminal-reloaded-restart-btn')
-		expect(restartButton.firstChild.nodeValue).toBe('Some text')
+
+  expect(restartButton.firstChild.nodeValue).toBe('Some text')
 	})
 
 	it('promptToStartup()', async () => {
 		await element.promptToStartup()
 		const restartButton = element.topDiv.querySelector('.x-terminal-reloaded-restart-btn')
-		expect(restartButton.firstChild.nodeValue).toBe('Start')
+
+  expect(restartButton.firstChild.nodeValue).toBe('Start')
 	})
 
 	it('promptToStartup() check message without title', async () => {
@@ -2084,7 +2235,8 @@ describe('XTerminalElement', () => {
 		const expected = `New command ${JSON.stringify(command)} ready to start.`
 		await element.promptToStartup()
 		const messageDiv = element.topDiv.querySelector('.x-terminal-reloaded-notice-info')
-		expect(messageDiv.firstChild.nodeValue).toBe(expected)
+
+  expect(messageDiv.firstChild.nodeValue).toBe(expected)
 	})
 
 	it('promptToStartup() check message with title', async () => {
@@ -2092,7 +2244,8 @@ describe('XTerminalElement', () => {
 		const expected = 'New command for profile My Profile ready to start.'
 		await element.promptToStartup()
 		const messageDiv = element.topDiv.querySelector('.x-terminal-reloaded-notice-info')
-		expect(messageDiv.firstChild.nodeValue).toBe(expected)
+
+  expect(messageDiv.firstChild.nodeValue).toBe(expected)
 	})
 
 	it('use wheelScrollUp on terminal container', () => {
@@ -2100,7 +2253,8 @@ describe('XTerminalElement', () => {
 			deltaY: -150,
 		})
 		element.terminalDiv.dispatchEvent(wheelEvent)
-		expect(element.model.profile.fontSize).toBe(14)
+
+  expect(element.model.profile.fontSize).toBe(14)
 	})
 
 	it('use wheelScrollDown on terminal container', () => {
@@ -2108,7 +2262,8 @@ describe('XTerminalElement', () => {
 			deltaY: 150,
 		})
 		element.terminalDiv.dispatchEvent(wheelEvent)
-		expect(element.model.profile.fontSize).toBe(14)
+
+  expect(element.model.profile.fontSize).toBe(14)
 	})
 
 	it('use ctrl+wheelScrollUp on terminal container, editor.zoomFontWhenCtrlScrolling = true', () => {
@@ -2118,7 +2273,8 @@ describe('XTerminalElement', () => {
 			ctrlKey: true,
 		})
 		element.terminalDiv.dispatchEvent(wheelEvent)
-		expect(element.model.profile.fontSize).toBe(15)
+
+  expect(element.model.profile.fontSize).toBe(15)
 	})
 
 	it('use ctrl+wheelScrollDown on terminal container, editor.zoomFontWhenCtrlScrolling = true', () => {
@@ -2128,7 +2284,8 @@ describe('XTerminalElement', () => {
 			ctrlKey: true,
 		})
 		element.terminalDiv.dispatchEvent(wheelEvent)
-		expect(element.model.profile.fontSize).toBe(13)
+
+  expect(element.model.profile.fontSize).toBe(13)
 	})
 
 	it('use ctrl+wheelScrollUp on terminal container, editor.zoomFontWhenCtrlScrolling = false', () => {
@@ -2138,7 +2295,8 @@ describe('XTerminalElement', () => {
 			ctrlKey: true,
 		})
 		element.terminalDiv.dispatchEvent(wheelEvent)
-		expect(element.model.profile.fontSize).toBe(14)
+
+  expect(element.model.profile.fontSize).toBe(14)
 	})
 
 	it('use ctrl+wheelScrollDown on terminal container, editor.zoomFontWhenCtrlScrolling = false', () => {
@@ -2148,7 +2306,8 @@ describe('XTerminalElement', () => {
 			ctrlKey: true,
 		})
 		element.terminalDiv.dispatchEvent(wheelEvent)
-		expect(element.model.profile.fontSize).toBe(14)
+
+  expect(element.model.profile.fontSize).toBe(14)
 	})
 
 	it('use ctrl+wheelScrollUp font already at maximum', () => {
@@ -2158,7 +2317,8 @@ describe('XTerminalElement', () => {
 			ctrlKey: true,
 		})
 		element.terminalDiv.dispatchEvent(wheelEvent)
-		expect(element.model.profile.fontSize).toBe(configDefaults.maximumFontSize)
+
+  expect(element.model.profile.fontSize).toBe(configDefaults.maximumFontSize)
 	})
 
 	it('use ctrl+wheelScrollDown font already at minimum', () => {
@@ -2168,7 +2328,8 @@ describe('XTerminalElement', () => {
 			ctrlKey: true,
 		})
 		element.terminalDiv.dispatchEvent(wheelEvent)
-		expect(element.model.profile.fontSize).toBe(configDefaults.minimumFontSize)
+
+  expect(element.model.profile.fontSize).toBe(configDefaults.minimumFontSize)
 	})
 
 	it('copy on select', async () => {
@@ -2177,7 +2338,8 @@ describe('XTerminalElement', () => {
 		await new Promise(resolve => element.terminal.write('test', resolve))
 		element.terminal.selectLines(0, 0)
 		const selection = element.terminal.getSelection()
-		expect(atom.clipboard.write).toHaveBeenCalledWith(selection)
+
+  expect(atom.clipboard.write).toHaveBeenCalledWith(selection)
 	})
 
 	it('does not copy on clear selection', async () => {
@@ -2187,7 +2349,8 @@ describe('XTerminalElement', () => {
 		element.terminal.selectLines(0, 0)
 		atom.clipboard.write.calls.reset()
 		element.terminal.clearSelection()
-		expect(atom.clipboard.write).not.toHaveBeenCalled()
+
+  expect(atom.clipboard.write).not.toHaveBeenCalled()
 	})
 
 	it('does not copy if copyOnSelect is false', async () => {
@@ -2195,7 +2358,8 @@ describe('XTerminalElement', () => {
 		element.model.profile.copyOnSelect = false
 		await new Promise(resolve => element.terminal.write('test', resolve))
 		element.terminal.selectLines(0, 0)
-		expect(atom.clipboard.write).not.toHaveBeenCalled()
+
+  expect(atom.clipboard.write).not.toHaveBeenCalled()
 	})
 
 	it('getXtermOptions() default options', () => {
@@ -2205,7 +2369,8 @@ describe('XTerminalElement', () => {
 			fontFamily: 'Menlo, Consolas, DejaVu Sans Mono, monospace',
 			theme: element.getTheme(),
 		}
-		expect(element.getXtermOptions()).toEqual(expected)
+
+  expect(element.getXtermOptions()).toEqual(expected)
 	})
 
 	it('getXtermOptions() xtermOptions in profile', () => {
@@ -2218,20 +2383,23 @@ describe('XTerminalElement', () => {
 			fontFamily: 'Menlo, Consolas, DejaVu Sans Mono, monospace',
 			theme: element.getTheme(),
 		}
-		expect(element.getXtermOptions()).toEqual(expected)
+
+  expect(element.getXtermOptions()).toEqual(expected)
 	})
 
 	it('clear terminal', () => {
 		spyOn(element.terminal, 'clear')
 		element.clear()
-		expect(element.terminal.clear).toHaveBeenCalled()
+
+  expect(element.terminal.clear).toHaveBeenCalled()
 	})
 
 	it('applyPendingTerminalProfileOptions() terminal not visible', () => {
 		spyOn(element, 'refitTerminal')
 		element.terminalDivInitiallyVisible = false
 		element.applyPendingTerminalProfileOptions()
-		expect(element.refitTerminal).not.toHaveBeenCalled()
+
+  expect(element.refitTerminal).not.toHaveBeenCalled()
 	})
 
 	it('applyPendingTerminalProfileOptions() terminal visible no pending changes', () => {
@@ -2240,7 +2408,8 @@ describe('XTerminalElement', () => {
 		spyOn(element, 'restartPtyProcess')
 		element.terminalDivInitiallyVisible = true
 		element.applyPendingTerminalProfileOptions()
-		expect(element.setMainBackgroundColor).toHaveBeenCalled()
+
+  expect(element.setMainBackgroundColor).toHaveBeenCalled()
 		expect(element.restartPtyProcess).not.toHaveBeenCalled()
 		expect(element.refitTerminal).toHaveBeenCalled()
 	})
@@ -2254,7 +2423,8 @@ describe('XTerminalElement', () => {
 			cursorBlink: true,
 		}
 		element.applyPendingTerminalProfileOptions()
-		expect(element.setMainBackgroundColor).toHaveBeenCalled()
+
+  expect(element.setMainBackgroundColor).toHaveBeenCalled()
 		expect(element.restartPtyProcess).not.toHaveBeenCalled()
 		expect(element.refitTerminal).toHaveBeenCalled()
 	})
@@ -2266,7 +2436,8 @@ describe('XTerminalElement', () => {
 		element.terminalDivInitiallyVisible = true
 		element.pendingTerminalProfileOptions.command = 'somecommand'
 		element.applyPendingTerminalProfileOptions()
-		expect(element.setMainBackgroundColor).toHaveBeenCalled()
+
+  expect(element.setMainBackgroundColor).toHaveBeenCalled()
 		expect(element.restartPtyProcess).toHaveBeenCalled()
 		expect(element.refitTerminal).toHaveBeenCalled()
 	})
@@ -2281,7 +2452,8 @@ describe('XTerminalElement', () => {
 		}
 		element.pendingTerminalProfileOptions.command = 'somecommand'
 		element.applyPendingTerminalProfileOptions()
-		expect(element.setMainBackgroundColor).toHaveBeenCalled()
+
+  expect(element.setMainBackgroundColor).toHaveBeenCalled()
 		expect(element.restartPtyProcess).toHaveBeenCalled()
 		expect(element.refitTerminal).toHaveBeenCalled()
 	})
@@ -2294,7 +2466,8 @@ describe('XTerminalElement', () => {
 		}
 		element.pendingTerminalProfileOptions.command = 'somecommand'
 		element.applyPendingTerminalProfileOptions()
-		expect(element.pendingTerminalProfileOptions).toEqual({
+
+  expect(element.pendingTerminalProfileOptions).toEqual({
 			xtermOptions: {
 				cursorBlink: true,
 			},
@@ -2310,7 +2483,8 @@ describe('XTerminalElement', () => {
 		}
 		element.pendingTerminalProfileOptions.command = 'somecommand'
 		element.applyPendingTerminalProfileOptions()
-		expect(element.pendingTerminalProfileOptions).toEqual({})
+
+  expect(element.pendingTerminalProfileOptions).toEqual({})
 	})
 
 	it('applyPendingTerminalProfileOptions() terminal not visible x-terminal-reloaded options removed', () => {
@@ -2320,7 +2494,8 @@ describe('XTerminalElement', () => {
 		element.pendingTerminalProfileOptions.relaunchTerminalOnStartup = true
 		element.pendingTerminalProfileOptions.title = 'foo'
 		element.applyPendingTerminalProfileOptions()
-		expect(element.pendingTerminalProfileOptions).toEqual({})
+
+  expect(element.pendingTerminalProfileOptions).toEqual({})
 	})
 
 	it('applyPendingTerminalProfileOptions() terminal visible x-terminal-reloaded options removed', () => {
@@ -2330,7 +2505,8 @@ describe('XTerminalElement', () => {
 		element.pendingTerminalProfileOptions.relaunchTerminalOnStartup = true
 		element.pendingTerminalProfileOptions.title = 'foo'
 		element.applyPendingTerminalProfileOptions()
-		expect(element.pendingTerminalProfileOptions).toEqual({})
+
+  expect(element.pendingTerminalProfileOptions).toEqual({})
 	})
 
 	it('queueNewProfileChanges() no previous changes', () => {
@@ -2339,7 +2515,8 @@ describe('XTerminalElement', () => {
 			command: 'somecommand',
 		}
 		element.queueNewProfileChanges(profileChanges)
-		expect(element.pendingTerminalProfileOptions).toEqual(profileChanges)
+
+  expect(element.pendingTerminalProfileOptions).toEqual(profileChanges)
 	})
 
 	it('queueNewProfileChanges() previous command change made', () => {
@@ -2349,7 +2526,8 @@ describe('XTerminalElement', () => {
 			command: 'someothercommand',
 		}
 		element.queueNewProfileChanges(profileChanges)
-		expect(element.pendingTerminalProfileOptions).toEqual(profileChanges)
+
+  expect(element.pendingTerminalProfileOptions).toEqual(profileChanges)
 	})
 
 	it('queueNewProfileChanges() another setting', () => {
@@ -2359,7 +2537,8 @@ describe('XTerminalElement', () => {
 			args: ['--foo', '--bar', '--baz'],
 		}
 		element.queueNewProfileChanges(profileChanges)
-		expect(element.pendingTerminalProfileOptions).toEqual({
+
+  expect(element.pendingTerminalProfileOptions).toEqual({
 			command: 'somecommand',
 			args: ['--foo', '--bar', '--baz'],
 		})
@@ -2401,7 +2580,8 @@ describe('XTerminalElement', () => {
 			'did-reset-base-profile',
 			profile,
 		)
-		expect(element.model.applyProfileChanges).toHaveBeenCalledWith({})
+
+  expect(element.model.applyProfileChanges).toHaveBeenCalledWith({})
 	})
 
 	it('base profile changed, font size changed, xterm options remained the same', () => {
@@ -2442,7 +2622,8 @@ describe('XTerminalElement', () => {
 			'did-reset-base-profile',
 			newBaseProfile,
 		)
-		expect(element.model.applyProfileChanges).toHaveBeenCalledWith({
+
+  expect(element.model.applyProfileChanges).toHaveBeenCalledWith({
 			fontSize: 15,
 		})
 	})
@@ -2487,7 +2668,8 @@ describe('XTerminalElement', () => {
 			'did-reset-base-profile',
 			newBaseProfile,
 		)
-		expect(element.model.applyProfileChanges).toHaveBeenCalledWith({
+
+  expect(element.model.applyProfileChanges).toHaveBeenCalledWith({
 			xtermOptions: {
 				cursorBlink: false,
 			},
@@ -2535,7 +2717,8 @@ describe('XTerminalElement', () => {
 			'did-reset-base-profile',
 			newBaseProfile,
 		)
-		expect(element.model.applyProfileChanges).toHaveBeenCalledWith({
+
+  expect(element.model.applyProfileChanges).toHaveBeenCalledWith({
 			fontSize: 15,
 			xtermOptions: {
 				cursorBlink: false,
@@ -2582,6 +2765,7 @@ describe('XTerminalElement', () => {
 			'did-reset-base-profile',
 			newBaseProfile,
 		)
-		expect(element.model.applyProfileChanges).toHaveBeenCalledWith({})
+
+  expect(element.model.applyProfileChanges).toHaveBeenCalledWith({})
 	})
 })

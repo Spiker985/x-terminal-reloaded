@@ -72,13 +72,15 @@ describe('XTerminalModel', () => {
 	it('constructor with previous active item that has no getPath() method', async () => {
 		spyOn(atom.workspace, 'getActivePaneItem').and.returnValue({})
 		const model = await createNewModel()
-		expect(model.getPath()).toBe(configDefaults.cwd)
+
+  expect(model.getPath()).toBe(configDefaults.cwd)
 	})
 
 	it('constructor with valid cwd passed in uri', async () => {
 		spyOn(atom.workspace, 'getActivePaneItem').and.returnValue({})
 		const model = await createNewModel({ cwd: tmpdir })
-		expect(model.getPath()).toBe(tmpdir)
+
+  expect(model.getPath()).toBe(tmpdir)
 	})
 
 	it('use projectCwd with valid cwd passed in uri', async () => {
@@ -87,13 +89,15 @@ describe('XTerminalModel', () => {
 		spyOn(atom.project, 'getPaths').and.returnValue([expected])
 		spyOn(atom.workspace, 'getActivePaneItem').and.returnValue({})
 		const model = await createNewModel({ projectCwd: true })
-		expect(model.getPath()).toBe(expected)
+
+  expect(model.getPath()).toBe(expected)
 	})
 
 	it('constructor with invalid cwd passed in uri', async () => {
 		spyOn(atom.workspace, 'getActivePaneItem').and.returnValue({})
 		const model = await createNewModel({ cwd: path.join(tmpdir, 'non-existent-dir') })
-		expect(model.getPath()).toBe(configDefaults.cwd)
+
+  expect(model.getPath()).toBe(configDefaults.cwd)
 	})
 
 	it('constructor with previous active item that has getPath() method', async () => {
@@ -101,7 +105,8 @@ describe('XTerminalModel', () => {
 		previousActiveItem.getPath.and.returnValue(tmpdir)
 		spyOn(atom.workspace, 'getActivePaneItem').and.returnValue(previousActiveItem)
 		const model = await createNewModel({ projectCwd: true })
-		expect(model.getPath()).toBe(tmpdir)
+
+  expect(model.getPath()).toBe(tmpdir)
 	})
 
 	it('constructor with previous active item that has selectedPath property', async () => {
@@ -109,7 +114,8 @@ describe('XTerminalModel', () => {
 		Object.getOwnPropertyDescriptor(previousActiveItem, 'selectedPath').get.and.returnValue(tmpdir)
 		spyOn(atom.workspace, 'getActivePaneItem').and.returnValue(previousActiveItem)
 		const model = await createNewModel({ projectCwd: true })
-		expect(model.getPath()).toBe(tmpdir)
+
+  expect(model.getPath()).toBe(tmpdir)
 	})
 
 	it('constructor with previous active item that has getPath() method that returns file path', async () => {
@@ -119,7 +125,8 @@ describe('XTerminalModel', () => {
 		previousActiveItem.getPath.and.returnValue(filePath)
 		spyOn(atom.workspace, 'getActivePaneItem').and.returnValue(previousActiveItem)
 		const model = await createNewModel({ projectCwd: true })
-		expect(model.getPath()).toBe(tmpdir)
+
+  expect(model.getPath()).toBe(tmpdir)
 	})
 
 	it('constructor with previous active item that has selectedPath() property that returns file path', async () => {
@@ -129,7 +136,8 @@ describe('XTerminalModel', () => {
 		Object.getOwnPropertyDescriptor(previousActiveItem, 'selectedPath').get.and.returnValue(filePath)
 		spyOn(atom.workspace, 'getActivePaneItem').and.returnValue(previousActiveItem)
 		const model = await createNewModel({ projectCwd: true })
-		expect(model.getPath()).toBe(tmpdir)
+
+  expect(model.getPath()).toBe(tmpdir)
 	})
 
 	it('constructor with previous active item that has getPath() returning invalid path', async () => {
@@ -137,7 +145,8 @@ describe('XTerminalModel', () => {
 		previousActiveItem.getPath.and.returnValue(path.join(tmpdir, 'non-existent-dir'))
 		spyOn(atom.workspace, 'getActivePaneItem').and.returnValue(previousActiveItem)
 		const model = await createNewModel({ projectCwd: true })
-		expect(model.getPath()).toBe(configDefaults.cwd)
+
+  expect(model.getPath()).toBe(configDefaults.cwd)
 	})
 
 	it('constructor with previous active item that has selectedPath returning invalid path', async () => {
@@ -145,7 +154,8 @@ describe('XTerminalModel', () => {
 		Object.getOwnPropertyDescriptor(previousActiveItem, 'selectedPath').get.and.returnValue(path.join(tmpdir, 'non-existent-dir'))
 		spyOn(atom.workspace, 'getActivePaneItem').and.returnValue(previousActiveItem)
 		const model = await createNewModel({ projectCwd: true })
-		expect(model.getPath()).toBe(configDefaults.cwd)
+
+  expect(model.getPath()).toBe(configDefaults.cwd)
 	})
 
 	it('constructor with previous active item which exists in project path and calls getPath', async () => {
@@ -153,7 +163,8 @@ describe('XTerminalModel', () => {
 		spyOn(atom.workspace, 'getActivePaneItem').and.returnValue(previousActiveItem)
 		spyOn(atom.project, 'relativizePath').and.returnValue(['/some/dir', null])
 		const model = await createNewModel({ projectCwd: true })
-		expect(model.getPath()).toBe('/some/dir')
+
+  expect(model.getPath()).toBe('/some/dir')
 	})
 
 	it('constructor with previous active item which exists in project path and calls selectedPath', async () => {
@@ -161,12 +172,14 @@ describe('XTerminalModel', () => {
 		spyOn(atom.workspace, 'getActivePaneItem').and.returnValue(previousActiveItem)
 		spyOn(atom.project, 'relativizePath').and.returnValue(['/some/dir', null])
 		const model = await createNewModel({ projectCwd: true })
-		expect(model.getPath()).toBe('/some/dir')
+
+  expect(model.getPath()).toBe('/some/dir')
 	})
 
 	it('constructor with custom title', async () => {
 		const model = await createNewModel({ title: 'foo' })
-		expect(model.title).toBe('foo')
+
+  expect(model.title).toBe('foo')
 	})
 
 	it('serialize() no cwd set', async () => {
@@ -177,7 +190,8 @@ describe('XTerminalModel', () => {
 			version: '2017-09-17',
 			uri: url.href,
 		}
-		expect(model.serialize()).toEqual(expected)
+
+  expect(model.serialize()).toEqual(expected)
 	})
 
 	it('serialize() cwd set in model', async () => {
@@ -189,7 +203,8 @@ describe('XTerminalModel', () => {
 			version: '2017-09-17',
 			uri: url.href,
 		}
-		expect(model.serialize()).toEqual(expected)
+
+  expect(model.serialize()).toEqual(expected)
 	})
 
 	it('serialize() cwd set in uri', async () => {
@@ -200,20 +215,23 @@ describe('XTerminalModel', () => {
 			version: '2017-09-17',
 			uri: url2.href,
 		}
-		expect(url2.searchParams.get('cwd')).toEqual(tmpdir)
+
+  expect(url2.searchParams.get('cwd')).toEqual(tmpdir)
 		expect(model.serialize()).toEqual(expected)
 	})
 
 	it('destroy() check element is destroyed when set', () => {
 		model.element = element
 		model.destroy()
-		expect(model.element.destroy).toHaveBeenCalled()
+
+  expect(model.element.destroy).toHaveBeenCalled()
 	})
 
 	it('destroy() check model removed from terminals_set', () => {
 		spyOn(model.terminals_set, 'delete').and.callThrough()
 		model.destroy()
-		expect(model.terminals_set.delete.calls.allArgs()).toEqual([[model]])
+
+  expect(model.terminals_set.delete.calls.allArgs()).toEqual([[model]])
 	})
 
 	it('getTitle() with default title', () => {
@@ -223,24 +241,28 @@ describe('XTerminalModel', () => {
 	it('getTitle() with new title', () => {
 		const expected = 'some new title'
 		model.title = expected
-		expect(model.getTitle()).toBe(expected)
+
+  expect(model.getTitle()).toBe(expected)
 	})
 
 	it('getTitle() when active', () => {
 		spyOn(model, 'isActiveTerminal').and.returnValue(true)
-		expect(model.getTitle()).toBe(configDefaults.activeIndicator + ' X-Terminal-Reloaded')
+
+  expect(model.getTitle()).toBe(configDefaults.activeIndicator + ' X-Terminal-Reloaded')
 	})
 
 	it('getElement()', () => {
 		const expected = { somekey: 'somevalue' }
 		model.element = expected
-		expect(model.getElement()).toBe(expected)
+
+  expect(model.getElement()).toBe(expected)
 	})
 
 	it('getURI()', async () => {
 		const uri = 'x-terminal-reloaded://somesessionid/'
 		const model = await createNewModel()
-		expect(model.getURI()).toBe(uri)
+
+  expect(model.getURI()).toBe(uri)
 	})
 
 	it('getLongTitle() with default title', () => {
@@ -250,7 +272,8 @@ describe('XTerminalModel', () => {
 	it('getLongTitle() with new title', () => {
 		const expected = 'X-Terminal-Reloaded (some new title)'
 		model.title = 'some new title'
-		expect(model.getLongTitle()).toBe(expected)
+
+  expect(model.getLongTitle()).toBe(expected)
 	})
 
 	it('onDidChangeTitle()', () => {
@@ -259,7 +282,8 @@ describe('XTerminalModel', () => {
 			callbackCalled = true
 		})
 		model.emitter.emit('did-change-title')
-		expect(callbackCalled).toBe(true)
+
+  expect(callbackCalled).toBe(true)
 		disposable.dispose()
 	})
 
@@ -273,7 +297,8 @@ describe('XTerminalModel', () => {
 
 	it('isModified() modified attribute set to true', () => {
 		model.modified = true
-		expect(model.isModified()).toBe(true)
+
+  expect(model.isModified()).toBe(true)
 	})
 
 	it('getPath()', () => {
@@ -283,7 +308,8 @@ describe('XTerminalModel', () => {
 	it('getPath() cwd set', () => {
 		const expected = '/some/dir'
 		model.profile.cwd = expected
-		expect(model.getPath()).toBe(expected)
+
+  expect(model.getPath()).toBe(expected)
 	})
 
 	it('onDidChangeModified()', () => {
@@ -292,7 +318,8 @@ describe('XTerminalModel', () => {
 			callbackCalled = true
 		})
 		model.emitter.emit('did-change-modified')
-		expect(callbackCalled).toBe(true)
+
+  expect(callbackCalled).toBe(true)
 		disposable.dispose()
 	})
 
@@ -300,27 +327,31 @@ describe('XTerminalModel', () => {
 		pane.getActiveItem.and.returnValue(model)
 		model.pane = pane
 		model.handleNewDataArrival()
-		expect(model.modified).toBe(false)
+
+  expect(model.modified).toBe(false)
 	})
 
 	it('handleNewDataArrival() current item is not active item', () => {
 		pane.getActiveItem.and.returnValue({})
 		model.pane = pane
 		model.handleNewDataArrival()
-		expect(model.modified).toBe(true)
+
+  expect(model.modified).toBe(true)
 	})
 
 	it('handleNewDataArrival() current item is not in any pane', () => {
 		model.pane = null
 		model.handleNewDataArrival()
-		expect(model.modified).toBe(true)
+
+  expect(model.modified).toBe(true)
 	})
 
 	it('handleNewDataArrival() model initially has no pane set', () => {
 		pane.getActiveItem.and.returnValue({})
 		spyOn(atom.workspace, 'paneForItem').and.returnValue(pane)
 		model.handleNewDataArrival()
-		expect(atom.workspace.paneForItem).toHaveBeenCalled()
+
+  expect(atom.workspace.paneForItem).toHaveBeenCalled()
 	})
 
 	it('handleNewDataArrival() modified value of false not changed', () => {
@@ -328,7 +359,8 @@ describe('XTerminalModel', () => {
 		model.pane = pane
 		spyOn(model.emitter, 'emit')
 		model.handleNewDataArrival()
-		expect(model.emitter.emit).toHaveBeenCalledTimes(0)
+
+  expect(model.emitter.emit).toHaveBeenCalledTimes(0)
 	})
 
 	it('handleNewDataArrival() modified value of true not changed', () => {
@@ -337,7 +369,8 @@ describe('XTerminalModel', () => {
 		model.modified = true
 		spyOn(model.emitter, 'emit')
 		model.handleNewDataArrival()
-		expect(model.emitter.emit).toHaveBeenCalledTimes(0)
+
+  expect(model.emitter.emit).toHaveBeenCalledTimes(0)
 	})
 
 	it('handleNewDataArrival() modified value changed', () => {
@@ -345,20 +378,23 @@ describe('XTerminalModel', () => {
 		model.pane = pane
 		spyOn(model.emitter, 'emit')
 		model.handleNewDataArrival()
-		expect(model.emitter.emit).toHaveBeenCalled()
+
+  expect(model.emitter.emit).toHaveBeenCalled()
 	})
 
 	it('getSessionId()', async () => {
 		const expected = 'somesessionid'
 		const model = await createNewModel()
-		expect(model.getSessionId()).toBe(expected)
+
+  expect(model.getSessionId()).toBe(expected)
 	})
 
 	it('getSessionParameters() when no parameters set', async () => {
 		const model = await createNewModel()
 		const url = XTerminalProfilesSingleton.instance.generateNewUrlFromProfileData(model.profile)
 		url.searchParams.sort()
-		expect(model.getSessionParameters()).toBe(url.searchParams.toString())
+
+  expect(model.getSessionParameters()).toBe(url.searchParams.toString())
 	})
 
 	it('refitTerminal() without element set', () => {
@@ -369,33 +405,38 @@ describe('XTerminalModel', () => {
 	it('refitTerminal() with element set', () => {
 		model.element = element
 		model.refitTerminal()
-		expect(model.element.refitTerminal).toHaveBeenCalled()
+
+  expect(model.element.refitTerminal).toHaveBeenCalled()
 	})
 
 	it('focusOnTerminal()', () => {
 		model.element = element
 		model.focusOnTerminal()
-		expect(model.element.focusOnTerminal).toHaveBeenCalled()
+
+  expect(model.element.focusOnTerminal).toHaveBeenCalled()
 	})
 
 	it('focusOnTerminal() reset modified value old modified value was false', () => {
 		model.element = element
 		model.focusOnTerminal()
-		expect(model.modified).toBe(false)
+
+  expect(model.modified).toBe(false)
 	})
 
 	it('focusOnTerminal() reset modified value old modified value was true', () => {
 		model.element = element
 		model.modified = true
 		model.focusOnTerminal()
-		expect(model.modified).toBe(false)
+
+  expect(model.modified).toBe(false)
 	})
 
 	it('focusOnTerminal() no event emitted old modified value was false', () => {
 		model.element = element
 		spyOn(model.emitter, 'emit')
 		model.focusOnTerminal()
-		expect(model.emitter.emit).toHaveBeenCalledTimes(0)
+
+  expect(model.emitter.emit).toHaveBeenCalledTimes(0)
 	})
 
 	it('focusOnTerminal() event emitted old modified value was true', () => {
@@ -403,57 +444,66 @@ describe('XTerminalModel', () => {
 		model.modified = true
 		spyOn(model.emitter, 'emit')
 		model.focusOnTerminal()
-		expect(model.emitter.emit).toHaveBeenCalled()
+
+  expect(model.emitter.emit).toHaveBeenCalled()
 	})
 
 	it('focusOnTerminal() activate pane', () => {
 		model.element = element
 		model.pane = pane
 		model.focusOnTerminal()
-		expect(model.pane.activateItem).toHaveBeenCalled()
+
+  expect(model.pane.activateItem).toHaveBeenCalled()
 	})
 
 	it('exit()', () => {
 		model.pane = pane
 		model.exit()
-		expect(model.pane.destroyItem.calls.allArgs()).toEqual([[model, true]])
+
+  expect(model.pane.destroyItem.calls.allArgs()).toEqual([[model, true]])
 	})
 
 	it('restartPtyProcess() no element set', () => {
 		model.restartPtyProcess()
-		expect(element.restartPtyProcess).not.toHaveBeenCalled()
+
+  expect(element.restartPtyProcess).not.toHaveBeenCalled()
 	})
 
 	it('restartPtyProcess() element set', () => {
 		model.element = element
 		model.restartPtyProcess()
-		expect(model.element.restartPtyProcess).toHaveBeenCalled()
+
+  expect(model.element.restartPtyProcess).toHaveBeenCalled()
 	})
 
 	it('copyFromTerminal()', () => {
 		model.element = element
 		model.copyFromTerminal()
-		expect(model.element.terminal.getSelection).toHaveBeenCalled()
+
+  expect(model.element.terminal.getSelection).toHaveBeenCalled()
 	})
 
 	it('runCommand(cmd)', () => {
 		model.element = element
 		const expectedText = 'some text'
 		model.runCommand(expectedText)
-		expect(model.element.ptyProcess.write.calls.allArgs()).toEqual([[expectedText + (process.platform === 'win32' ? '\r' : '\n')]])
+
+  expect(model.element.ptyProcess.write.calls.allArgs()).toEqual([[expectedText + (process.platform === 'win32' ? '\r' : '\n')]])
 	})
 
 	it('pasteToTerminal(text)', () => {
 		model.element = element
 		const expectedText = 'some text'
 		model.pasteToTerminal(expectedText)
-		expect(model.element.ptyProcess.write.calls.allArgs()).toEqual([[expectedText]])
+
+  expect(model.element.ptyProcess.write.calls.allArgs()).toEqual([[expectedText]])
 	})
 
 	it('clear()', () => {
 		model.element = element
 		model.clear()
-		expect(model.element.clear).toHaveBeenCalled()
+
+  expect(model.element.clear).toHaveBeenCalled()
 	})
 
 	it('setActive()', async () => {
@@ -465,10 +515,12 @@ describe('XTerminalModel', () => {
 		const model2 = await createNewModel(null, { terminals_set: terminalsSet })
 		pane.addItem(model2)
 		model2.setNewPane(pane)
-		expect(model1.activeIndex).toBe(0)
+
+  expect(model1.activeIndex).toBe(0)
 		expect(model2.activeIndex).toBe(1)
 		model2.setActive()
-		expect(model1.activeIndex).toBe(1)
+
+  expect(model1.activeIndex).toBe(1)
 		expect(model2.activeIndex).toBe(0)
 	})
 
@@ -476,14 +528,16 @@ describe('XTerminalModel', () => {
 		it('(mock)', async () => {
 			const expected = { getContainer: () => ({ getLocation: () => {} }) }
 			model.setNewPane(expected)
-			expect(model.pane).toBe(expected)
+
+   expect(model.pane).toBe(expected)
 			expect(model.dock).toBe(null)
 		})
 
 		it('(center)', async () => {
 			const pane = atom.workspace.getCenter().getActivePane()
 			model.setNewPane(pane)
-			expect(model.pane).toBe(pane)
+
+   expect(model.pane).toBe(pane)
 			expect(model.dock).toBe(null)
 		})
 
@@ -491,7 +545,8 @@ describe('XTerminalModel', () => {
 			const dock = atom.workspace.getLeftDock()
 			const pane = dock.getActivePane()
 			model.setNewPane(pane)
-			expect(model.pane).toBe(pane)
+
+   expect(model.pane).toBe(pane)
 			expect(model.dock).toBe(dock)
 		})
 
@@ -499,7 +554,8 @@ describe('XTerminalModel', () => {
 			const dock = atom.workspace.getRightDock()
 			const pane = dock.getActivePane()
 			model.setNewPane(pane)
-			expect(model.pane).toBe(pane)
+
+   expect(model.pane).toBe(pane)
 			expect(model.dock).toBe(dock)
 		})
 
@@ -507,7 +563,8 @@ describe('XTerminalModel', () => {
 			const dock = atom.workspace.getBottomDock()
 			const pane = dock.getActivePane()
 			model.setNewPane(pane)
-			expect(model.pane).toBe(pane)
+
+   expect(model.pane).toBe(pane)
 			expect(model.dock).toBe(dock)
 		})
 	})
@@ -515,9 +572,11 @@ describe('XTerminalModel', () => {
 	it('isVisible() in pane', () => {
 		const pane = atom.workspace.getCenter().getActivePane()
 		model.setNewPane(pane)
-		expect(model.isVisible()).toBe(false)
+
+  expect(model.isVisible()).toBe(false)
 		pane.setActiveItem(model)
-		expect(model.isVisible()).toBe(true)
+
+  expect(model.isVisible()).toBe(true)
 	})
 
 	it('isVisible() in dock', () => {
@@ -525,59 +584,69 @@ describe('XTerminalModel', () => {
 		const pane = dock.getActivePane()
 		model.setNewPane(pane)
 		pane.setActiveItem(model)
-		expect(model.isVisible()).toBe(false)
+
+  expect(model.isVisible()).toBe(false)
 		dock.show()
-		expect(model.isVisible()).toBe(true)
+
+  expect(model.isVisible()).toBe(true)
 	})
 
 	it('isActiveTerminal() visible and active', () => {
 		model.activeIndex = 0
 		spyOn(model, 'isVisible').and.returnValue(true)
-		expect(model.isActiveTerminal()).toBe(true)
+
+  expect(model.isActiveTerminal()).toBe(true)
 	})
 
 	it('isActiveTerminal() visible and not active', () => {
 		model.activeIndex = 1
 		spyOn(model, 'isVisible').and.returnValue(true)
-		expect(model.isActiveTerminal()).toBe(false)
+
+  expect(model.isActiveTerminal()).toBe(false)
 	})
 
 	it('isActiveTerminal() invisible and active', () => {
 		model.activeIndex = 0
 		spyOn(model, 'isVisible').and.returnValue(false)
-		expect(model.isActiveTerminal()).toBe(false)
+
+  expect(model.isActiveTerminal()).toBe(false)
 	})
 
 	it('isActiveTerminal() allowHiddenToStayActive', () => {
 		atom.config.set('x-terminal-reloaded.terminalSettings.allowHiddenToStayActive', true)
 		model.activeIndex = 0
 		spyOn(model, 'isVisible').and.returnValue(false)
-		expect(model.isActiveTerminal()).toBe(true)
+
+  expect(model.isActiveTerminal()).toBe(true)
 	})
 
 	it('toggleProfileMenu()', () => {
 		model.element = jasmine.createSpyObj('element', ['toggleProfileMenu'])
 		model.toggleProfileMenu()
-		expect(model.element.toggleProfileMenu).toHaveBeenCalled()
+
+  expect(model.element.toggleProfileMenu).toHaveBeenCalled()
 	})
 
 	it('getProfile()', () => {
 		const mock = jasmine.createSpy('mock')
 		model.profile = mock
-		expect(model.getProfile()).toBe(mock)
+
+  expect(model.getProfile()).toBe(mock)
 	})
 
 	it('applyProfileChanges() element queueNewProfileChanges() called', () => {
 		model.element = jasmine.createSpyObj('element', ['queueNewProfileChanges'])
 		model.applyProfileChanges({})
-		expect(model.element.queueNewProfileChanges).toHaveBeenCalled()
+
+  expect(model.element.queueNewProfileChanges).toHaveBeenCalled()
 	})
 
 	it('applyProfileChanges() profileChanges = {}', () => {
 		model.element = jasmine.createSpyObj('element', ['queueNewProfileChanges'])
 		const expected = model.profilesSingleton.deepClone(model.profile)
 		model.applyProfileChanges({})
-		expect(model.profile).toEqual(expected)
+
+  expect(model.profile).toEqual(expected)
 	})
 
 	it('applyProfileChanges() profileChanges = {fontSize: 24}', () => {
@@ -585,30 +654,35 @@ describe('XTerminalModel', () => {
 		const expected = model.profilesSingleton.deepClone(model.profile)
 		expected.fontSize = 24
 		model.applyProfileChanges({ fontSize: 24 })
-		expect(model.profile).toEqual(expected)
+
+  expect(model.profile).toEqual(expected)
 	})
 })
 
 describe('XTerminalModel utilities', () => {
 	it('isXTerminalModel() item is not XTerminalModel', () => {
 		const item = document.createElement('div')
-		expect(isXTerminalModel(item)).toBe(false)
+
+  expect(isXTerminalModel(item)).toBe(false)
 	})
 
 	it('isXTerminalModel() item is XTerminalModel', async () => {
 		const item = await createNewModel()
-		expect(isXTerminalModel(item)).toBe(true)
+
+  expect(isXTerminalModel(item)).toBe(true)
 	})
 
 	it('currentItemIsXTerminalModel() item is not XTerminalModel', () => {
 		const item = document.createElement('div')
 		spyOn(atom.workspace, 'getActivePaneItem').and.returnValue(item)
-		expect(currentItemIsXTerminalModel()).toBe(false)
+
+  expect(currentItemIsXTerminalModel()).toBe(false)
 	})
 
 	it('currentItemIsXTerminalModel() item is XTerminalModel', async () => {
 		const item = await createNewModel()
 		spyOn(atom.workspace, 'getActivePaneItem').and.returnValue(item)
-		expect(currentItemIsXTerminalModel()).toBe(true)
+
+  expect(currentItemIsXTerminalModel()).toBe(true)
 	})
 })

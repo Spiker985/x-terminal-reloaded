@@ -31,7 +31,8 @@ describe('XTerminalDeleteProfileElement', () => {
 	it('initialize()', () => {
 		const element = new XTerminalDeleteProfileElementImpl()
 		element.initialize(model)
-		expect(element.promptButtonsDiv.childElementCount).toBe(0)
+
+  expect(element.promptButtonsDiv.childElementCount).toBe(0)
 	})
 
 	it('setNewPrompt()', () => {
@@ -41,6 +42,7 @@ describe('XTerminalDeleteProfileElement', () => {
 		const confirmHandler = () => {}
 		const cancelHandler = () => {}
 		element.setNewPrompt(profileName, confirmHandler, cancelHandler)
-		expect(element.messageDiv.textContent).toBe('Delete existing profile \'foo\'?')
+
+  expect(element.messageDiv.textContent).toBe('Delete existing profile \'foo\'?')
 	})
 })

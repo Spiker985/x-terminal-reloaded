@@ -36,6 +36,13 @@ import { XTerminalOverwriteProfileModel } from './overwrite-profile-model'
 import { XTerminalSaveProfileElementImpl } from './save-profile-element'
 import { XTerminalSaveProfileModel } from './save-profile-model'
 
+// Shim Array.prototype.at as required by marked
+// This only has an effect at or below Pulsar 1.128.0 ie electron 12/node 14/chrome 92
+// See https://caniuse.com/mdn-javascript_builtins_array_at under Chrome header
+// and https://github.com/markedjs/marked/issues/3546#issuecomment-2545886874 for the fix
+import at from 'array.prototype.at';
+at.shim();
+
 import { URL } from 'whatwg-url'
 
 const XTerminalSingletonSymbol = Symbol('XTerminalSingleton sentinel')

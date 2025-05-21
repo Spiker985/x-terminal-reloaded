@@ -28,7 +28,7 @@ module.exports = createRunner({
 		ci: true,
 	},
 }, () => {
-	// eslint-disable-next-line no-console
+	 
 	const warn = console.warn.bind(console)
 	beforeEach(() => {
 		spyOn(console, 'warn').and.callFake((...args) => {

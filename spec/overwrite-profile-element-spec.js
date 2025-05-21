@@ -31,7 +31,8 @@ describe('XTerminalOverwriteProfileElement', () => {
 	it('initialize()', () => {
 		const element = new XTerminalOverwriteProfileElementImpl()
 		element.initialize(model)
-		expect(element.promptButtonsDiv.childElementCount).toBe(0)
+
+  expect(element.promptButtonsDiv.childElementCount).toBe(0)
 	})
 
 	it('setNewPrompt()', () => {
@@ -41,6 +42,7 @@ describe('XTerminalOverwriteProfileElement', () => {
 		const confirmHandler = () => {}
 		const cancelHandler = () => {}
 		element.setNewPrompt(profileName, confirmHandler, cancelHandler)
-		expect(element.messageDiv.textContent).toBe('Overwrite existing profile \'foo\'?')
+
+  expect(element.messageDiv.textContent).toBe('Overwrite existing profile \'foo\'?')
 	})
 })
