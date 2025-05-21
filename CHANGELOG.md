@@ -1,3 +1,16 @@
+# [14.4.0](https://github.com/Spiker985/x-terminal-reloaded/compare/v14.3.0...v14.4.0) (2025-05-21)
+
+
+### Bug Fixes
+
+* **ci:** Fix renovate.json ([3858455](https://github.com/Spiker985/x-terminal-reloaded/commit/38584557fce3cabca170272f4a101b320f5bc5d7))
+
+
+### Features
+
+* Implement context aware node pty ([#129](https://github.com/Spiker985/x-terminal-reloaded/issues/129)) ([0df0207](https://github.com/Spiker985/x-terminal-reloaded/commit/0df0207e08d160ad6cd5917e63841da96d1b1421))
+* Standardize menu bar/context menu entries ([837562d](https://github.com/Spiker985/x-terminal-reloaded/commit/837562de31265b4b254514708535ebfea66f75a7))
+
 # [14.3.0](https://github.com/Spiker985/x-terminal-reloaded/compare/v14.2.6...v14.3.0) (2023-10-09)
 
 
