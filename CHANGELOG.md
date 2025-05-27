@@ -1,3 +1,10 @@
+## [14.4.1](https://github.com/Spiker985/x-terminal-reloaded/compare/v14.4.0...v14.4.1) (2025-05-27)
+
+
+### Bug Fixes
+
+* **deps:** update dependency marked to ^15.0.12 ([#130](https://github.com/Spiker985/x-terminal-reloaded/issues/130)) ([0e480e1](https://github.com/Spiker985/x-terminal-reloaded/commit/0e480e1be7a58d21b80cabaae556d96adec32df8))
+
 # [14.4.0](https://github.com/Spiker985/x-terminal-reloaded/compare/v14.3.0...v14.4.0) (2025-05-21)
 
 
