@@ -63,7 +63,7 @@
     "deep-object-diff": "^1.1.9",
     "fs-extra": "^11.3.0",
     "marked": "^15.0.12",
-    "node-pty": "1.1.0-beta34",
+    "node-pty": "1.1.0-beta9",
     "uuid": "^11.1.0",
     "whatwg-url": "^14.2.0",
     "which": "^5.0.0"
