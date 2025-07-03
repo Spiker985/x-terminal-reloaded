@@ -81,7 +81,7 @@
     "globals": "^16.3.0",
     "postcss-less": "^6.0.0",
     "semantic-release": "^24.2.6",
-    "stylelint": "^16.21.0",
+    "stylelint": "^16.21.1",
     "stylelint-config-standard": "^38.0.0",
     "temp": "^0.9.4"
   },
