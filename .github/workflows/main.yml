@@ -35,6 +35,15 @@ jobs:
       # Currently the Pulsar process starts, but unlike *nix doesn't wait for ppm to finish, probably because pulsar.cmd needs updated
       # As of Pulsar version 1.108.0, a ppm binary has been included (which is a clone of apm) with the intention of fully moving away from the apm binary
       run: ppm rebuild --verbose
+
+    - name: Print npm paths (MacOS)
+      if: ${{ runner.os == 'macOS' }}
+      run: |
+        ls "/Applications/Pulsar.app/Contents/Resources/app/ppm/bin/"
+        ls "/Applications/Pulsar.app/Contents/Resources/app/ppm/node_modules/.bin"
+        ls "/Applications/Pulsar.app/Contents/Resources/app/ppm/node_modules/npm"
+        ls "/Applications/Pulsar.app/Contents/Resources/app/ppm/node_modules/npm/lib"
+        ls "/Applications/Pulsar.app/Contents/Resources/app/ppm/node_modules/npm/lib/utils"
       
     - name: Rebuild dependencies (*nix)
       if: ${{ runner.os != 'Windows' }}
