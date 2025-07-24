@@ -39,10 +39,15 @@ jobs:
     - name: Print npm paths (MacOS)
       if: ${{ runner.os == 'macOS' }}
       run: |
+        echo "/Applications/Pulsar.app/Contents/Resources/app/ppm/bin/"
         ls "/Applications/Pulsar.app/Contents/Resources/app/ppm/bin/"
+        echo "/Applications/Pulsar.app/Contents/Resources/app/ppm/node_modules/.bin"
         ls "/Applications/Pulsar.app/Contents/Resources/app/ppm/node_modules/.bin"
+        echo "/Applications/Pulsar.app/Contents/Resources/app/ppm/node_modules/npm"
         ls "/Applications/Pulsar.app/Contents/Resources/app/ppm/node_modules/npm"
+        echo "/Applications/Pulsar.app/Contents/Resources/app/ppm/node_modules/npm/lib"
         ls "/Applications/Pulsar.app/Contents/Resources/app/ppm/node_modules/npm/lib"
+        echo "/Applications/Pulsar.app/Contents/Resources/app/ppm/node_modules/npm/lib/utils"
         ls "/Applications/Pulsar.app/Contents/Resources/app/ppm/node_modules/npm/lib/utils"
       
     - name: Rebuild dependencies (*nix)
