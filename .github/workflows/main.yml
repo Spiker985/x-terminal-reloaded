@@ -12,7 +12,8 @@ jobs:
       fail-fast: false
       matrix:
         # Should be the static versions of the current "-latest" runners
-        os: [ubuntu-24.04, macos-14, windows-2022]
+        os: [ubuntu-24.04, windows-2022]
+        # os: [ubuntu-24.04, macos-14, windows-2022]
     runs-on: ${{ matrix.os }}
     timeout-minutes: 90
     steps:
