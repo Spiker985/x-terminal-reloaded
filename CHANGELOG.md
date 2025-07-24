@@ -1,3 +1,10 @@
+## [14.4.2](https://github.com/Spiker985/x-terminal-reloaded/compare/v14.4.1...v14.4.2) (2025-07-24)
+
+
+### Bug Fixes
+
+* **deps:** pin node-pty to pulsar-edit/node-pty ([400fc34](https://github.com/Spiker985/x-terminal-reloaded/commit/400fc34d31dcda4eff5c9da2d12a2732ce949cb2))
+
 ## [14.4.1](https://github.com/Spiker985/x-terminal-reloaded/compare/v14.4.0...v14.4.1) (2025-05-27)
 
 
