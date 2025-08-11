@@ -18,7 +18,7 @@ jobs:
     timeout-minutes: 90
     steps:
     - name: Checkout repo
-      uses: actions/checkout@v4
+      uses: actions/checkout@v5
 
     - name: Setup Node
       uses: actions/setup-node@v4.4.0
@@ -56,9 +56,9 @@ jobs:
     runs-on: ${{ matrix.os }}
     timeout-minutes: 90
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v5
     - name: Checkout repo
-      uses: actions/checkout@v4
+      uses: actions/checkout@v5
 
     - name: Setup Node
       uses: actions/setup-node@v4.4.0
@@ -90,7 +90,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repot
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Setup Node
         uses: actions/setup-node@v4.4.0
@@ -109,7 +109,7 @@ jobs:
       github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       
       - uses: pulsar-edit/action-pulsar-dependency@v3.4
       
