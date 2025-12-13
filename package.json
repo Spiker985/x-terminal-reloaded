@@ -76,7 +76,7 @@
     "@stylistic/eslint-plugin-js": "^4.4.1",
     "@stylistic/stylelint-plugin": "^4.0.0",
     "atom-jasmine3-test-runner": "^5.2.13",
-    "eslint": "^9.39.1",
+    "eslint": "^9.39.2",
     "eslint-plugin-jasmine": "^4.2.2",
     "globals": "^16.5.0",
     "postcss-less": "^6.0.0",
