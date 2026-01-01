@@ -78,7 +78,7 @@
     "atom-jasmine3-test-runner": "^5.2.13",
     "eslint": "^9.39.2",
     "eslint-plugin-jasmine": "^4.2.2",
-    "globals": "^16.5.0",
+    "globals": "^17.0.0",
     "postcss-less": "^6.0.0",
     "semantic-release": "^25.0.2",
     "stylelint": "^16.26.1",
