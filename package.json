@@ -65,7 +65,7 @@
     "marked": "^15.0.12",
     "node-pty": "https://github.com/pulsar-edit/node-pty.git",
     "uuid": "^11.1.0",
-    "whatwg-url": "^14.2.0",
+    "whatwg-url": "^15.1.0",
     "which": "^5.0.0"
   },
   "devDependencies": {
