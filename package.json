@@ -74,7 +74,7 @@
     "@eslint/json": "^0.14.0",
     "@semantic-release/apm-config": "^9.0.1",
     "@stylistic/eslint-plugin-js": "^4.4.1",
-    "@stylistic/stylelint-plugin": "^4.0.0",
+    "@stylistic/stylelint-plugin": "^4.0.1",
     "atom-jasmine3-test-runner": "^5.2.13",
     "eslint": "^9.39.2",
     "eslint-plugin-jasmine": "^4.2.2",
