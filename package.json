@@ -66,7 +66,7 @@
     "node-pty": "https://github.com/pulsar-edit/node-pty.git",
     "uuid": "^11.1.0",
     "whatwg-url": "^14.2.0",
-    "which": "^5.0.0"
+    "which": "^6.0.1"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.3",
