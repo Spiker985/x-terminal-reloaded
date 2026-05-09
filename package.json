@@ -70,7 +70,7 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.5",
-    "@eslint/js": "^9.39.4",
+    "@eslint/js": "^10.0.1",
     "@eslint/json": "^1.2.0",
     "@semantic-release/apm-config": "^9.0.1",
     "@stylistic/eslint-plugin-js": "^4.4.1",
